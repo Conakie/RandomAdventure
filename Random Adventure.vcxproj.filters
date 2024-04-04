@@ -1,0 +1,419 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Random files">
+      <UniqueIdentifier>{5726fd05-b1d3-46a3-9865-337f6eb4e593}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game">
+      <UniqueIdentifier>{8ec84080-1cc1-4559-bed8-33ca8f96ac22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\Game - English">
+      <UniqueIdentifier>{be30c79d-dcd3-4fed-b6ae-5d97a70bef7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Ing">
+      <UniqueIdentifier>{780c2074-1c3e-4453-928a-778bd0c401b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Ita">
+      <UniqueIdentifier>{2fcc6835-79ca-4579-a0e4-f6510b963d5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\It-En Files">
+      <UniqueIdentifier>{a8e28ba8-732b-468b-b148-aac4fe887b57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Other">
+      <UniqueIdentifier>{2b3da3c1-32bd-4957-9356-674596fc9897}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\Stats">
+      <UniqueIdentifier>{a653b597-7b26-4e55-a746-82526d5f92d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\Dialogues">
+      <UniqueIdentifier>{ca9291e9-13c2-4450-950b-bd6c94381e88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Dialogues">
+      <UniqueIdentifier>{cfef5a90-21eb-4446-ab31-69de41e5a333}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\Gioco - Italiano">
+      <UniqueIdentifier>{1c94f5b5-c8af-4b6a-ad8e-c350a70106e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Items">
+      <UniqueIdentifier>{3225d01a-33d8-4a55-a9dd-7a5fe99d8f16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Places">
+      <UniqueIdentifier>{ebe20f64-6ca0-426c-86e6-9e195ae41bd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Stats">
+      <UniqueIdentifier>{c3029109-76f1-4367-b632-2dc7f8b654eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tests">
+      <UniqueIdentifier>{e8913dfc-56c8-4153-b392-d179639f656a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Tests">
+      <UniqueIdentifier>{a54890a5-c5bf-49a0-a9d7-0601e31f8ad0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\Places">
+      <UniqueIdentifier>{2cfc2a2d-483f-44f3-a091-e64484887864}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Style">
+      <UniqueIdentifier>{441eb448-5408-4291-bca6-d33dc9dd72d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Style">
+      <UniqueIdentifier>{38203d54-7151-4b2a-b171-e32326a8bce6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Random Adventure English.cpp">
+      <Filter>Source Files\Game\Game - English</Filter>
+    </ClCompile>
+    <ClCompile Include="Talk To Encounters.cpp">
+      <Filter>Source Files\Game\Gioco - Italiano</Filter>
+    </ClCompile>
+    <ClCompile Include="Random Adventure Italiano.cpp">
+      <Filter>Source Files\Game\Gioco - Italiano</Filter>
+    </ClCompile>
+    <ClCompile Include="Encounter Statistics.cpp">
+      <Filter>Source Files\Random files</Filter>
+    </ClCompile>
+    <ClCompile Include="Start.cpp">
+      <Filter>Source Files\Random files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player Actions.cpp">
+      <Filter>Source Files\Game\Game - English</Filter>
+    </ClCompile>
+    <ClCompile Include="Parla Con Gli Incontri.h">
+      <Filter>Header Files\Ita</Filter>
+    </ClCompile>
+    <ClCompile Include="Azioni Del Giocatore.cpp">
+      <Filter>Source Files\Game\Gioco - Italiano</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Source Files\Game\It-En Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Options.cpp">
+      <Filter>Source Files\Game\It-En Files</Filter>
+    </ClCompile>
+    <ClCompile Include="News.cpp">
+      <Filter>Source Files\Random files</Filter>
+    </ClCompile>
+    <ClCompile Include="Setup.cpp">
+      <Filter>Source Files\Random files</Filter>
+    </ClCompile>
+    <ClCompile Include="Print Encounter.cpp">
+      <Filter>Source Files\Game\It-En Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Value Keeper.cpp">
+      <Filter>Source Files\Game\It-En Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Everywhere Used Func.h">
+      <Filter>Header Files\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="Player Turn.cpp">
+      <Filter>Source Files\Game\Game - English</Filter>
+    </ClCompile>
+    <ClCompile Include="Encounter Turn.cpp">
+      <Filter>Source Files\Game\Game - English</Filter>
+    </ClCompile>
+    <ClCompile Include="Compare.cpp">
+      <Filter>Source Files\Game\It-En Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Random Stuff.cpp">
+      <Filter>Source Files\Random files</Filter>
+    </ClCompile>
+    <ClCompile Include="Print Player Stats.cpp">
+      <Filter>Source Files\Game\It-En Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Print Not Possible.cpp">
+      <Filter>Source Files\Game\It-En Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Chishao.h">
+      <Filter>Header Files\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="All Animals.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Arm Nuc.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Chishao.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Cleric.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Drunk Guy.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Dwarf.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Elesya.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Elf.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Exp. N. 30 A.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Exp. N. 30 C.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Exp. N. 30B.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Goblin.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Guard.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Kelmod.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Kyo.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Lenre.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Miiro.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="No Talking.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Sila.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Skeletron.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Soldier.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Torturer.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Zombie.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Yugei Sansae.h">
+      <Filter>Header Files\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Necoto.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Turno Giocatore.cpp">
+      <Filter>Source Files\Game\Gioco - Italiano</Filter>
+    </ClCompile>
+    <ClCompile Include="Turno Incontro.cpp">
+      <Filter>Source Files\Game\Gioco - Italiano</Filter>
+    </ClCompile>
+    <ClCompile Include="Print Errors.cpp">
+      <Filter>Source Files\Random files</Filter>
+    </ClCompile>
+    <ClCompile Include="Stats.cpp">
+      <Filter>Source Files\Game\Stats</Filter>
+    </ClCompile>
+    <ClCompile Include="Commands.cpp">
+      <Filter>Source Files\Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="Set Place.cpp">
+      <Filter>Source Files\Game\Places</Filter>
+    </ClCompile>
+    <ClCompile Include="SetEncounterPerPlace.cpp">
+      <Filter>Source Files\Game\Stats</Filter>
+    </ClCompile>
+    <ClCompile Include="Playerz.cpp">
+      <Filter>Source Files\Game\Stats</Filter>
+    </ClCompile>
+    <ClCompile Include="Encounters.cpp">
+      <Filter>Source Files\Game\Stats</Filter>
+    </ClCompile>
+    <ClCompile Include="Encounter Actions.cpp">
+      <Filter>Source Files\Game\Game - English</Filter>
+    </ClCompile>
+    <ClCompile Include="Kobold.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Kock Encounters.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="The Beer.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Yourself.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="The Rock.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Bartender.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Bard.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Blurp.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Stone Golem.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Inventory.cpp">
+      <Filter>Source Files\Game\Stats</Filter>
+    </ClCompile>
+    <ClCompile Include="Prisoner.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Trader.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Ghost.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Giant.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Loli.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Shota.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Ratman.cpp">
+      <Filter>Source Files\Game\Dialogues</Filter>
+    </ClCompile>
+    <ClCompile Include="Intro And Outro.cpp">
+      <Filter>Source Files\Random files</Filter>
+    </ClCompile>
+    <ClCompile Include="ConsoleColor.h">
+      <Filter>Header Files\Style</Filter>
+    </ClCompile>
+    <ClCompile Include="ConsoleStyle.cpp">
+      <Filter>Source Files\Style</Filter>
+    </ClCompile>
+    <ClCompile Include="Places.cpp">
+      <Filter>Source Files\Tests</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Random Adventure English.h">
+      <Filter>Header Files\Ing</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions.h">
+      <Filter>Header Files\Ing</Filter>
+    </ClInclude>
+    <ClInclude Include="Talk To Encounters English.h">
+      <Filter>Header Files\Ing</Filter>
+    </ClInclude>
+    <ClInclude Include="Random Adventure Italiano.h">
+      <Filter>Header Files\Ita</Filter>
+    </ClInclude>
+    <ClInclude Include="Azioni.h">
+      <Filter>Header Files\Ita</Filter>
+    </ClInclude>
+    <ClInclude Include="Exp. N. 30A.h">
+      <Filter>Header Files\Dialogues</Filter>
+    </ClInclude>
+    <ClInclude Include="Exp. N. 30C.h">
+      <Filter>Header Files\Dialogues</Filter>
+    </ClInclude>
+    <ClInclude Include="Print Errors.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="Exp. N. 30B.h">
+      <Filter>Header Files\Dialogues</Filter>
+    </ClInclude>
+    <ClInclude Include="Prng.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="Sila.h">
+      <Filter>Header Files\Dialogues</Filter>
+    </ClInclude>
+    <ClInclude Include="Arm Nuc.h">
+      <Filter>Header Files\Dialogues</Filter>
+    </ClInclude>
+    <ClInclude Include="Miiro.h">
+      <Filter>Header Files\Dialogues</Filter>
+    </ClInclude>
+    <ClInclude Include="Encounter Stats.h">
+      <Filter>Header Files\Stats</Filter>
+    </ClInclude>
+    <ClInclude Include="Encounter UID.h">
+      <Filter>Header Files\Stats</Filter>
+    </ClInclude>
+    <ClInclude Include="Player Stats.h">
+      <Filter>Header Files\Stats</Filter>
+    </ClInclude>
+    <ClInclude Include="Items.h">
+      <Filter>Header Files\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Object UID.h">
+      <Filter>Header Files\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Place.h">
+      <Filter>Header Files\Places</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="PlaceNames.h">
+      <Filter>Header Files\Places</Filter>
+    </ClInclude>
+    <ClInclude Include="Set Encounters.h">
+      <Filter>Header Files\Ing</Filter>
+    </ClInclude>
+    <ClInclude Include="Stats.h">
+      <Filter>Header Files\Stats</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests.h">
+      <Filter>Header Files\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="Encounters.h">
+      <Filter>Header Files\Stats</Filter>
+    </ClInclude>
+    <ClInclude Include="Playerz.h">
+      <Filter>Header Files\Stats</Filter>
+    </ClInclude>
+    <ClInclude Include="Yourself.h">
+      <Filter>Header Files\Dialogues</Filter>
+    </ClInclude>
+    <ClInclude Include="Bartender.h">
+      <Filter>Header Files\Dialogues</Filter>
+    </ClInclude>
+    <ClInclude Include="Inventory.h">
+      <Filter>Header Files\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Prisoner.h">
+      <Filter>Header Files\Dialogues</Filter>
+    </ClInclude>
+    <ClInclude Include="Ratman.h">
+      <Filter>Header Files\Dialogues</Filter>
+    </ClInclude>
+    <ClInclude Include="ConsoleStyle.h">
+      <Filter>Header Files\Style</Filter>
+    </ClInclude>
+    <ClInclude Include="Places.h">
+      <Filter>Header Files\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="Place Name.h">
+      <Filter>Header Files\Tests</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Start.h">
+      <Filter>Header Files\Ing</Filter>
+    </None>
+  </ItemGroup>
+</Project>

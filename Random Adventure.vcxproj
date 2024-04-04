@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{d51fd48c-4a86-4fcf-aeed-dbe5e6350dba}</ProjectGuid>
+    <RootNamespace>RandomAdventure</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Arm Nuc.cpp" />
+    <ClCompile Include="Bard.cpp" />
+    <ClCompile Include="Bartender.cpp" />
+    <ClCompile Include="Blurp.cpp" />
+    <ClCompile Include="Chishao.cpp" />
+    <ClCompile Include="Chishao.h" />
+    <ClCompile Include="Commands.cpp" />
+    <ClCompile Include="Compare.cpp" />
+    <ClCompile Include="ConsoleColor.h" />
+    <ClCompile Include="ConsoleStyle.cpp" />
+    <ClCompile Include="Encounter Actions.cpp" />
+    <ClCompile Include="Encounter Turn.cpp" />
+    <ClCompile Include="Encounters.cpp" />
+    <ClCompile Include="Everywhere Used Func.h" />
+    <ClCompile Include="Exp. N. 30 A.cpp" />
+    <ClCompile Include="Exp. N. 30 C.cpp" />
+    <ClCompile Include="Exp. N. 30B.cpp" />
+    <ClCompile Include="Ghost.cpp" />
+    <ClCompile Include="Giant.cpp" />
+    <ClCompile Include="Intro And Outro.cpp" />
+    <ClCompile Include="Inventory.cpp" />
+    <ClCompile Include="Kobold.cpp" />
+    <ClCompile Include="Kock Encounters.cpp" />
+    <ClCompile Include="Loli.cpp" />
+    <ClCompile Include="Miiro.cpp" />
+    <ClCompile Include="Necoto.cpp" />
+    <ClCompile Include="News.cpp" />
+    <ClCompile Include="Options.cpp" />
+    <ClCompile Include="All Animals.cpp" />
+    <ClCompile Include="Azioni Del Giocatore.cpp" />
+    <ClCompile Include="Drunk Guy.cpp" />
+    <ClCompile Include="Dwarf.cpp" />
+    <ClCompile Include="Elf.cpp" />
+    <ClCompile Include="Goblin.cpp" />
+    <ClCompile Include="Input.cpp" />
+    <ClCompile Include="Kyo.cpp" />
+    <ClCompile Include="Parla Con Gli Incontri.h" />
+    <ClCompile Include="No Talking.cpp" />
+    <ClCompile Include="Places.cpp" />
+    <ClCompile Include="Player Actions.cpp" />
+    <ClCompile Include="Player Turn.cpp" />
+    <ClCompile Include="Playerz.cpp" />
+    <ClCompile Include="Print Encounter.cpp" />
+    <ClCompile Include="Print Errors.cpp" />
+    <ClCompile Include="Print Not Possible.cpp" />
+    <ClCompile Include="Print Player Stats.cpp" />
+    <ClCompile Include="Prisoner.cpp" />
+    <ClCompile Include="Random Adventure Italiano.cpp" />
+    <ClCompile Include="Ratman.cpp" />
+    <ClCompile Include="Set Place.cpp" />
+    <ClCompile Include="SetEncounterPerPlace.cpp" />
+    <ClCompile Include="Setup.cpp" />
+    <ClCompile Include="Shota.cpp" />
+    <ClCompile Include="Skeletron.cpp" />
+    <ClCompile Include="Start.cpp" />
+    <ClCompile Include="Random Adventure English.cpp" />
+    <ClCompile Include="Encounter Statistics.cpp" />
+    <ClCompile Include="Stats.cpp" />
+    <ClCompile Include="Random Stuff.cpp" />
+    <ClCompile Include="Cleric.cpp" />
+    <ClCompile Include="Elesya.cpp" />
+    <ClCompile Include="Kelmod.cpp" />
+    <ClCompile Include="Lenre.cpp" />
+    <ClCompile Include="Sila.cpp" />
+    <ClCompile Include="Guard.cpp" />
+    <ClCompile Include="Soldier.cpp" />
+    <ClCompile Include="Stone Golem.cpp" />
+    <ClCompile Include="Talk To Encounters.cpp" />
+    <ClCompile Include="The Beer.cpp" />
+    <ClCompile Include="The Rock.cpp" />
+    <ClCompile Include="Torturer.cpp" />
+    <ClCompile Include="Trader.cpp" />
+    <ClCompile Include="Turno Giocatore.cpp" />
+    <ClCompile Include="Turno Incontro.cpp" />
+    <ClCompile Include="Value Keeper.cpp" />
+    <ClCompile Include="Yourself.cpp" />
+    <ClCompile Include="Yugei Sansae.h" />
+    <ClCompile Include="Zombie.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Actions.h" />
+    <ClInclude Include="Arm Nuc.h" />
+    <ClInclude Include="Azioni.h" />
+    <ClInclude Include="Bartender.h" />
+    <ClInclude Include="ConsoleStyle.h" />
+    <ClInclude Include="Encounter Stats.h" />
+    <ClInclude Include="Encounter UID.h" />
+    <ClInclude Include="Encounters.h" />
+    <ClInclude Include="Exp. N. 30B.h" />
+    <ClInclude Include="Exp. N. 30C.h" />
+    <ClInclude Include="Exp. N. 30A.h" />
+    <ClInclude Include="Input.h" />
+    <ClInclude Include="Inventory.h" />
+    <ClInclude Include="Items.h" />
+    <ClInclude Include="Miiro.h" />
+    <ClInclude Include="Object UID.h" />
+    <ClInclude Include="Place Name.h" />
+    <ClInclude Include="Place.h" />
+    <ClInclude Include="PlaceNames.h" />
+    <ClInclude Include="Places.h" />
+    <ClInclude Include="Player Stats.h" />
+    <ClInclude Include="Playerz.h" />
+    <ClInclude Include="Print Errors.h" />
+    <ClInclude Include="Prisoner.h" />
+    <ClInclude Include="Prng.h" />
+    <ClInclude Include="Ratman.h" />
+    <ClInclude Include="Set Encounters.h" />
+    <ClInclude Include="Sila.h" />
+    <ClInclude Include="Stats.h" />
+    <ClInclude Include="Talk To Encounters English.h" />
+    <ClInclude Include="Random Adventure English.h" />
+    <ClInclude Include="Random Adventure Italiano.h" />
+    <ClInclude Include="Tests.h" />
+    <ClInclude Include="Yourself.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Start.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

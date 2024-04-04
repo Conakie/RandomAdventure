@@ -1,0 +1,7 @@
+
+#ifndef KIIYUO_DIALOGUES_YOURSELF_H
+#define KIIYUO_DIALOGUES_YOURSELF_H
+
+void dialogue1Part1();
+
+#endif // !KIIYUO_DIALOGUES_YOURSELF_H
