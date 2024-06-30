@@ -216,6 +216,7 @@
     <ClInclude Include="Azioni.h" />
     <ClInclude Include="Bartender.h" />
     <ClInclude Include="ConsoleStyle.h" />
+    <ClInclude Include="Costants.h" />
     <ClInclude Include="Encounter Stats.h" />
     <ClInclude Include="Encounter UID.h" />
     <ClInclude Include="Encounters.h" />

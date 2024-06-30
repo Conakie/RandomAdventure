@@ -10,6 +10,7 @@
 #include "Object UID.h"
 #include "Items.h"
 #include "Inventory.h"
+#include "Costants.h"
 
 
 #ifndef KNA1
@@ -19,7 +20,7 @@ class Encounters;
 #endif // !KNA1
 
 
-class Playerz
+class Playerz final : private Player
 {
 public:
 	Playerz() = default;
@@ -42,29 +43,32 @@ public:
 	void resetAllStats();
 
 
-	const double& getHealth() const { return m_player.hp; }
-	const double& getMaxHealth() const { return m_player.maxHp; }
-	const double& getAttack() const { return m_player.atk; }
+	const double& getHealth() const { return hp; }
+	const double& getMaxHealth() const { return maxHp; }
+	const double& getAttack() const { return atk; }
 
-	const short& getLvl() const { return m_player.lvl; }
-	const int& getLvlUpXp() const { return m_player.lvlUpXp; }
-	const int& getXp() const { return m_player.xp; }
+	const short& getLvl() const { return lvl; }
+	const int& getLvlUpXp() const { return lvlUpXp; }
+	const int& getXp() const { return xp; }
 
-	const short& getCritRate() const { return m_player.critRate; }
-	const double& getCritDmg() const { return m_player.critDmg; }
-	const std::string_view getName() const { return m_player.name; }
+	const short& getCritRate() const { return critRate; }
+	const double& getCritDmg() const { return critDmg; }
+	const std::string_view getName() const { return name; }
 
 	Inventory& setInventory() { return m_inventory; }
-
+	void setStats();
 
 private:
 
-	Player m_player{ };
 	Stats m_stats{ };
 	Inventory m_inventory{ };
 
 	// increase the stats of the player if he got a new level
 	void lvlUp();
+	void rollStats(short arr[k_statsAmount]) const;
+	bool checkIfTmpStatsAreOk(short arr[k_statsAmount]) const;
+	void assignStats(short arr[k_statsAmount	]);
+	void applyStatBonus();
 
 };
 

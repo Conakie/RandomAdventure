@@ -16,6 +16,7 @@
 int main()
 {
     setup();
+    gameEn();
     EncounterUid endDialogue{ EncounterUid::none };
     intro();
 //+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+

@@ -16,7 +16,7 @@ void gameEn()
 	// reset stats
 	player().resetAllStats();
 	encounter().resetAllStats();
-
+	player().setStats();
 
 
 	//The game starts here

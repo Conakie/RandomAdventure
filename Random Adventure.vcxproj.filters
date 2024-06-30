@@ -410,6 +410,9 @@
     <ClInclude Include="Place Name.h">
       <Filter>Header Files\Tests</Filter>
     </ClInclude>
+    <ClInclude Include="Costants.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Start.h">

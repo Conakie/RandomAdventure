@@ -6,37 +6,34 @@
 
 struct Player
 {
-
     Player() = default;
 
 	std::string name{ "You" };
-	short lvl{ 0 };
-	short critRate{ 0 };
-	short stamina{ 0 };
-	int xp{ 0 };
-	int lvlUpXp{ 0 };
-	int weight{ 0 };
-	double critDmg{ 0 };
-	double hp{ 0 };
-	double maxHp{ 0 };
-	double atk{ 0 };
-	double maxAtk{ 0 };
-
+	short lvl		{ 0 };
+	short critRate	{ 0 };
+	short stamina	{ 0 };
+	int xp			{ 0 };
+	int lvlUpXp		{ 0 };
+	int weight		{ 0 };
+	double critDmg	{ 0 };
+	double hp		{ 0 };
+	double maxHp	{ 0 };
+	double atk		{ 0 };
+	double maxAtk	{ 0 };
 };
 
 
 
 struct Stats
 {
-
     Stats() = default;
 
-	short strenght{ 0 };
-	short dexterity{ 0 };
+	short strength    { 0 };
+	short dexterity   { 0 };
+	short constitution{ 0 };
 	short intelligence{ 0 };
-	short wisdom{ 0 };
-	short charisma{ 0 };
-
+	short wisdom      { 0 };
+	short charisma    { 0 };
 };
 
 
