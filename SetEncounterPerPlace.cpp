@@ -3,7 +3,7 @@
 #include "Encounter UID.h"
 #include "Place.h"
 #include "PlaceNames.h"
-#include "Prng.h"
+#include "Random.h"
 #include "Print Errors.h"
 #include "Set Encounters.h"
 #include "Stats.h"

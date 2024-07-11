@@ -1,7 +1,7 @@
 
 #include <iostream>
 #include "Everywhere Used Func.h"
-#include "Prng.h"
+#include "Random.h"
 #include "Print Errors.h"
 #include "Place.h"
 #include "PlaceNames.h"

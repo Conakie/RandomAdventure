@@ -20,13 +20,16 @@ class Encounters;
 #endif // !KNA1
 
 
-class Playerz final : private Player
+class Playerz : protected Players
 {
 public:
 	Playerz() = default;
 
 	// increase the hp of healing or to max hp
 	void heal(double healing);
+
+	// attack one encounter
+	void virtual attack(Encounters enc) const;
 
 	// decrease the player hp
 	void takeDamage(double damage);
@@ -37,10 +40,10 @@ public:
 	void increaseXpAndCheckForLvlUp(short value);
 
 	// print all player stats
-	void printStats() const;
+	virtual void printStats() const;
 
 	// set all stats to default
-	void resetAllStats();
+	virtual void resetAllStats();
 
 
 	const double& getHealth() const { return hp; }
@@ -58,16 +61,18 @@ public:
 	Inventory& setInventory() { return m_inventory; }
 	void setStats();
 
-private:
+protected:
 
 	Stats m_stats{ };
 	Inventory m_inventory{ };
+
+private:
 
 	// increase the stats of the player if he got a new level
 	void lvlUp();
 	void rollStats(short arr[k_statsAmount]) const;
 	bool checkIfTmpStatsAreOk(short arr[k_statsAmount]) const;
-	void assignStats(short arr[k_statsAmount	]);
+	void assignStats(short arr[k_statsAmount]);
 	void applyStatBonus();
 
 };

@@ -6,7 +6,7 @@
 #include "Talk To Encounters English.h"
 #include "Actions.h"
 #include "Exp. N. 30A.h"
-#include "Prng.h"
+#include "Random.h"
 #include "Input.h"
 #include "Stats.h"
 

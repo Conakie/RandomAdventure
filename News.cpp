@@ -4,7 +4,7 @@
 #include "Random Adventure Italiano.h"
 #include "Start.h"
 #include "Everywhere Used Func.h"
-#include "Prng.h"
+#include "Random.h"
 #include "Input.h"
 
 

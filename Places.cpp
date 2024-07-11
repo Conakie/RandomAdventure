@@ -2,7 +2,7 @@
 #include <iostream>
 #include "Places.h"
 #include "Place Name.h"
-#include "Prng.h"
+#include "Random.h"
 
 
 namespace Place

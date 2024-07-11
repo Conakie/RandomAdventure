@@ -4,9 +4,9 @@
 
 #include <string_view>
 
-struct Player
+struct Players
 {
-    Player() = default;
+    Players() = default;
 
 	std::string name{ "You" };
 	short lvl		{ 0 };

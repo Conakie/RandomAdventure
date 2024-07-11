@@ -7,7 +7,7 @@
 #include "Set Encounters.h"
 #include "Encounters.h"
 #include "Playerz.h"
-#include "Prng.h"
+#include "Random.h"
 #include "Items.h"
 #include "Inventory.h"
 #include "Stats.h"
@@ -56,6 +56,10 @@ void Encounters::takeDamage(double damage)
 
     }
 
+}
+
+void Encounters::attack(Playerz ally) const
+{
 }
 
 

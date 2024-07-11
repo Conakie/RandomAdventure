@@ -6,7 +6,7 @@
 #include "Everywhere Used Func.h"
 #include "Player Stats.h"
 #include "Encounter Stats.h"
-#include "Prng.h"
+//#include "Random.h"
 
 
 

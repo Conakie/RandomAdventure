@@ -5,7 +5,7 @@
 #include "Encounter Stats.h"
 #include "Input.h"
 #include "Stats.h"
-#include "Prng.h"
+#include "Random.h"
 #include "Print Errors.h"
 
 

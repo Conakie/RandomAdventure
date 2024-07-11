@@ -4,7 +4,7 @@
 #include "Talk To Encounters English.h"
 #include "Actions.h"
 #include "Everywhere Used Func.h"
-#include "Prng.h"
+#include "Random.h"
 #include "Stats.h"
 #include "ConsoleStyle.h"
 #include "Place.h"

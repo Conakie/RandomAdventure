@@ -29,6 +29,7 @@ public:
     // decrease hp of damage. If the encounter dies, the player will be notified
     void takeDamage(double damage);
 
+    void attack(Playerz ally) const;
     // increase the xp of value. Also checks for lvl up.
     void increaseXp(short value);
 

@@ -1,7 +1,7 @@
 
 #include <iostream>
 #include "Player Stats.h"
-#include "Prng.h"
+#include "Random.h"
 #include "Encounters.h"
 #include "Playerz.h"
 #include "Input.h"
@@ -30,7 +30,23 @@ void Playerz::heal(double healing)
 
 }
 
+void Playerz::attack(Encounters enc) const
+{
+	std::cout << "\nYou attack the encounter.";
+	if (Random::get(0, 99) <= critRate)
+	{
 
+		std::cout << "\nYou did a critical hit!\n";
+		enc.takeDamage(atk * critDmg);
+
+	}
+	else
+	{
+
+		enc.takeDamage(atk);
+
+	}
+}
 
 void Playerz::takeDamage(double damage)
 {
@@ -53,8 +69,6 @@ void Playerz::takeDamage(double damage)
 
 }
 
-
-
 void Playerz::increaseXpAndCheckForLvlUp(short value)
 {
 
@@ -63,8 +77,6 @@ void Playerz::increaseXpAndCheckForLvlUp(short value)
 	lvlUp();
 
 }
-
-
 
 void Playerz::printStats() const
 {
@@ -83,14 +95,12 @@ void Playerz::printStats() const
 		<< "Weight: " << weight << "\n"
 		<< "Strenght: " << m_stats.strength << "\n"
 		<< "Dexterity: " << m_stats.dexterity << "\n"
+		<< "Constitution: " << m_stats.constitution << '\n'
 		<< "Intelligence: " << m_stats.intelligence << "\n"
 		<< "Wisdom: " << m_stats.wisdom << "\n"
-		<< "Charisma: " << m_stats.charisma << "\n"
-		<< "\n\n";
+		<< "Charisma: " << m_stats.charisma << "\n";
 
 }
-
-
 
 void Playerz::resetAllStats()
 {
@@ -119,8 +129,6 @@ void Playerz::resetAllStats()
 	m_inventory.reset();
 
 }
-
-
 
 // under this line there are all the private member functions
 
@@ -229,7 +237,7 @@ bool Playerz::checkIfTmpStatsAreOk(short arr[k_statsAmount]) const
 					++amountOfLowValueStats;
 				}
 			}
-			if (amountOfLowValueStats > 4)
+			if (amountOfLowValueStats >= 4)
 			{
 				std::cout << "Kelmod: \"I have decided what to do. I'm keeping 'em.\"\n";
 				return true;

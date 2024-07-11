@@ -8,6 +8,7 @@
 #include "Encounter Stats.h"
 #include "Set Encounters.h"
 #include "Stats.h"
+#include "Mage.h"
 
 
 
@@ -16,8 +17,9 @@ void gameEn()
 	// reset stats
 	player().resetAllStats();
 	encounter().resetAllStats();
-	player().setStats();
-
+	//player().setStats();
+	Mage mage{};
+	mage.attack(encounter());
 
 	//The game starts here
 	while (player().getHealth() > 0.00)

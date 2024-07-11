@@ -155,6 +155,7 @@
     <ClCompile Include="Kobold.cpp" />
     <ClCompile Include="Kock Encounters.cpp" />
     <ClCompile Include="Loli.cpp" />
+    <ClCompile Include="Mage.cpp" />
     <ClCompile Include="Miiro.cpp" />
     <ClCompile Include="Necoto.cpp" />
     <ClCompile Include="News.cpp" />
@@ -206,6 +207,7 @@
     <ClCompile Include="Turno Giocatore.cpp" />
     <ClCompile Include="Turno Incontro.cpp" />
     <ClCompile Include="Value Keeper.cpp" />
+    <ClCompile Include="Warrior.cpp" />
     <ClCompile Include="Yourself.cpp" />
     <ClCompile Include="Yugei Sansae.h" />
     <ClCompile Include="Zombie.cpp" />
@@ -226,6 +228,7 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Items.h" />
+    <ClInclude Include="Mage.h" />
     <ClInclude Include="Miiro.h" />
     <ClInclude Include="Object UID.h" />
     <ClInclude Include="Place Name.h" />
@@ -236,7 +239,7 @@
     <ClInclude Include="Playerz.h" />
     <ClInclude Include="Print Errors.h" />
     <ClInclude Include="Prisoner.h" />
-    <ClInclude Include="Prng.h" />
+    <ClInclude Include="Random.h" />
     <ClInclude Include="Ratman.h" />
     <ClInclude Include="Set Encounters.h" />
     <ClInclude Include="Sila.h" />
@@ -245,6 +248,7 @@
     <ClInclude Include="Random Adventure English.h" />
     <ClInclude Include="Random Adventure Italiano.h" />
     <ClInclude Include="Tests.h" />
+    <ClInclude Include="Warrior.h" />
     <ClInclude Include="Yourself.h" />
   </ItemGroup>
   <ItemGroup>

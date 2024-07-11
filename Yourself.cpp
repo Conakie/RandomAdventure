@@ -5,7 +5,7 @@
 #include "Input.h"
 #include "Talk To Encounters English.h"
 #include "Stats.h"
-#include "Prng.h"
+#include "Random.h"
 
 
 

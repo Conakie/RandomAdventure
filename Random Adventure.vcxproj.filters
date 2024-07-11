@@ -306,6 +306,12 @@
     <ClCompile Include="Places.cpp">
       <Filter>Source Files\Tests</Filter>
     </ClCompile>
+    <ClCompile Include="Mage.cpp">
+      <Filter>Source Files\Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="Warrior.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Random Adventure English.h">
@@ -335,7 +341,7 @@
     <ClInclude Include="Exp. N. 30B.h">
       <Filter>Header Files\Dialogues</Filter>
     </ClInclude>
-    <ClInclude Include="Prng.h">
+    <ClInclude Include="Random.h">
       <Filter>Header Files\Other</Filter>
     </ClInclude>
     <ClInclude Include="Sila.h">
@@ -412,6 +418,12 @@
     </ClInclude>
     <ClInclude Include="Costants.h">
       <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="Mage.h">
+      <Filter>Header Files\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="Warrior.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -4,7 +4,7 @@
 #include "Encounter Stats.h"
 #include "Talk To Encounters English.h"
 #include "Arm Nuc.h"
-#include "Prng.h"
+#include "Random.h"
 #include "Input.h"
 #include "Stats.h"
 

@@ -10,7 +10,7 @@
 #include "Actions.h"
 #include "Exp. N. 30C.h"
 #include "Print Errors.h"
-#include "Prng.h"
+#include "Random.h"
 #include "Input.h"
 #include "Stats.h"
 
