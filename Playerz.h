@@ -29,7 +29,7 @@ public:
 	void heal(double healing);
 
 	// attack one encounter
-	void virtual attack(Encounters enc) const;
+	void virtual attack(Encounters& enc);
 
 	// decrease the player hp
 	void takeDamage(double damage);

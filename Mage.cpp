@@ -6,46 +6,34 @@
 
 
 
-void Mage::attack(Encounters enc) const
+void Mage::attack(Encounters& enc)
 {
     bool isACritHit { false };
     bool answerAgain{ false };
+    double spellDmg{ 0 };
 
-
-    if (Random::get(0, 99) <= critRate)
+    // check if this hit will be a crit hit or not
+    if (Random::get(0, 99) < critRate)
         isACritHit = true;
     else
         isACritHit = false;
 
-    std::cout << "\nYou attack the encounter.\n"
-        << "Select the spell you want to use:\n"
-        << "1: Lightning bolt (2 mana)\n"
-        << "2: Fireball (10 mana)\n"
-        << "3: Chill touch (5 mana)\n";
-    do
+    // ask for the spell to use and multiply it if the hit is a critical one
+    std::cout << "\nYou chose violence.\n";
+    spellDmg = useSpell();
+    if (isACritHit)
+        spellDmg *= critDmg;
+
+    // attack the encounter or notify the player he does not have enough mana
+    if (spellDmg < 0)
     {
-        switch (Input::character())
-        {
-        case '1':// option 1: Lightning bolt
-            std::cout << "The encounter took 5 hp\n";
-            answerAgain = false;
-            break;
-
-        case '2':// option 2: Fireball
-            answerAgain = false;
-            break;
-
-        case '3':// option 3: Chill touch
-            answerAgain = false;
-            break;
-
-        default:
-            printNotPossible();
-            answerAgain = true;
-            break;
-        }
-    } while (answerAgain);
-
+        std::cout << "You don't have enough mana. Choose another action or spell.\n";
+    }
+    else
+    {
+        std::cout << enc.getName() << " took " << spellDmg << "dmg.\n";
+        enc.takeDamage(spellDmg);
+    }
 }
 
 void Mage::printStats() const
@@ -56,70 +44,98 @@ void Mage::printStats() const
 
 void Mage::resetAllStats()
 {
-    Playerz::resetAllStats();
+    // reset player character stats
+    hp = 8;
+    maxHp = 8;
+    atk = 2;
+    maxAtk = 2;
+    xp = 0;
+    lvlUpXp = 22;
+    lvl = 1;
+    critRate = 5;
+    critDmg = 2;
+    stamina = 100;
+    weight = 0;
     mana = 100;
     maxMana = 100;
+
+    // reset stats
+    m_stats.strength = -1;
+    m_stats.dexterity = -1;
+    m_stats.intelligence = -1;
+    m_stats.wisdom = -1;
+    m_stats.charisma = -1;
+
+    //reset the inventory
+    m_inventory.reset();
 }
 
-int Mage::useSpell() const
+int Mage::useSpell()
 {
-    int dmg{ 0 };
+    int dmg{ -1 };
     int manaUsed{ 0 };
     bool answerAgain{ false };
 
 
     std::cout << "Choose the spell you would like to use (Your mana: " << mana << ")\n"
+        << "0: Dagger. (0 mana)\n"
         << "1: Lightning bolt. (3 mana)\n"
         << "2: Fire bolt. (3 mana)\n"
         << "3: Water cannon. (5 mana)\n"
         << "4: Fireball. (8 mana)\n"
         << "5: Iceball. (8 mana)\n"
         << "6: Chill touch. (10 mana)\n"
-        << "7: Supernova. (30 mana)\n";
+        << "7: Supernova. (80 mana)\n";
 
     do
     {
         switch (Input::character())
         {
-        case '1':// option 1: Lightning bolt.
+        case '0':// option 0: Dagger.
             manaUsed = 0;
-            dmg = 0;
+            dmg = 2;
+            answerAgain = false;
+            break;
+
+        case '1':// option 1: Lightning bolt.
+            manaUsed = 3;
+            dmg = 4;
             answerAgain = false;
             break;
 
         case '2':// option 2: Fire bolt.
-            manaUsed = 0;
-            dmg = 0;
+            manaUsed = 3;
+            dmg = 4;
             answerAgain = false;
             break;
 
         case '3':// option 3: Water cannon.
-            manaUsed = 0;
-            dmg = 0;
+            manaUsed = 5;
+            dmg = 5;
             answerAgain = false;
             break;
 
         case '4':// option 4: Fireball.
-            manaUsed = 0;
-            dmg = 0;
+            manaUsed = 8;
+            dmg = 6;
             answerAgain = false;
             break;
 
         case '5':// option 5: Iceball.
-            manaUsed = 0;
-            dmg = 0;
+            manaUsed = 8;
+            dmg = 6;
             answerAgain = false;
             break;
 
         case '6':// option 6: Chill touch.
-            manaUsed = 0;
-            dmg = 0;
+            manaUsed = 10;
+            dmg = 8;
             answerAgain = false;
             break;
 
         case '7':// option 7: Supernova.
-            manaUsed = 0;
-            dmg = 0;
+            manaUsed = 80;
+            dmg = 261884;
             answerAgain = false;
             break;
 
@@ -130,8 +146,10 @@ int Mage::useSpell() const
         }
     } while (answerAgain);
 
-    if (manaUsed < mana)
+    if (manaUsed > mana)
         return -1;
     else
-        return dmg;
+        mana -= manaUsed;
+
+    return dmg;
 }

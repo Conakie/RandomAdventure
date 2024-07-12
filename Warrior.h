@@ -8,9 +8,10 @@
 class Warrior final : public Playerz
 {
 public:
-    void attack(Encounters enc) const override;
+    // attack one encounter
+    void attack(Encounters& enc) override;
 private:
-    int mana{ 100 };
+    
 };
 
 #endif // !KIIYUO_WARRIOR_CLASS_H

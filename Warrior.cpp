@@ -4,18 +4,34 @@
 
 
 
-void Warrior::attack(Encounters enc) const
+//void Warrior::attack(Encounters enc)
+//{
+//    std::cout << "\nYou attack the encounter.";
+//    if (Random::get(0, 99) <= critRate)
+//    {
+//        std::cout << "\nYou did a critical hit!\n";
+//        enc.takeDamage(atk * critDmg);
+//    }
+//    else
+//    {
+//
+//        enc.takeDamage(atk);
+//
+//    }
+//}
+
+void Warrior::attack(Encounters& enc)
 {
-    std::cout << "\nYou attack the encounter.";
-    if (Random::get(0, 99) <= critRate)
+    bool isACritHit{ false };
+
+
+    std::cout << "You attack " << enc.getName();
+    if (Random::get(0, 99) < critRate)
     {
-        std::cout << "\nYou did a critical hit!\n";
-        enc.takeDamage(atk * critDmg);
+        std::cout << "You did a critical hit!\n";
     }
     else
     {
-
-        enc.takeDamage(atk);
 
     }
 }

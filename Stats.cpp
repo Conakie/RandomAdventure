@@ -5,13 +5,14 @@
 #include "Stats.h"
 #include "Playerz.h"
 #include "Encounters.h"
+#include "Mage.h"
 
 
 
 Playerz& player()
 {
 
-	static Playerz s_giocatore{ };
+	static Mage s_giocatore{ };
 
     return s_giocatore;
 
@@ -29,9 +30,9 @@ std::cout << "Short" << sizeof(short) << "\n"
 Encounters& encounter()
 {
 
-    static Encounters s_incontro{ };
+    static Encounters s_encounter{ };
 
-    return s_incontro;
+    return s_encounter;
 
 }
 //Playerz player{ };

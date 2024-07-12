@@ -18,8 +18,6 @@ void gameEn()
 	player().resetAllStats();
 	encounter().resetAllStats();
 	//player().setStats();
-	Mage mage{};
-	mage.attack(encounter());
 
 	//The game starts here
 	while (player().getHealth() > 0.00)

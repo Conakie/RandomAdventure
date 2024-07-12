@@ -34,35 +34,25 @@ void Encounters::heal(double healing)
 
 }
 
-
-
 void Encounters::takeDamage(double damage)
 {
-
     m_encounter.hp -= damage;
     m_encounter.isUnderAttack = true;
     m_encounter.canTalk = false;
 
     if (m_encounter.hp <= 0.00)
     {
-
         std::cout << "\nThe encounter is dead.\n";
-
     }
     else
     {
-
         std::cout << "\nNow the encounter has " << m_encounter.hp << "Hp\n";
-
     }
-
 }
 
-void Encounters::attack(Playerz ally) const
+void Encounters::attack(Playerz& ally) const
 {
 }
-
-
 
 void Encounters::increaseXp(short value)
 {
@@ -71,8 +61,6 @@ void Encounters::increaseXp(short value)
     lvlUp();
 
 }
-
-
 
 void Encounters::setEncounter()
 {
@@ -96,8 +84,6 @@ void Encounters::setEncounter()
     }
 
 }
-
-
 
 void Encounters::dropItems()
 {
@@ -223,16 +209,118 @@ void Encounters::dropItems()
 
 }
 
-
-
 std::string_view Encounters::getName()
 {
-
-    return "Not working right now. Try again later.";
-
+    switch (m_encounter.uid)
+    {
+    case EncounterUid::guard:
+        return "Guard";
+    case EncounterUid::drunkGuy:
+        return "Drunk Guy";
+    case EncounterUid::soldier:
+        return "Soldier";
+    case EncounterUid::torturer:
+        return "Torturer";
+    case EncounterUid::giant:
+        return "Giant";
+    case EncounterUid::cleric:
+        return "Cleric";
+    case EncounterUid::elf:
+        return "Elf";
+    case EncounterUid::dwarf:
+        return "Dwarf";
+    case EncounterUid::prisoner:
+        return "Prisoner";
+    case EncounterUid::theRock:
+        return "The Rock";
+    case EncounterUid::trader:
+        return "Trader";
+    case EncounterUid::bartender:
+        return "Bartender";
+    case EncounterUid::bard:
+        return "Bard";
+    case EncounterUid::loli:
+        return "Loli";
+    case EncounterUid::shota:
+        return "Shota";
+    case EncounterUid::zombie:
+        return "Zombie";
+    case EncounterUid::skeleton:
+        return "Skeletron";
+    case EncounterUid::witch:
+        return "Witch";
+    case EncounterUid::ghost:
+        return "Ghost";
+    case EncounterUid::theBeer:
+        return "The Beer";
+    case EncounterUid::yourself:
+        return "Yourself";
+    case EncounterUid::stoneGolem:
+        return "Stone Golem";
+    case EncounterUid::blurp:
+        return "Blurp";
+    case EncounterUid::smallRat:
+        return "SmallRat";
+    case EncounterUid::rat:
+        return "Rat";
+    case EncounterUid::giantRat:
+        return "Giant Rat";
+    case EncounterUid::enormousRat:
+        return "Enormous Rat";
+    case EncounterUid::colossalRat:
+        return "Colossal Rat";
+    case EncounterUid::colossalSpider:
+        return "Colossal Spider";
+    case EncounterUid::ratman:
+        return "Ratman";
+    case EncounterUid::goblin:
+        return "Goblino";
+    case EncounterUid::hobgoblin:
+        return "Hobgoblin";
+    case EncounterUid::orc:
+        return "Orc";
+    case EncounterUid::kobold:
+        return "Kobold";
+    case EncounterUid::kockbold:
+        return "Kockbold";
+    case EncounterUid::cockblin:
+        return "Cockblin";
+    case EncounterUid::the104:
+        return "The 104";
+    case EncounterUid::errorGuy:
+        return "Error guy";
+    case EncounterUid::elesya:
+        return "Elesya";
+    case EncounterUid::kelmod:
+        return "Kelmod";
+    case EncounterUid::lenre:
+        return "Lenre";
+    case EncounterUid::necoto:
+        return "Necoto";
+    case EncounterUid::kyo:
+        return "Kyo";
+    case EncounterUid::expN30A:
+        return "Experiment number 30A";
+    case EncounterUid::expN30B:
+        return "Experiment number 30B";
+    case EncounterUid::expN30C:
+        return "Experiment number 30C";
+    case EncounterUid::sila:
+        return "Sila";
+    case EncounterUid::armNuc:
+        return "Arm Nuc";
+    case EncounterUid::miiro:
+        return "Miiro";
+    case EncounterUid::chishao:
+        return "Chishao";
+    case EncounterUid::none:
+        return "Asdrubale";
+    default:
+        PrintError::notFound();
+        break;
+    }
+    return "Ermenegildo";
 }
-
-
 
 void Encounters::thinkAndAct()
 {
@@ -281,8 +369,6 @@ void Encounters::thinkAndAct()
     }
 }
 
-
-
 void Encounters::resetAllStats()
 {
     m_encounter.uid = EncounterUid::none;
@@ -298,11 +384,7 @@ void Encounters::resetAllStats()
 
 }
 
-
-
 // under this line there are all the private member functions
-
-
 
 void Encounters::lvlUp()
 {
@@ -324,8 +406,6 @@ void Encounters::lvlUp()
 
 }
 
-
-
 void Encounters::setState()
 {
 
@@ -334,8 +414,6 @@ void Encounters::setState()
     m_encounter.isUnderAttack = false;
 
 }
-
-
 
 void Encounters::setStats()
 {
@@ -703,8 +781,6 @@ void Encounters::setStats()
     m_encounter.atk = m_encounter.maxAtk;
 
 }
-
-
 
 void Encounters::introduceEncounter()
 {

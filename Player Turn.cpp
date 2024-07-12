@@ -60,7 +60,7 @@ void playerTurn()
 
 		case 'a':// attack
 
-			attackEncounter(encounter());
+			player().attack(encounter());
 			actionsLeft = 0;
 
 			break;

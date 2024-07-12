@@ -30,7 +30,7 @@ void Playerz::heal(double healing)
 
 }
 
-void Playerz::attack(Encounters enc) const
+void Playerz::attack(Encounters& enc)
 {
 	std::cout << "\nYou attack the encounter.";
 	if (Random::get(0, 99) <= critRate)
@@ -104,7 +104,6 @@ void Playerz::printStats() const
 
 void Playerz::resetAllStats()
 {
-
 	// reset player character stats
 	hp = 10;
 	maxHp = 10;
@@ -127,7 +126,6 @@ void Playerz::resetAllStats()
 
 	//reset the inventory
 	m_inventory.reset();
-
 }
 
 // under this line there are all the private member functions

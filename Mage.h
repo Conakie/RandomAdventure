@@ -9,14 +9,14 @@ class Mage final : public Playerz
 {
 public:
     // attack a single encounter with a spell
-    void attack(Encounters enc) const override;
+    void attack(Encounters& enc) override;
 
     // print all the stats the mage and the player has
     void printStats() const override;
     // resets all stats to level 1
     void resetAllStats() override;
 private:
-    int useSpell() const;
+    int useSpell();
     int mana   { 100 };
     int maxMana{ 100 };
 };
