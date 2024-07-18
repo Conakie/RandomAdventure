@@ -1,10 +1,10 @@
 
-#include "Warrior.h"
+#include "Berserker.h"
 #include "Random.h"
 
 
 
-void Warrior::attack(Encounters& enc)
+void Berserker::attack(Encounters& enc)
 {
     std::cout << "You attack " << enc.getName() << '\n';
     if (Random::get(0, 99) < critRate)
@@ -20,21 +20,21 @@ void Warrior::attack(Encounters& enc)
     }
 }
 
-void Warrior::resetAllStats()
+void Berserker::resetAllStats()
 {
     // reset player character stats
-    hp = 12;
-    maxHp = 12;
-    atk = 4;
-    maxAtk = 4;
-    def = 10;
-    maxDef = 10;
+    hp = 9;
+    maxHp = 9;
+    atk = 5;
+    maxAtk = 5;
+    def = 2;
+    maxDef = 2;
     xp = 0;
     lvlUpXp = 22;
     lvl = 1;
-    critRate = 10;
-    critDmg = 1.5;
-    stamina = 110;
+    critRate = 5;
+    critDmg = 2.5;
+    stamina = 100;
     weight = 0;
 
     // reset stats

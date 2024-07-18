@@ -131,9 +131,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Archer.cpp" />
     <ClCompile Include="Arm Nuc.cpp" />
     <ClCompile Include="Bard.cpp" />
     <ClCompile Include="Bartender.cpp" />
+    <ClCompile Include="Berserker.cpp" />
     <ClCompile Include="Blurp.cpp" />
     <ClCompile Include="Chishao.cpp" />
     <ClCompile Include="Chishao.h" />
@@ -184,6 +186,7 @@
     <ClCompile Include="Set Place.cpp" />
     <ClCompile Include="SetEncounterPerPlace.cpp" />
     <ClCompile Include="Setup.cpp" />
+    <ClCompile Include="Shielder.cpp" />
     <ClCompile Include="Shota.cpp" />
     <ClCompile Include="Skeletron.cpp" />
     <ClCompile Include="Start.cpp" />
@@ -202,6 +205,7 @@
     <ClCompile Include="Talk To Encounters.cpp" />
     <ClCompile Include="The Beer.cpp" />
     <ClCompile Include="The Rock.cpp" />
+    <ClCompile Include="Thief.cpp" />
     <ClCompile Include="Torturer.cpp" />
     <ClCompile Include="Trader.cpp" />
     <ClCompile Include="Turno Giocatore.cpp" />
@@ -214,9 +218,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actions.h" />
+    <ClInclude Include="Archer.h" />
     <ClInclude Include="Arm Nuc.h" />
     <ClInclude Include="Azioni.h" />
     <ClInclude Include="Bartender.h" />
+    <ClInclude Include="Berserker.h" />
+    <ClInclude Include="Cleric.h" />
     <ClInclude Include="ConsoleStyle.h" />
     <ClInclude Include="Costants.h" />
     <ClInclude Include="Encounter Stats.h" />
@@ -242,12 +249,14 @@
     <ClInclude Include="Random.h" />
     <ClInclude Include="Ratman.h" />
     <ClInclude Include="Set Encounters.h" />
+    <ClInclude Include="Shielder.h" />
     <ClInclude Include="Sila.h" />
     <ClInclude Include="Stats.h" />
     <ClInclude Include="Talk To Encounters English.h" />
     <ClInclude Include="Random Adventure English.h" />
     <ClInclude Include="Random Adventure Italiano.h" />
     <ClInclude Include="Tests.h" />
+    <ClInclude Include="Thief.h" />
     <ClInclude Include="Warrior.h" />
     <ClInclude Include="Yourself.h" />
   </ItemGroup>

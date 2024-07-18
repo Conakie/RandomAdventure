@@ -30,6 +30,7 @@ public:
     void takeDamage(double damage);
 
     void attack(Playerz& ally) const;
+
     // increase the xp of value. Also checks for lvl up.
     void increaseXp(short value);
 
@@ -39,10 +40,12 @@ public:
     // drop a maximum of 3 items of the same type using a set drop rate
     void dropItems();
 
-    // NOT WORKING!!! returns the name of the encounter
-    std::string_view getName();
+    // returns the name of the encounter
+    std::string_view getName() const;
 
     void thinkAndAct();
+    // print all the stats
+    void printStats() const;
 
     // set all stats to default
     void resetAllStats();

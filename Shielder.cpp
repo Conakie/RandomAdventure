@@ -1,10 +1,10 @@
 
-#include "Warrior.h"
+#include "Shielder.h"
 #include "Random.h"
 
 
 
-void Warrior::attack(Encounters& enc)
+void Shielder::attack(Encounters& enc)
 {
     std::cout << "You attack " << enc.getName() << '\n';
     if (Random::get(0, 99) < critRate)
@@ -20,21 +20,21 @@ void Warrior::attack(Encounters& enc)
     }
 }
 
-void Warrior::resetAllStats()
+void Shielder::resetAllStats()
 {
     // reset player character stats
-    hp = 12;
-    maxHp = 12;
-    atk = 4;
-    maxAtk = 4;
-    def = 10;
-    maxDef = 10;
+    hp = 14;
+    maxHp = 14;
+    atk = 3;
+    maxAtk = 3;
+    def = 20;
+    maxDef = 20;
     xp = 0;
     lvlUpXp = 22;
     lvl = 1;
-    critRate = 10;
+    critRate = 5;
     critDmg = 1.5;
-    stamina = 110;
+    stamina = 100;
     weight = 0;
 
     // reset stats

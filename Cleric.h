@@ -5,10 +5,11 @@
 #include "Playerz.h"
 #include "Encounters.h"
 
-class Mage final : public Playerz
+class Cleric final : public Playerz
 {
 public:
     // attack a single encounter with a spell
+    // or heal an ally/himself
     void attack(Encounters& enc) override;
 
     // print all the stats the mage and the player has
@@ -17,9 +18,11 @@ public:
     void resetAllStats() override;
 private:
     int useSpell();
+    int useBlessing();
+    int useCurse();
 
-    int mana   { 45 };
-    int maxMana{ 45 };
+    int spiritualEnergy{ 60 };
+    int maxSpiritualEnergy{ 60 };
 };
 
 #endif // !KIIYUO_MAGE_CLASS_H

@@ -20,6 +20,8 @@ struct Players
 	double maxHp	{ 0 };
 	double atk		{ 0 };
 	double maxAtk	{ 0 };
+	double def		{ 0 };
+	double maxDef	{ 0 };
 };
 
 

@@ -38,8 +38,26 @@ void Mage::attack(Encounters& enc)
 
 void Mage::printStats() const
 {
-    Playerz::printStats();
-    std::cout << "Mana: " << mana << "\n\n";
+    std::cout << "\n\nYour stats are:\n"
+        << "Health: " << hp << "\n"
+        << "Max Health: " << maxHp << "\n"
+        << "Attack: " << atk << "\n"
+        << "Max Attack: " << maxAtk << "\n"
+        << "Mana: " << mana << '\n'
+        << "Max Mana: " << maxMana << '\n'
+        << "Xp: " << xp << "\n"
+        << "Xp to reach for level up: " << lvlUpXp << "\n"
+        << "Level: " << lvl << "\n"
+        << "Crit Rate: " << critRate << "\n"
+        << "Crit Damage: " << critDmg << "\n"
+        << "Stamina: " << stamina << "\n"
+        << "Weight: " << weight << "\n"
+        << "Strenght: " << m_stats.strength << "\n"
+        << "Dexterity: " << m_stats.dexterity << "\n"
+        << "Constitution: " << m_stats.constitution << '\n'
+        << "Intelligence: " << m_stats.intelligence << "\n"
+        << "Wisdom: " << m_stats.wisdom << "\n"
+        << "Charisma: " << m_stats.charisma << "\n";
 }
 
 void Mage::resetAllStats()
@@ -49,12 +67,14 @@ void Mage::resetAllStats()
     maxHp = 8;
     atk = 2;
     maxAtk = 2;
+    def = 0;
+    maxDef = 0;
     xp = 0;
     lvlUpXp = 22;
     lvl = 1;
     critRate = 5;
     critDmg = 2;
-    stamina = 100;
+    stamina = 70;
     weight = 0;
     mana = 100;
     maxMana = 100;

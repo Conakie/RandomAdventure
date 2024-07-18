@@ -1,12 +1,12 @@
 
-#include "Warrior.h"
+#include "Archer.h"
 #include "Random.h"
 
 
 
-void Warrior::attack(Encounters& enc)
+void Archer::attack(Encounters& enc)
 {
-    std::cout << "You attack " << enc.getName() << '\n';
+    std::cout << "You fire an arrow at " << enc.getName() << '\n';
     if (Random::get(0, 99) < critRate)
     {
         std::cout << "You did a critical hit!\n"
@@ -20,21 +20,21 @@ void Warrior::attack(Encounters& enc)
     }
 }
 
-void Warrior::resetAllStats()
+void Archer::resetAllStats()
 {
     // reset player character stats
-    hp = 12;
-    maxHp = 12;
+    hp = 10;
+    maxHp = 10;
     atk = 4;
     maxAtk = 4;
-    def = 10;
-    maxDef = 10;
+    def = 1;
+    maxDef = 1;
     xp = 0;
     lvlUpXp = 22;
     lvl = 1;
-    critRate = 10;
-    critDmg = 1.5;
-    stamina = 110;
+    critRate = 9;
+    critDmg = 2.5;
+    stamina = 80;
     weight = 0;
 
     // reset stats

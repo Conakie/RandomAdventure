@@ -58,6 +58,12 @@ void playerTurn()
 
 			break;
 
+		case '6':// see encounter stats
+
+			encounter().printStats();
+			
+			break;
+
 		case 'a':// attack
 
 			player().attack(encounter());

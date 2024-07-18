@@ -6,16 +6,17 @@
 #include "Playerz.h"
 #include "Encounters.h"
 #include "Mage.h"
+#include "Shielder.h"
+#include "Berserker.h"
+#include "Thief.h"
 
 
 
 Playerz& player()
 {
-
-	static Mage s_giocatore{ };
+	static Thief s_giocatore{ };
 
     return s_giocatore;
-
 }
 
 /*

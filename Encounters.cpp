@@ -209,7 +209,7 @@ void Encounters::dropItems()
 
 }
 
-std::string_view Encounters::getName()
+std::string_view Encounters::getName() const
 {
     switch (m_encounter.uid)
     {
@@ -367,6 +367,19 @@ void Encounters::thinkAndAct()
     {
         
     }
+}
+
+void Encounters::printStats() const
+{
+    std::cout << getName() << " stats:\n"
+        << "Current hp: "                   << m_encounter.hp       << '\n'
+        << "Max Hp: "                       << m_encounter.maxHp    << '\n'
+        << "Current atk: "                  << m_encounter.atk      << '\n'
+        << "Max atk"                        << m_encounter.maxAtk   << '\n'
+        << "Xp: "                           << m_encounter.xp       << '\n'
+        << "Xp necessary for next level: "  << m_encounter.lvlUpXp  << '\n'
+        << "Level: "                        << m_encounter.lvl      << '\n'
+        << '\n';
 }
 
 void Encounters::resetAllStats()

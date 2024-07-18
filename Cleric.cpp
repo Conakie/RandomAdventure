@@ -7,6 +7,8 @@
 #include "Actions.h"
 #include "Input.h"
 #include "Stats.h"
+#include "Random.h"
+#include "Cleric.h"
 
 
 
@@ -100,8 +102,6 @@ void cleric()
 
 }
 
-
-
 void clerico()
 {
 
@@ -182,4 +182,74 @@ void clerico()
 	encounter().setIsGone(true);
 	encounter().setCanTalk(false);
 
+}
+
+
+
+/// above this point there are the dialogues for the cleric encounter
+// not related to the cleric
+void Cleric::attack(Encounters& enc)
+{
+}
+
+void Cleric::printStats() const
+{
+}
+
+void Cleric::resetAllStats()
+{
+}
+
+int Cleric::useSpell()
+{
+	return 0;
+}
+
+int Cleric::useBlessing()
+{
+	int healing{ 0 };
+	int spiritualEnergyUsed{ 0 };
+	bool answerAgain{ false };
+
+
+	std::cout << "Which blessing do you want to cast?\n"
+		<< "1: Small Healing.(1 spiritual energy)\n"
+		<< "2: Restoration.(5 spiritual energy)\n"
+		<< "3: Complete restoration.(10 spiritual energy)\n";
+
+	do
+	{
+		switch (Input::character())
+		{
+		case '1':// option 1: Small Healing.
+			spiritualEnergyUsed = 1;
+			healing = hp / 3;
+			answerAgain = false;
+			break;
+
+		case '2':// option 2: Restoration.
+			spiritualEnergyUsed = 5;
+			healing = hp / 2;
+			answerAgain = false;
+			break;
+
+		case '3':// option 3: Complete restoration.
+			spiritualEnergyUsed = 10;
+			healing = hp;
+			answerAgain = false;
+			break;
+
+		default:
+			printNotPossible();
+			answerAgain = true;
+			break;
+		}
+	} while (answerAgain);
+
+	return 0;
+}
+
+int Cleric::useCurse()
+{
+	return 0;
 }

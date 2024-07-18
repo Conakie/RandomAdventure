@@ -51,22 +51,14 @@ void Playerz::attack(Encounters& enc)
 void Playerz::takeDamage(double damage)
 {
 	// add damageType to say what is the cause for the damage
+	damage = damage - (damage * def / 100);
 	hp -= damage;
-	std::cout << "\n" << name << " took " << damage << "hp of damage.\n";
+	std::cout << "\n" << name << " took " << damage << "dmg.\n";
 
-	if (hp <= 0)
-	{
-
-		std::cout << "You died. Haha, loser!\n";
-
-	}
+	if (hp <= 0.0)
+		std::cout << "Kelmod: \"You died. Haha, loser!\"\n";
 	else
-	{
-
 		std::cout << "Now you have " << hp << "hp.\n";
-
-	}
-
 }
 
 void Playerz::increaseXpAndCheckForLvlUp(short value)
@@ -80,7 +72,6 @@ void Playerz::increaseXpAndCheckForLvlUp(short value)
 
 void Playerz::printStats() const
 {
-
 	std::cout << "\n\nYour stats are:\n"
 		<< "Health: " << hp << "\n"
 		<< "Max Health: " << maxHp << "\n"
@@ -99,7 +90,6 @@ void Playerz::printStats() const
 		<< "Intelligence: " << m_stats.intelligence << "\n"
 		<< "Wisdom: " << m_stats.wisdom << "\n"
 		<< "Charisma: " << m_stats.charisma << "\n";
-
 }
 
 void Playerz::resetAllStats()
@@ -109,6 +99,8 @@ void Playerz::resetAllStats()
 	maxHp = 10;
 	atk = 4;
 	maxAtk = 4;
+	def = 10;
+	maxDef = 10;
 	xp = 0;
 	lvlUpXp = 22;
 	lvl = 1;
