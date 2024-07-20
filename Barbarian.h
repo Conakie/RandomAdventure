@@ -1,6 +1,6 @@
 
-#ifndef KIIYUO_CLERIC_CLASS_H
-#define KIIYUO_CLERIC_CLASS_H
+#ifndef KIIYUO_BARBARIAN_CLASS_H
+#define KIIYUO_BARBARIAN_CLASS_H
 
 #include "Playerz.h"
 #include "Encounters.h"
@@ -9,7 +9,7 @@ namespace Creatures
 {
     namespace Player
     {
-        class Cleric final : public Playerz
+        class Barbarian final : public Playerz
         {
         public:
             // attack a single encounter with a spell
@@ -21,13 +21,9 @@ namespace Creatures
             // resets all stats to level 1
             void resetAllStats() override;
         private:
-            double useBlessing();
-            double useCurse();
-
-            int spiritualEnergy{ 60 };
-            int maxSpiritualEnergy{ 60 };
+            int oneShotChance{ 10 };
         };
     };
 };
 
-#endif // !KIIYUO_CLERIC_CLASS_H
+#endif // !KIIYUO_BARBARIAN_CLASS_H

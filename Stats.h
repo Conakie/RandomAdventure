@@ -5,7 +5,7 @@
 #include "Playerz.h"
 #include "Encounters.h"
 
-Playerz& player();
+Creatures::Player::Playerz& player();
 
 Encounters& encounter();
 

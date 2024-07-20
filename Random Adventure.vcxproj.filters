@@ -70,6 +70,18 @@
     <Filter Include="Source Files\Style">
       <UniqueIdentifier>{38203d54-7151-4b2a-b171-e32326a8bce6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Game\Stats\Player">
+      <UniqueIdentifier>{e33c92a9-a019-4d79-b7c6-527e4cba676d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\Stats\Encounters">
+      <UniqueIdentifier>{a8058cf7-7b94-4860-9253-980068d356e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Stats\Player">
+      <UniqueIdentifier>{7b3199a2-a230-4749-b825-8850fa5830f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Stats\Encounter">
+      <UniqueIdentifier>{edd46c55-c819-48b0-9916-9b01253ce39a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Random Adventure English.cpp">
@@ -225,20 +237,8 @@
     <ClCompile Include="Stats.cpp">
       <Filter>Source Files\Game\Stats</Filter>
     </ClCompile>
-    <ClCompile Include="Commands.cpp">
-      <Filter>Source Files\Tests</Filter>
-    </ClCompile>
     <ClCompile Include="Set Place.cpp">
       <Filter>Source Files\Game\Places</Filter>
-    </ClCompile>
-    <ClCompile Include="SetEncounterPerPlace.cpp">
-      <Filter>Source Files\Game\Stats</Filter>
-    </ClCompile>
-    <ClCompile Include="Playerz.cpp">
-      <Filter>Source Files\Game\Stats</Filter>
-    </ClCompile>
-    <ClCompile Include="Encounters.cpp">
-      <Filter>Source Files\Game\Stats</Filter>
     </ClCompile>
     <ClCompile Include="Encounter Actions.cpp">
       <Filter>Source Files\Game\Game - English</Filter>
@@ -270,9 +270,6 @@
     <ClCompile Include="Stone Golem.cpp">
       <Filter>Source Files\Game\Dialogues</Filter>
     </ClCompile>
-    <ClCompile Include="Inventory.cpp">
-      <Filter>Source Files\Game\Stats</Filter>
-    </ClCompile>
     <ClCompile Include="Prisoner.cpp">
       <Filter>Source Files\Game\Dialogues</Filter>
     </ClCompile>
@@ -303,26 +300,44 @@
     <ClCompile Include="ConsoleStyle.cpp">
       <Filter>Source Files\Style</Filter>
     </ClCompile>
-    <ClCompile Include="Places.cpp">
-      <Filter>Source Files\Tests</Filter>
+    <ClCompile Include="Playerz.cpp">
+      <Filter>Source Files\Game\Stats\Player</Filter>
     </ClCompile>
-    <ClCompile Include="Mage.cpp">
-      <Filter>Source Files\Tests</Filter>
+    <ClCompile Include="Inventory.cpp">
+      <Filter>Source Files\Game\Stats\Player</Filter>
     </ClCompile>
     <ClCompile Include="Warrior.cpp">
-      <Filter>Source Files\Tests</Filter>
-    </ClCompile>
-    <ClCompile Include="Shielder.cpp">
-      <Filter>Source Files\Tests</Filter>
-    </ClCompile>
-    <ClCompile Include="Berserker.cpp">
-      <Filter>Source Files\Tests</Filter>
-    </ClCompile>
-    <ClCompile Include="Thief.cpp">
-      <Filter>Source Files\Tests</Filter>
+      <Filter>Source Files\Game\Stats\Player</Filter>
     </ClCompile>
     <ClCompile Include="Archer.cpp">
-      <Filter>Source Files\Tests</Filter>
+      <Filter>Source Files\Game\Stats\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Barbarian.cpp">
+      <Filter>Source Files\Game\Stats\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Berserker.cpp">
+      <Filter>Source Files\Game\Stats\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Commands.cpp">
+      <Filter>Source Files\Game\Stats\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Mage.cpp">
+      <Filter>Source Files\Game\Stats\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Places.cpp">
+      <Filter>Source Files\Game\Stats\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Shielder.cpp">
+      <Filter>Source Files\Game\Stats\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Thief.cpp">
+      <Filter>Source Files\Game\Stats\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="SetEncounterPerPlace.cpp">
+      <Filter>Source Files\Game\Stats\Encounters</Filter>
+    </ClCompile>
+    <ClCompile Include="Encounters.cpp">
+      <Filter>Source Files\Game\Stats\Encounters</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -365,15 +380,6 @@
     <ClInclude Include="Miiro.h">
       <Filter>Header Files\Dialogues</Filter>
     </ClInclude>
-    <ClInclude Include="Encounter Stats.h">
-      <Filter>Header Files\Stats</Filter>
-    </ClInclude>
-    <ClInclude Include="Encounter UID.h">
-      <Filter>Header Files\Stats</Filter>
-    </ClInclude>
-    <ClInclude Include="Player Stats.h">
-      <Filter>Header Files\Stats</Filter>
-    </ClInclude>
     <ClInclude Include="Items.h">
       <Filter>Header Files\Items</Filter>
     </ClInclude>
@@ -397,12 +403,6 @@
     </ClInclude>
     <ClInclude Include="Tests.h">
       <Filter>Header Files\Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="Encounters.h">
-      <Filter>Header Files\Stats</Filter>
-    </ClInclude>
-    <ClInclude Include="Playerz.h">
-      <Filter>Header Files\Stats</Filter>
     </ClInclude>
     <ClInclude Include="Yourself.h">
       <Filter>Header Files\Dialogues</Filter>
@@ -431,26 +431,44 @@
     <ClInclude Include="Costants.h">
       <Filter>Header Files\Other</Filter>
     </ClInclude>
-    <ClInclude Include="Mage.h">
-      <Filter>Header Files\Tests</Filter>
+    <ClInclude Include="Player Stats.h">
+      <Filter>Header Files\Stats\Player</Filter>
     </ClInclude>
-    <ClInclude Include="Shielder.h">
-      <Filter>Header Files\Tests</Filter>
+    <ClInclude Include="Playerz.h">
+      <Filter>Header Files\Stats\Player</Filter>
     </ClInclude>
-    <ClInclude Include="Warrior.h">
-      <Filter>Header Files\Tests</Filter>
+    <ClInclude Include="Encounters.h">
+      <Filter>Header Files\Stats\Encounter</Filter>
     </ClInclude>
-    <ClInclude Include="Berserker.h">
-      <Filter>Header Files\Tests</Filter>
+    <ClInclude Include="Encounter Stats.h">
+      <Filter>Header Files\Stats\Encounter</Filter>
     </ClInclude>
-    <ClInclude Include="Thief.h">
-      <Filter>Header Files\Tests</Filter>
+    <ClInclude Include="Encounter UID.h">
+      <Filter>Header Files\Stats\Encounter</Filter>
     </ClInclude>
     <ClInclude Include="Archer.h">
-      <Filter>Header Files\Tests</Filter>
+      <Filter>Header Files\Stats\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Barbarian.h">
+      <Filter>Header Files\Stats\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Berserker.h">
+      <Filter>Header Files\Stats\Player</Filter>
     </ClInclude>
     <ClInclude Include="Cleric.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Stats\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Mage.h">
+      <Filter>Header Files\Stats\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Shielder.h">
+      <Filter>Header Files\Stats\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Thief.h">
+      <Filter>Header Files\Stats\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Warrior.h">
+      <Filter>Header Files\Stats\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

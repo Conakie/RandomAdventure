@@ -4,19 +4,21 @@
 #include "Input.h"
 #include "Stats.h"
 #include "Playerz.h"
-#include "Encounters.h"
-#include "Mage.h"
 #include "Shielder.h"
+#include "Warrior.h"
+#include "Mage.h"
 #include "Berserker.h"
 #include "Thief.h"
+#include "Cleric.h"
+#include "Barbarian.h"
 
 
 
-Playerz& player()
+Creatures::Player::Playerz& player()
 {
-	static Thief s_giocatore{ };
+	static Creatures::Player::Playerz s_player{ };
 
-    return s_giocatore;
+    return s_player;
 }
 
 /*

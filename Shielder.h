@@ -5,14 +5,20 @@
 #include "Playerz.h"
 #include "Encounters.h"
 
-class Shielder final : public Playerz
+namespace Creatures
 {
-public:
-    // attack one encounter
-    void attack(Encounters& enc) override;
-    // resets all stats to level 1
-    void resetAllStats() override;
-private:
+    namespace Player
+    {
+        class Shielder final : public Playerz
+        {
+        public:
+            // attack one encounter
+            void attack(Encounters& enc) override;
+            // resets all stats to level 1
+            void resetAllStats() override;
+        private:
+        };
+    };
 };
 
 #endif // !KIIYUO_SHIELDER_CLASS_H

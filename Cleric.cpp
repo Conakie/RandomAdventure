@@ -187,69 +187,221 @@ void clerico()
 
 
 /// above this point there are the dialogues for the cleric encounter
-// not related to the cleric
-void Cleric::attack(Encounters& enc)
+// not related to the player controlled cleric
+namespace Creatures
 {
-}
-
-void Cleric::printStats() const
-{
-}
-
-void Cleric::resetAllStats()
-{
-}
-
-int Cleric::useSpell()
-{
-	return 0;
-}
-
-int Cleric::useBlessing()
-{
-	int healing{ 0 };
-	int spiritualEnergyUsed{ 0 };
-	bool answerAgain{ false };
-
-
-	std::cout << "Which blessing do you want to cast?\n"
-		<< "1: Small Healing.(1 spiritual energy)\n"
-		<< "2: Restoration.(5 spiritual energy)\n"
-		<< "3: Complete restoration.(10 spiritual energy)\n";
-
-	do
+	namespace Player
 	{
-		switch (Input::character())
+		void Cleric::attack(Encounters& enc)
 		{
-		case '1':// option 1: Small Healing.
-			spiritualEnergyUsed = 1;
-			healing = hp / 3;
-			answerAgain = false;
-			break;
+			bool answerAgain{ false };
+			// can be damage or healing based on the player choice
+			double value{ 0.0 };
 
-		case '2':// option 2: Restoration.
-			spiritualEnergyUsed = 5;
-			healing = hp / 2;
-			answerAgain = false;
-			break;
+			do
+			{
+				std::cout << "What do you want to use:\n"
+					<< "1: Morningstar.\n"
+					<< "2: Blessing.\n"
+					<< "3: Curse.\n";
 
-		case '3':// option 3: Complete restoration.
-			spiritualEnergyUsed = 10;
-			healing = hp;
-			answerAgain = false;
-			break;
+				switch (Input::character())
+				{
+				case '1':// option 1: Morningsatr.
+					Playerz::attack(enc);
+					answerAgain = false;
+					break;
 
-		default:
-			printNotPossible();
-			answerAgain = true;
-			break;
+				case '2':// option 2: Blessing.
+					value = useBlessing();
+					if (value > 0)
+					{
+						std::cout << "No party members. Healing yourself...\n";
+						heal(value);
+					}
+					else
+					{
+						std::cout << "You do not have enough spiritual energy.\n"
+							<< "Choose another action or blessing.\n";
+					}
+
+					answerAgain = false;
+					break;
+
+				case '3':// option 3: Curse.
+					value = useCurse();
+					if (value > 0)
+					{
+						std::cout << enc.getName() << " took " << value << "dmg.\n";
+						enc.takeDamage(value);
+					}
+					else
+					{
+						std::cout << "You do not have enough spiritual energy.\n"
+							<< "Choose another curse or action.\n";
+					}
+					answerAgain = false;
+					break;
+
+				default:
+					printNotPossible();
+					answerAgain = true;
+					break;
+				}
+			} while (answerAgain);
+
 		}
-	} while (answerAgain);
 
-	return 0;
-}
+		void Cleric::printStats() const
+		{
+			std::cout << "\n\nYour stats are:\n"
+				<< "Health: " << hp << "\n"
+				<< "Max Health: " << maxHp << "\n"
+				<< "Attack: " << atk << "\n"
+				<< "Max Attack: " << maxAtk << "\n"
+				<< "Spiritual energy: " << spiritualEnergy << '\n'
+				<< "Max spiritual energy: " << maxSpiritualEnergy << '\n'
+				<< "Xp: " << xp << "\n"
+				<< "Xp to reach for level up: " << lvlUpXp << "\n"
+				<< "Level: " << lvl << "\n"
+				<< "Crit Rate: " << critRate << "\n"
+				<< "Crit Damage: " << critDmg << "\n"
+				<< "Stamina: " << stamina << "\n"
+				<< "Weight: " << weight << "\n"
+				<< "Strenght: " << m_stats.strength << "\n"
+				<< "Dexterity: " << m_stats.dexterity << "\n"
+				<< "Constitution: " << m_stats.constitution << '\n'
+				<< "Intelligence: " << m_stats.intelligence << "\n"
+				<< "Wisdom: " << m_stats.wisdom << "\n"
+				<< "Charisma: " << m_stats.charisma << "\n";
+		}
 
-int Cleric::useCurse()
-{
-	return 0;
-}
+		void Cleric::resetAllStats()
+		{
+			// reset player character stats
+			hp = 10;
+			maxHp = 10;
+			atk = 3.5;
+			maxAtk = 3.5;
+			def = 2;
+			maxDef = 2;
+			xp = 0;
+			lvlUpXp = 22;
+			lvl = 1;
+			critRate = 5;
+			critDmg = 2;
+			stamina = 85;
+			weight = 0;
+			spiritualEnergy = 60;
+			maxSpiritualEnergy = 60;
+
+			// reset stats
+			m_stats.strength = -1;
+			m_stats.dexterity = -1;
+			m_stats.intelligence = -1;
+			m_stats.wisdom = -1;
+			m_stats.charisma = -1;
+
+			//reset the inventory
+			m_inventory.reset();
+		}
+
+		double Cleric::useBlessing()
+		{
+			double healing{ 0 };
+			int spiritualEnergyUsed{ 0 };
+			bool answerAgain{ false };
+
+
+			std::cout << "Which blessing do you want to cast? (" << spiritualEnergy << ")\n"
+				<< "1: Small Healing.(1 spiritual energy)\n"
+				<< "2: Restoration.(5 spiritual energy)\n"
+				<< "3: Complete restoration.(10 spiritual energy)\n";
+
+			do
+			{
+				switch (Input::character())
+				{
+				case '1':// option 1: Small Healing.
+					spiritualEnergyUsed = 1;
+					healing = maxHp / 3;
+					answerAgain = false;
+					break;
+
+				case '2':// option 2: Restoration.
+					spiritualEnergyUsed = 5;
+					healing = maxHp / 2;
+					answerAgain = false;
+					break;
+
+				case '3':// option 3: Complete restoration.
+					spiritualEnergyUsed = 10;
+					healing = maxHp;
+					answerAgain = false;
+					break;
+
+				default:
+					printNotPossible();
+					answerAgain = true;
+					break;
+				}
+			} while (answerAgain);
+
+			if (spiritualEnergyUsed > spiritualEnergy)
+				return -1;
+			else
+				spiritualEnergy -= spiritualEnergyUsed;
+
+			return healing;
+		}
+
+		double Cleric::useCurse()
+		{
+			double dmg{ 0 };
+			int spiritualEnergyUsed{ 0 };
+			bool answerAgain{ false };
+
+
+			std::cout << "Which blessing do you want to cast? (" << spiritualEnergy << ")\n"
+				<< "1: Breaking.(1 spiritual energy)\n"
+				<< "2: Mental degeneration.(5 spiritual energy)\n"
+				<< "3: Body collapse.(10 spiritual energy)\n";
+
+			do
+			{
+				switch (Input::character())
+				{
+				case '1':// option 1: Breaking.
+					spiritualEnergyUsed = 1;
+					dmg = 3 * lvl;
+					answerAgain = false;
+					break;
+
+				case '2':// option 2: Mental degenaration.
+					spiritualEnergyUsed = 5;
+					dmg = 5 * lvl;
+					answerAgain = false;
+					break;
+
+				case '3':// option 3: Body collapse.
+					spiritualEnergyUsed = 10;
+					dmg = 6 * lvl;
+					answerAgain = false;
+					break;
+
+				default:
+					printNotPossible();
+					answerAgain = true;
+					break;
+				}
+			} while (answerAgain);
+
+			if (spiritualEnergyUsed > spiritualEnergy)
+				return -1;
+			else
+				spiritualEnergy -= spiritualEnergyUsed;
+
+			return dmg;
+		}
+	};
+};

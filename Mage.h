@@ -5,21 +5,27 @@
 #include "Playerz.h"
 #include "Encounters.h"
 
-class Mage final : public Playerz
+namespace Creatures
 {
-public:
-    // attack a single encounter with a spell
-    void attack(Encounters& enc) override;
+    namespace Player
+    {
+        class Mage final : public Playerz
+        {
+        public:
+            // attack a single encounter with a spell
+            void attack(Encounters& enc) override;
 
-    // print all the stats the mage and the player has
-    void printStats() const override;
-    // resets all stats to level 1
-    void resetAllStats() override;
-private:
-    int useSpell();
+            // print all the stats the mage and the player has
+            void printStats() const override;
+            // resets all stats to level 1
+            void resetAllStats() override;
+        private:
+            int useSpell();
 
-    int mana   { 45 };
-    int maxMana{ 45 };
+            int mana{ 45 };
+            int maxMana{ 45 };
+        };
+    };
 };
 
 #endif // !KIIYUO_MAGE_CLASS_H

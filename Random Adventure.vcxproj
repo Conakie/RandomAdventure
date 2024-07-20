@@ -133,6 +133,7 @@
   <ItemGroup>
     <ClCompile Include="Archer.cpp" />
     <ClCompile Include="Arm Nuc.cpp" />
+    <ClCompile Include="Barbarian.cpp" />
     <ClCompile Include="Bard.cpp" />
     <ClCompile Include="Bartender.cpp" />
     <ClCompile Include="Berserker.cpp" />
@@ -221,6 +222,7 @@
     <ClInclude Include="Archer.h" />
     <ClInclude Include="Arm Nuc.h" />
     <ClInclude Include="Azioni.h" />
+    <ClInclude Include="Barbarian.h" />
     <ClInclude Include="Bartender.h" />
     <ClInclude Include="Berserker.h" />
     <ClInclude Include="Cleric.h" />

@@ -5,14 +5,20 @@
 #include "Playerz.h"
 #include "Encounters.h"
 
-class Archer final : public Playerz
+namespace Creatures
 {
-public:
-    // attack one encounter
-    void attack(Encounters& enc) override;
-    // resets all stats to level 1
-    void resetAllStats() override;
-private:
+    namespace Player
+    {
+        class Archer final : public Playerz
+        {
+        public:
+            // attack one encounter
+            void attack(Encounters& enc) override;
+            // resets all stats to level 1
+            void resetAllStats() override;
+        private:
+        };
+    };
 };
 
 #endif // !KIIYUO_ARCHER_CLASS_H
