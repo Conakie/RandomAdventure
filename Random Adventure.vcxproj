@@ -151,6 +151,7 @@
     <ClCompile Include="Exp. N. 30 A.cpp" />
     <ClCompile Include="Exp. N. 30 C.cpp" />
     <ClCompile Include="Exp. N. 30B.cpp" />
+    <ClCompile Include="GameSession.cpp" />
     <ClCompile Include="Ghost.cpp" />
     <ClCompile Include="Giant.cpp" />
     <ClCompile Include="Intro And Outro.cpp" />
@@ -176,6 +177,7 @@
     <ClCompile Include="Places.cpp" />
     <ClCompile Include="Player Actions.cpp" />
     <ClCompile Include="Player Turn.cpp" />
+    <ClCompile Include="PlayerActions.cpp" />
     <ClCompile Include="Playerz.cpp" />
     <ClCompile Include="Print Encounter.cpp" />
     <ClCompile Include="Print Errors.cpp" />
@@ -234,6 +236,7 @@
     <ClInclude Include="Exp. N. 30B.h" />
     <ClInclude Include="Exp. N. 30C.h" />
     <ClInclude Include="Exp. N. 30A.h" />
+    <ClInclude Include="GameSession.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Items.h" />
@@ -245,6 +248,7 @@
     <ClInclude Include="PlaceNames.h" />
     <ClInclude Include="Places.h" />
     <ClInclude Include="Player Stats.h" />
+    <ClInclude Include="PlayerActions.h" />
     <ClInclude Include="Playerz.h" />
     <ClInclude Include="Print Errors.h" />
     <ClInclude Include="Prisoner.h" />

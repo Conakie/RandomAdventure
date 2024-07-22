@@ -46,6 +46,9 @@ namespace Creatures
 			// print all player stats
 			virtual void printStats() const;
 
+			// returns true if the player is alive, false otherwise
+			bool isAlive() { return (hp > 0.00); }
+
 			// set all stats to default
 			virtual void resetAllStats();
 

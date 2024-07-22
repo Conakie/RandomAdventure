@@ -21,12 +21,12 @@ namespace Creatures
                 if (Random::get(0, 99) < critRate)
                 {
                     std::cout << "You did a crtitcal hit!\n"
-                        << enc.getName() << " took " << (atk * critDmg) << "dmg.\n";
+                        << enc.getName() << " took " << (atk * critDmg) << " dmg.\n";
                     enc.takeDamage(atk * critDmg);
                 }
                 else
                 {
-                    std::cout << enc.getName() << " took " << (atk) << "dmg.\n";
+                    std::cout << enc.getName() << " took " << (atk) << " dmg.\n";
                     enc.takeDamage(atk);
                 }
             }

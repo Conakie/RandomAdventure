@@ -232,7 +232,7 @@ namespace Creatures
 					value = useCurse();
 					if (value > 0)
 					{
-						std::cout << enc.getName() << " took " << value << "dmg.\n";
+						std::cout << enc.getName() << " took " << value << " dmg.\n";
 						enc.takeDamage(value);
 					}
 					else
@@ -313,7 +313,7 @@ namespace Creatures
 			bool answerAgain{ false };
 
 
-			std::cout << "Which blessing do you want to cast? (" << spiritualEnergy << ")\n"
+			std::cout << "Which blessing do you want to cast? (" << spiritualEnergy << " spiritual energy)\n"
 				<< "1: Small Healing.(1 spiritual energy)\n"
 				<< "2: Restoration.(5 spiritual energy)\n"
 				<< "3: Complete restoration.(10 spiritual energy)\n";
@@ -362,7 +362,7 @@ namespace Creatures
 			bool answerAgain{ false };
 
 
-			std::cout << "Which blessing do you want to cast? (" << spiritualEnergy << ")\n"
+			std::cout << "Which blessing do you want to cast? (" << spiritualEnergy << " spiritual energy)\n"
 				<< "1: Breaking.(1 spiritual energy)\n"
 				<< "2: Mental degeneration.(5 spiritual energy)\n"
 				<< "3: Body collapse.(10 spiritual energy)\n";

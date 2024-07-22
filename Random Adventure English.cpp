@@ -9,6 +9,8 @@
 #include "Set Encounters.h"
 #include "Stats.h"
 #include "Mage.h"
+#include "PlayerActions.h"
+#include "GameSession.h"
 
 
 
@@ -18,6 +20,9 @@ void gameEn()
 	player().resetAllStats();
 	encounter().resetAllStats();
 	//player().setStats();
+	GameSession game{ };
+	game.startSession();
+	game.play();
 
 	//The game starts here
 	while (player().getHealth() > 0.00)

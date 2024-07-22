@@ -12,7 +12,13 @@
 
 #ifndef KCA1
 
-class Playerz;
+namespace Creatures
+{
+    namespace Player
+    {
+        class Playerz;
+    };
+};
 
 #endif // !KCA1
 
@@ -29,7 +35,7 @@ public:
     // decrease hp of damage. If the encounter dies, the player will be notified
     void takeDamage(double damage);
 
-    void attack(Playerz& ally) const;
+    void attack(Creatures::Player::Playerz& ally) const;
 
     // increase the xp of value. Also checks for lvl up.
     void increaseXp(short value);

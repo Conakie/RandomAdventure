@@ -23,12 +23,12 @@ namespace Creatures
 				if (isACritHit)
 				{
 					std::cout << "You did a critical hit!\n"
-						<< enc.getName() << " took " << (atk * steathDmgBonus * critDmg) << "dmg.\n";
+						<< enc.getName() << " took " << (atk * steathDmgBonus * critDmg) << " dmg.\n";
 					enc.takeDamage(atk * steathDmgBonus * critDmg);
 				}
 				else
 				{
-					std::cout << enc.getName() << " took " << (atk * steathDmgBonus) << "dmg.\n";
+					std::cout << enc.getName() << " took " << (atk * steathDmgBonus) << " dmg.\n";
 					enc.takeDamage(atk * steathDmgBonus);
 				}
 			}
@@ -37,12 +37,12 @@ namespace Creatures
 				if (isACritHit)
 				{
 					std::cout << "You did a critical hit!\n"
-						<< enc.getName() << " took " << (atk * critDmg) << "dmg.\n";
+						<< enc.getName() << " took " << (atk * critDmg) << " dmg.\n";
 					enc.takeDamage(atk * critDmg);
 				}
 				else
 				{
-					std::cout << enc.getName() << " took " << (atk) << "dmg.\n";
+					std::cout << enc.getName() << " took " << (atk) << " dmg.\n";
 					enc.takeDamage(atk);
 				}
 			}

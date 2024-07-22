@@ -35,7 +35,7 @@ namespace Creatures
             }
             else
             {
-                std::cout << enc.getName() << " took " << spellDmg << "dmg.\n";
+                std::cout << enc.getName() << " took " << spellDmg << " dmg.\n";
                 enc.takeDamage(spellDmg);
             }
         }

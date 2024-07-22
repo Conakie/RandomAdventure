@@ -50,7 +50,7 @@ void Encounters::takeDamage(double damage)
     }
 }
 
-void Encounters::attack(Playerz& ally) const
+void Encounters::attack(Creatures::Player::Playerz& ally) const
 {
 }
 

@@ -5,7 +5,7 @@
 
 
 
-void attackPlayer(Playerz& player)
+void attackPlayer(Creatures::Player::Playerz& player)
 {
 
     std::cout << "You have been attacked!";

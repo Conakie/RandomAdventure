@@ -9,6 +9,7 @@
 #include "Mage.h"
 #include "Berserker.h"
 #include "Thief.h"
+#include "Archer.h"
 #include "Cleric.h"
 #include "Barbarian.h"
 
@@ -16,7 +17,7 @@
 
 Creatures::Player::Playerz& player()
 {
-	static Creatures::Player::Playerz s_player{ };
+	static Creatures::Player::Barbarian s_player{ };
 
     return s_player;
 }

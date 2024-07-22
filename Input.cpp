@@ -5,6 +5,7 @@
 #include <string_view>
 #include "Everywhere Used Func.h"
 #include "Input.h"
+#include "PlayerActions.h"
 
 
 
@@ -64,8 +65,6 @@ namespace Input
 
     }
 
-
-
     double real()
     {
 
@@ -110,8 +109,6 @@ namespace Input
 
     }
 
-
-
     char character()
     {
 
@@ -149,24 +146,11 @@ namespace Input
             ignoreLine();
 
             std::cout << std::endl;
-            if (input == 'c')
-            {
 
-                listAzioni();
-
-            }
-            else
-            {
-
-                return input;
-
-            }
-
+            return input;
         }
 
     }
-
-
 
     std::string_view string()
     {
@@ -212,4 +196,46 @@ namespace Input
 
     }
 
+    PlayerActions playerAction()
+    {
+        PlayerActions input{ '0' };
+
+        while (true)
+        {
+            std::cout << std::endl;
+
+            std::cin >> input;
+
+            if (!std::cin) // has a previous extraction failed or overflowed?
+            {
+                if (std::cin.eof()) // if the stream was closed
+                {
+                    exit(0); // shut down the program
+                }
+                else // the stream is not closed so nothing happens here
+                {
+                }
+
+                std::cin.clear(); // put cin in 'normal' operation mode
+            }
+            else // the extraction didn't fail nor it overflowed
+            {
+            }
+
+            ignoreLine();
+
+            std::cout << std::endl;
+            if (input == PlayerActions::seeActions)
+            {
+                actionsList();
+            }
+            else
+            {
+                return input;
+            }
+
+        }
+
+    }
+    
 }
