@@ -36,8 +36,8 @@ void GameSession::play()
 
     while (m_player->isAlive())
     {
-        playerTurn();
         encountersTurn();
+        playerTurn();
     }
     std::cout << "UwU\n";
 }
@@ -74,7 +74,7 @@ void GameSession::createPlayer()
     } while (retry);
     
     m_player->resetAllStats();
-    m_player->setStats();
+    //m_player->setStats();
 
 }
 
@@ -146,7 +146,7 @@ void GameSession::playerTurn()
                 << "\"\n";
             waitForAnyKey();
             std::cout << "Kelmod: \"Interested? It's also pretty cheap.\n"
-                << "Just 1$ per month. So, what do you think?\n"
+                << "Just 1 cota per month. So, what do you think?\n"
                 << "If you want to buy it, press '0'\"\n";
             break;
 
@@ -228,25 +228,55 @@ void GameSession::playerTurn()
 
 void GameSession::alliesTurn()
 {
+    std::cout << "UwU\n";
 }
 
 void GameSession::encountersTurn()
 {
     if (m_encounters[0])
     {
-        m_encounters[0]->attack(*m_player);
+        // if the encounter is alive and not gone
+        if (m_encounters[0]->isAlive() && !(m_encounters[0]->getIsGone()))
+        {
+            // if the encounter is fighting
+            if (m_encounters[0]->getIsUnderAttack())
+            {
+                m_encounters[0]->attack(*m_player);
+            }
+            else// the encounter is waiting
+            {
+                std::cout << "The encounter is waiting for you.\n";
+            }
+        }
+        else // the encounter is gone or dead
+        {
+            m_encounters[0]->setEncounter();
+        }
     }
     else
     {
-        try
+        int errorCount{ 0 };
+        bool retry{ true };
+
+
+        // try to create a new encounter. if it fails close the game
+        while (retry)
         {
-            m_encounters[0] = new Encounters;
-            m_encounters[0]->resetAllStats();
-            m_encounters[0]->setEncounter();
-        }
-        catch (std::bad_alloc)
-        {
-            std::cout << "There is no encounter here...\n";
+            try
+            {
+                m_encounters[0] = new Encounters;
+                retry = false;
+            }
+            catch (const std::bad_alloc&)
+            {
+                ++errorCount;
+                if (errorCount > 5)
+                {
+                    std::cout << "Nanre: \"Failed to create a new encounter.\n"
+                        << "Killing Random Adventure...\"\n";
+                    exit(1);
+                }
+            }
         }
     }
 }

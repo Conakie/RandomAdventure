@@ -52,6 +52,8 @@ void Encounters::takeDamage(double damage)
 
 void Encounters::attack(Creatures::Player::Playerz& ally) const
 {
+    std::cout << getName() << " attaks you.\n";
+    ally.takeDamage(m_encounter.atk);
 }
 
 void Encounters::increaseXp(short value)
@@ -80,7 +82,7 @@ void Encounters::setEncounter()
     }
     else
     {
-
+        std::cout << "IwI";
     }
 
 }

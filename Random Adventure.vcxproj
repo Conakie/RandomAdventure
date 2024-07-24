@@ -131,6 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AbilityScores.cpp" />
     <ClCompile Include="Archer.cpp" />
     <ClCompile Include="Arm Nuc.cpp" />
     <ClCompile Include="Barbarian.cpp" />
@@ -220,6 +221,7 @@
     <ClCompile Include="Zombie.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AbilityScores.h" />
     <ClInclude Include="Actions.h" />
     <ClInclude Include="Archer.h" />
     <ClInclude Include="Arm Nuc.h" />
@@ -230,9 +232,12 @@
     <ClInclude Include="Cleric.h" />
     <ClInclude Include="ConsoleStyle.h" />
     <ClInclude Include="Costants.h" />
+    <ClInclude Include="CreatureBase.h" />
     <ClInclude Include="Encounter Stats.h" />
     <ClInclude Include="Encounter UID.h" />
+    <ClInclude Include="EncounterBase.h" />
     <ClInclude Include="Encounters.h" />
+    <ClInclude Include="EncounterType.h" />
     <ClInclude Include="Exp. N. 30B.h" />
     <ClInclude Include="Exp. N. 30C.h" />
     <ClInclude Include="Exp. N. 30A.h" />
@@ -249,6 +254,8 @@
     <ClInclude Include="Places.h" />
     <ClInclude Include="Player Stats.h" />
     <ClInclude Include="PlayerActions.h" />
+    <ClInclude Include="PlayerBase.h" />
+    <ClInclude Include="PlayerRole.h" />
     <ClInclude Include="Playerz.h" />
     <ClInclude Include="Print Errors.h" />
     <ClInclude Include="Prisoner.h" />

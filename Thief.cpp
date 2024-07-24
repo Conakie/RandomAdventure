@@ -57,20 +57,15 @@ namespace Creatures
 				<< "Attack: " << atk << "\n"
 				<< "Max Attack: " << maxAtk << "\n"
 				<< "Xp: " << xp << "\n"
-				<< "Xp to reach for level up: " << lvlUpXp << "\n"
+				<< "Xp to reach for level up: " << xpPerLvl << "\n"
 				<< "Level: " << lvl << "\n"
 				<< "Crit Rate: " << critRate << "\n"
 				<< "Crit Damage: " << critDmg << "\n"
 				<< "Stealth hit chance: " << stealthHitChance << '\n'
 				<< "Stealth damage bonus: " << steathDmgBonus << '\n'
 				<< "Stamina: " << stamina << "\n"
-				<< "Weight: " << weight << "\n"
-				<< "Strenght: " << m_stats.strength << "\n"
-				<< "Dexterity: " << m_stats.dexterity << "\n"
-				<< "Constitution: " << m_stats.constitution << '\n'
-				<< "Intelligence: " << m_stats.intelligence << "\n"
-				<< "Wisdom: " << m_stats.wisdom << "\n"
-				<< "Charisma: " << m_stats.charisma << "\n";
+				<< "Weight: " << weight << "\n";
+			stats.print();
 		}
 
 		void Thief::resetAllStats()
@@ -83,7 +78,7 @@ namespace Creatures
 			def = 0;
 			maxDef = 0;
 			xp = 0;
-			lvlUpXp = 22;
+			xpPerLvl = 22;
 			lvl = 1;
 			critRate = 15;
 			critDmg = 2;
@@ -93,14 +88,10 @@ namespace Creatures
 			weight = 0;
 
 			// reset stats
-			m_stats.strength = 20;
-			m_stats.dexterity = 20;
-			m_stats.intelligence = 20;
-			m_stats.wisdom = 20;
-			m_stats.charisma = 20;
+			stats.reset();
 
 			//reset the inventory
-			m_inventory.reset();
+			inventory.reset();
 		}
 
 	};

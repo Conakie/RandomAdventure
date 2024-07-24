@@ -34,7 +34,7 @@ namespace Creatures
             def = 10;
             maxDef = 10;
             xp = 0;
-            lvlUpXp = 22;
+            xpPerLvl = 22;
             lvl = 1;
             critRate = 10;
             critDmg = 1.5;
@@ -42,14 +42,10 @@ namespace Creatures
             weight = 0;
 
             // reset stats
-            m_stats.strength = -1;
-            m_stats.dexterity = -1;
-            m_stats.intelligence = -1;
-            m_stats.wisdom = -1;
-            m_stats.charisma = -1;
+            stats.reset();
 
             //reset the inventory
-            m_inventory.reset();
+            inventory.reset();
         }
     };
 };

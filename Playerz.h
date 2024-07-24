@@ -7,6 +7,8 @@
 #include <iostream>
 #include <string_view>
 #include "Player Stats.h"
+#include "PlayerBase.h"
+#include "Inventory.h"
 #include "Object UID.h"
 #include "Items.h"
 #include "Inventory.h"
@@ -24,7 +26,7 @@ namespace Creatures
 {
 	namespace Player
 	{
-		class Playerz : protected Players
+		class Playerz : protected PlayerBase
 		{
 		public:
 			Playerz() = default;
@@ -47,7 +49,7 @@ namespace Creatures
 			virtual void printStats() const;
 
 			// returns true if the player is alive, false otherwise
-			bool isAlive() { return (hp > 0.00); }
+			bool isAlive() const { return (hp > 0.00); }
 
 			// set all stats to default
 			virtual void resetAllStats();
@@ -58,28 +60,19 @@ namespace Creatures
 			const double& getAttack() const { return atk; }
 
 			const short& getLvl() const { return lvl; }
-			const int& getLvlUpXp() const { return lvlUpXp; }
+			const int& getLvlUpXp() const { return xpPerLvl; }
 			const int& getXp() const { return xp; }
 
 			const short& getCritRate() const { return critRate; }
 			const double& getCritDmg() const { return critDmg; }
 			const std::string_view getName() const { return name; }
 
-			Inventory& setInventory() { return m_inventory; }
+			Inventory& setInventory() { return inventory; }
 			void setStats();
 
-		protected:
-
-			Stats m_stats{ };
-			Inventory m_inventory{ };
-
 		private:
-
 			// increase the stats of the player if he got a new level
 			void lvlUp();
-			void rollStats(short arr[k_statsAmount]) const;
-			bool checkIfTmpStatsAreOk(short arr[k_statsAmount]) const;
-			void assignStats(short arr[k_statsAmount]);
 			void applyStatBonus();
 
 		};

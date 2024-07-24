@@ -50,18 +50,13 @@ namespace Creatures
                 << "Mana: " << mana << '\n'
                 << "Max Mana: " << maxMana << '\n'
                 << "Xp: " << xp << "\n"
-                << "Xp to reach for level up: " << lvlUpXp << "\n"
+                << "Xp to reach for level up: " << xpPerLvl << "\n"
                 << "Level: " << lvl << "\n"
                 << "Crit Rate: " << critRate << "\n"
                 << "Crit Damage: " << critDmg << "\n"
                 << "Stamina: " << stamina << "\n"
-                << "Weight: " << weight << "\n"
-                << "Strenght: " << m_stats.strength << "\n"
-                << "Dexterity: " << m_stats.dexterity << "\n"
-                << "Constitution: " << m_stats.constitution << '\n'
-                << "Intelligence: " << m_stats.intelligence << "\n"
-                << "Wisdom: " << m_stats.wisdom << "\n"
-                << "Charisma: " << m_stats.charisma << "\n";
+                << "Weight: " << weight << "\n";
+            stats.print();
         }
 
         void Mage::resetAllStats()
@@ -74,7 +69,7 @@ namespace Creatures
             def = 0;
             maxDef = 0;
             xp = 0;
-            lvlUpXp = 22;
+            xpPerLvl = 22;
             lvl = 1;
             critRate = 5;
             critDmg = 2;
@@ -84,15 +79,10 @@ namespace Creatures
             maxMana = 100;
 
             // reset stats
-            m_stats.strength = -1;
-            m_stats.dexterity = -1;
-            m_stats.constitution = -1;
-            m_stats.intelligence = -1;
-            m_stats.wisdom = -1;
-            m_stats.charisma = -1;
+            stats.reset();
 
             //reset the inventory
-            m_inventory.reset();
+            inventory.reset();
         }
 
         int Mage::useSpell()
@@ -178,6 +168,5 @@ namespace Creatures
 
             return dmg;
         }
-
     };
 };

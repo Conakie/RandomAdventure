@@ -343,7 +343,10 @@
       <Filter>Source Files\Tests</Filter>
     </ClCompile>
     <ClCompile Include="PlayerActions.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="AbilityScores.cpp">
+      <Filter>Source Files\Game\Stats\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -480,6 +483,24 @@
       <Filter>Header Files\Tests</Filter>
     </ClInclude>
     <ClInclude Include="PlayerActions.h">
+      <Filter>Header Files\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="CreatureBase.h">
+      <Filter>Header Files\Stats</Filter>
+    </ClInclude>
+    <ClInclude Include="AbilityScores.h">
+      <Filter>Header Files\Stats\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerBase.h">
+      <Filter>Header Files\Stats\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerRole.h">
+      <Filter>Header Files\Stats\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="EncounterBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EncounterType.h">
       <Filter>Header Files\Tests</Filter>
     </ClInclude>
   </ItemGroup>

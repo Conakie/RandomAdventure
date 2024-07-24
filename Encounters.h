@@ -53,6 +53,8 @@ public:
     // print all the stats
     void printStats() const;
 
+    bool isAlive() const{ return (m_encounter.hp > 0.00); }
+
     // set all stats to default
     void resetAllStats();
 
