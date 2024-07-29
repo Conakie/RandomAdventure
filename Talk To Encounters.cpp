@@ -226,6 +226,222 @@ void talkToEncounters()
 
 
 
+void talkToEncounters(Creatures::Encounter::EncounterType encType)
+{
+    switch (encType)
+    {
+    case Creatures::Encounter::EncounterType::guard:
+        guard();
+        break;
+
+    case Creatures::Encounter::EncounterType::drunkGuy:
+        drunkGuy();
+        break;
+
+    case Creatures::Encounter::EncounterType::soldier:
+        soldier();
+        break;
+
+    case Creatures::Encounter::EncounterType::torturer:
+        torturer();
+        break;
+
+    case Creatures::Encounter::EncounterType::giant:
+        giant();
+        break;
+
+    case Creatures::Encounter::EncounterType::cleric:
+        cleric();
+        break;
+
+    case Creatures::Encounter::EncounterType::elf:
+        elf();
+        break;
+
+    case Creatures::Encounter::EncounterType::dwarf:
+        dwarf();
+        break;
+
+    case Creatures::Encounter::EncounterType::prisoner:
+        prisoner();
+        break;
+
+    case Creatures::Encounter::EncounterType::theRock:
+        theRock();
+        break;
+
+    case Creatures::Encounter::EncounterType::trader:
+        trader();
+        break;
+
+    case Creatures::Encounter::EncounterType::bartender:
+        bartender();
+        break;
+
+    case Creatures::Encounter::EncounterType::bard:
+        bard();
+        break;
+
+    case Creatures::Encounter::EncounterType::loli:
+        loli();
+        break;
+
+    case Creatures::Encounter::EncounterType::shota:
+        shota();
+        break;
+
+    case Creatures::Encounter::EncounterType::zombie:
+        zombie();
+        break;
+
+    case Creatures::Encounter::EncounterType::skeleton:
+        skeletron();
+        break;
+
+    case Creatures::Encounter::EncounterType::witch:
+        noTalking();
+        break;
+
+    case Creatures::Encounter::EncounterType::ghost:
+        ghost();
+        break;
+
+    case Creatures::Encounter::EncounterType::theBeer:
+        theBeer();
+        break;
+
+    case Creatures::Encounter::EncounterType::yourself:
+        yourself();
+        break;
+
+    case Creatures::Encounter::EncounterType::stoneGolem:
+        stoneGolem();
+        break;
+
+    case Creatures::Encounter::EncounterType::blurp:
+        blurp();
+        break;
+
+    case Creatures::Encounter::EncounterType::smallRat:
+        allAnimals();
+        break;
+
+    case Creatures::Encounter::EncounterType::rat:
+        allAnimals();
+        break;
+
+    case Creatures::Encounter::EncounterType::giantRat:
+        allAnimals();
+        break;
+
+    case Creatures::Encounter::EncounterType::enormousRat:
+        allAnimals();
+        break;
+
+    case Creatures::Encounter::EncounterType::colossalRat:
+        allAnimals();
+        break;
+
+    case Creatures::Encounter::EncounterType::colossalSpider:
+        allAnimals();
+        break;
+
+    case Creatures::Encounter::EncounterType::ratman:
+        ratman();
+        break;
+
+    case Creatures::Encounter::EncounterType::goblin:
+        goblin();
+        break;
+
+    case Creatures::Encounter::EncounterType::hobgoblin:
+        noTalking();
+        break;
+
+    case Creatures::Encounter::EncounterType::orc:
+        noTalking();
+        break;
+
+    case Creatures::Encounter::EncounterType::kobold:
+        kobold();
+        break;
+
+    case Creatures::Encounter::EncounterType::kockbold:
+        kockEncounters();
+        break;
+
+    case Creatures::Encounter::EncounterType::cockblin:
+        kockEncounters();
+        break;
+
+    case Creatures::Encounter::EncounterType::the104:
+        noTalking();
+        break;
+
+    case Creatures::Encounter::EncounterType::errorGuy:
+        noTalking();
+        break;
+
+    case Creatures::Encounter::EncounterType::elesya:
+        elesya();
+        break;
+
+    case Creatures::Encounter::EncounterType::kelmod:
+        kelmod(false);
+        break;
+
+    case Creatures::Encounter::EncounterType::lenre:
+        lenre(false);
+        break;
+
+    case Creatures::Encounter::EncounterType::necoto:
+        necoto();
+        break;
+
+    case Creatures::Encounter::EncounterType::kyo:
+        kyo();
+        break;
+
+    case Creatures::Encounter::EncounterType::expN30A:
+        expN30A();
+        break;
+
+    case Creatures::Encounter::EncounterType::expN30B:
+        expN30B();
+        break;
+
+    case Creatures::Encounter::EncounterType::expN30C:
+        expN30C();
+        break;
+
+    case Creatures::Encounter::EncounterType::sila:
+        sila();
+        break;
+
+    case Creatures::Encounter::EncounterType::armNuc:
+        armNuc();
+        break;
+    case Creatures::Encounter::EncounterType::miiro:
+        miiro();
+        break;
+
+    case Creatures::Encounter::EncounterType::chishao:
+        chishao();
+        break;
+
+    case Creatures::Encounter::EncounterType::none:
+        PrintError::notFound();
+        break;
+
+    default:
+        PrintError::notFound();
+        break;
+    }
+    waitForAnyKey();
+}
+
+
+
 void parlaConGliIncontri()
 {
 

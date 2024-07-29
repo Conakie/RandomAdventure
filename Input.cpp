@@ -11,16 +11,11 @@
 
 void ignoreLine() // Remove extra characters from input
 {
-
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
 }
-
-
 
 namespace Input
 {
-
     int integer()
     {
 
@@ -152,10 +147,9 @@ namespace Input
 
     }
 
-    std::string_view string()
+    std::string string()
     {
-
-        std::string input{ 0 };
+        std::string input{ };
 
         while (true)
         {
@@ -237,5 +231,4 @@ namespace Input
         }
 
     }
-    
 }

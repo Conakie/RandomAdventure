@@ -4,7 +4,7 @@
 
 #include <vector>
 #include "Playerz.h"
-#include "Encounters.h"
+#include "Encounterz.h"
 #include "ConsoleStyle.h"
 
 
@@ -29,7 +29,7 @@ private:
 
 
     Creatures::Player::Playerz* m_player{ nullptr };
-    std::vector<Encounters*> m_encounters{ };
+    std::vector<Creatures::Encounter::Encounterz> m_encounters{ };
 
     int m_worldLevel{ 0 };
     short m_actionsCost{ 0 };

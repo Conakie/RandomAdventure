@@ -12,9 +12,10 @@ namespace Creatures
         class Barbarian final : public Playerz
         {
         public:
-            // attack a single encounter with a spell
-            // or heal an ally/himself
+            // attack one encounter
             void attack(Encounters& enc) override;
+            // attack one encounter
+            void virtual attack(Creatures::Encounter::Encounterz& enc);
 
             // print all the stats the mage and the player has
             void printStats() const override;

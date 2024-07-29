@@ -103,7 +103,7 @@ void Encounters::dropItems()
     if (percentage <= 40)
     {
         // common
-        switch (Random::get(0, 1))
+        switch (Random::get(0, 4))
         {
         case 0:// small healing potion
             std::cout << "You got " << quantity << " small healing potions.";

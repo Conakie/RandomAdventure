@@ -24,6 +24,22 @@ namespace Creatures
             }
         }
 
+        void Warrior::attack(Creatures::Encounter::Encounterz& enc)
+        {
+            std::cout << "You attack " << enc.getName() << '\n';
+            if (Random::get(0, 99) < critRate)
+            {
+                std::cout << "You did a critical hit!\n"
+                    << enc.getName() << " took " << (atk * critDmg) << " dmg.\n";
+                enc.takeDamage(atk * critDmg);
+            }
+            else
+            {
+                std::cout << enc.getName() << " took " << (atk) << " dmg.\n";
+                enc.takeDamage(atk);
+            }
+        }
+
         void Warrior::resetAllStats()
         {
             // reset player character stats

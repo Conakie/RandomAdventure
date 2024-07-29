@@ -6,6 +6,8 @@
 #include "Encounter Stats.h"
 #include "Input.h"
 #include "Stats.h"
+#include "Guard.h"
+#include "Random.h"
 
 
 
@@ -164,4 +166,64 @@ void guardia()
 	
 	encounter().setCanTalk(false);
 
+}
+
+
+
+void Creatures::Encounter::Guard::talk()
+{
+}
+
+void Creatures::Encounter::Guard::thinkAndAct()
+{
+	if (isAlive())
+	{
+		if (isUnderAttack)
+		{
+			if (hp < maxHp - (maxHp * 0.3) && (healAmount != 0))
+				heal(Random::get(1, 3 * lvl));
+			else
+				attack(*m_player);
+		}
+		else
+		{
+			std::cout << "Kelmod: \"Do something. Look, he's waiting.\"\n";
+		}
+	}
+	else
+	{
+
+	}
+}
+
+void Creatures::Encounter::Guard::printStats() const
+{
+	Encounterz::printStats();
+	std::cout << name << " can heal himself " << healAmount << " times.\n";
+}
+
+void Creatures::Encounter::Guard::resetStats()
+{
+	Encounterz::resetStats();
+	healAmount = 1;
+}
+
+void Creatures::Encounter::Guard::setName()
+{
+	name = "Guard";
+}
+
+void Creatures::Encounter::Guard::setStats()
+{
+	maxHp = 10 + (7 * (lvl - 1));
+	maxAtk = 2.5 + (1.5 * lvl);
+	maxDef = 5;
+	critRate = 0;
+	critDmg = 0;
+	xp = 1;
+	healAmount = 1;
+
+	hp = maxHp;
+	atk = maxAtk;
+	def = maxDef;
 }

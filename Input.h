@@ -7,16 +7,19 @@
 
 namespace Input
 {
-    // return an integer value from 
+    // return an integer value
     int integer();
 
+    // return a floating point number
     double real();
 
+    // return a character
     char character();
 
-    // the string input isn't working properly, send help
-    std::string_view string();
+    // don't know why but the user has to press enter two times
+    std::string string();
 
+    // return the action of the player
     PlayerActions playerAction();
 }
 

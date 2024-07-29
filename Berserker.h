@@ -14,6 +14,8 @@ namespace Creatures
         public:
             // attack one encounter
             void attack(Encounters& enc) override;
+            // attack one encounter
+            void virtual attack(Creatures::Encounter::Encounterz& enc);
             // resets all stats to level 1
             void resetAllStats() override;
         private:

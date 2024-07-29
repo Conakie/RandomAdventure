@@ -14,6 +14,8 @@ namespace Creatures
         public:
             // attack a single encounter with a spell
             void attack(Encounters& enc) override;
+            // attack a single encounter with a spell
+            void virtual attack(Creatures::Encounter::Encounterz& enc);
 
             // print all the stats the mage and the player has
             void printStats() const override;

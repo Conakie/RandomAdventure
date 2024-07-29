@@ -49,6 +49,46 @@ namespace Creatures
 
 		}
 
+		void Thief::attack(Creatures::Encounter::Encounterz& enc)
+		{
+			bool isACritHit{ false };
+
+
+			std::cout << "You chose violence.\n";
+			if (Random::get(0, 99) < critRate)
+				isACritHit = true;
+
+			if (Random::get(0, 99) < stealthHitChance)
+			{
+				std::cout << "You attacked " << enc.getName() << " from behind.\n";
+				if (isACritHit)
+				{
+					std::cout << "You did a critical hit!\n"
+						<< enc.getName() << " took " << (atk * steathDmgBonus * critDmg) << " dmg.\n";
+					enc.takeDamage(atk * steathDmgBonus * critDmg);
+				}
+				else
+				{
+					std::cout << enc.getName() << " took " << (atk * steathDmgBonus) << " dmg.\n";
+					enc.takeDamage(atk * steathDmgBonus);
+				}
+			}
+			else
+			{
+				if (isACritHit)
+				{
+					std::cout << "You did a critical hit!\n"
+						<< enc.getName() << " took " << (atk * critDmg) << " dmg.\n";
+					enc.takeDamage(atk * critDmg);
+				}
+				else
+				{
+					std::cout << enc.getName() << " took " << (atk) << " dmg.\n";
+					enc.takeDamage(atk);
+				}
+			}
+		}
+
 		void Thief::printStats() const
 		{
 			std::cout << "\n\nYour stats are:\n"

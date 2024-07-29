@@ -252,6 +252,65 @@ namespace Creatures
 
 		}
 
+		void Cleric::attack(Creatures::Encounter::Encounterz& enc)
+		{
+			bool answerAgain{ false };
+			// can be damage or healing based on the player choice
+			double value{ 0.0 };
+
+			do
+			{
+				std::cout << "What do you want to use:\n"
+					<< "1: Morningstar.\n"
+					<< "2: Blessing.\n"
+					<< "3: Curse.\n";
+
+				switch (Input::character())
+				{
+				case '1':// option 1: Morningsatr.
+					Playerz::attack(enc);
+					answerAgain = false;
+					break;
+
+				case '2':// option 2: Blessing.
+					value = useBlessing();
+					if (value > 0)
+					{
+						std::cout << "No party members. Healing yourself...\n";
+						heal(value);
+					}
+					else
+					{
+						std::cout << "You do not have enough spiritual energy.\n"
+							<< "Choose another action or blessing.\n";
+					}
+
+					answerAgain = false;
+					break;
+
+				case '3':// option 3: Curse.
+					value = useCurse();
+					if (value > 0)
+					{
+						std::cout << enc.getName() << " took " << value << " dmg.\n";
+						enc.takeDamage(value);
+					}
+					else
+					{
+						std::cout << "You do not have enough spiritual energy.\n"
+							<< "Choose another curse or action.\n";
+					}
+					answerAgain = false;
+					break;
+
+				default:
+					printNotPossible();
+					answerAgain = true;
+					break;
+				}
+			} while (answerAgain);
+		}
+
 		void Cleric::printStats() const
 		{
 			std::cout << "\n\nYour stats are:\n"

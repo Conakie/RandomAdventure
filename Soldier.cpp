@@ -6,6 +6,8 @@
 #include "Encounter Stats.h"
 #include "Input.h"
 #include "Stats.h"
+#include "Soldier.h"
+#include "Random.h"
 
 
 
@@ -128,8 +130,6 @@ void soldier()
 	
 }
 
-
-
 void soldato()
 {
 
@@ -234,4 +234,70 @@ void soldato()
 
 	encounter().setCanTalk(false);
 	
+}
+
+
+
+void Creatures::Encounter::Soldier::talk()
+{
+}
+
+void Creatures::Encounter::Soldier::thinkAndAct()
+{
+	
+	if (isUnderAttack && isAlive() && !isGone)
+	{
+		if ((hp < maxHp / 2) && (lastHealHappenedInTurns >= healTurnCooldown))
+		{
+			heal(Random::get(1, 3 * lvl));
+		}
+		else
+		{
+			attack(*m_player);
+		}
+	}
+	else if (isGone)
+	{
+		dropItems();
+	}
+	else
+	{
+		std::cout << "Kelmod: \"Still here? Do something. He's waiting.\"\n";
+	}
+	++lastHealHappenedInTurns;
+}
+
+void Creatures::Encounter::Soldier::printStats() const
+{
+	Encounterz::printStats();
+	std::cout << name << " can also heal with a cooldown of " << healTurnCooldown << '\n'
+		<< " turn.\n";
+}
+
+void Creatures::Encounter::Soldier::resetStats()
+{
+	Encounterz::resetStats();
+	healTurnCooldown = 1;
+	lastHealHappenedInTurns = 0;
+}
+
+void Creatures::Encounter::Soldier::setName()
+{
+	name = "Soldier";
+}
+
+void Creatures::Encounter::Soldier::setStats()
+{
+	maxHp = 12 + (10 * (lvl - 1));
+	maxAtk = 2.5 + (2.5 * lvl);
+	maxDef = 5;
+	critRate = 0;
+	critDmg = 0;
+	xp = 1;
+	healTurnCooldown = 1;
+	lastHealHappenedInTurns = 0;
+
+	hp = maxHp;
+	atk = maxAtk;
+	def = maxDef;
 }

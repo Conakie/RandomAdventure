@@ -13,7 +13,35 @@ namespace Creatures
         void Mage::attack(Encounters& enc)
         {
             bool isACritHit{ false };
-            bool answerAgain{ false };
+            double spellDmg{ 0 };
+
+            // check if this hit will be a crit hit or not
+            if (Random::get(0, 99) < critRate)
+                isACritHit = true;
+            else
+                isACritHit = false;
+
+            // ask for the spell to use and multiply it if the hit is a critical one
+            std::cout << "\nYou chose violence.\n";
+            spellDmg = useSpell();
+            if (isACritHit)
+                spellDmg *= critDmg;
+
+            // attack the encounter or notify the player he does not have enough mana
+            if (spellDmg < 0)
+            {
+                std::cout << "You don't have enough mana. Choose another action or spell.\n";
+            }
+            else
+            {
+                std::cout << enc.getName() << " took " << spellDmg << " dmg.\n";
+                enc.takeDamage(spellDmg);
+            }
+        }
+
+        void Mage::attack(Creatures::Encounter::Encounterz& enc)
+        {
+            bool isACritHit{ false };
             double spellDmg{ 0 };
 
             // check if this hit will be a crit hit or not
@@ -75,8 +103,8 @@ namespace Creatures
             critDmg = 2;
             stamina = 70;
             weight = 0;
-            mana = 100;
-            maxMana = 100;
+            mana = 45;
+            maxMana = 45;
 
             // reset stats
             stats.reset();

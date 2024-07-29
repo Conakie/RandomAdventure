@@ -17,14 +17,16 @@
 #include "Archer.h"
 #include "Cleric.h"
 #include "Barbarian.h"
+#include "Encounterz.h"
 
 
 
 void GameSession::startSession()
 {
     createPlayer();
-    m_encounters.resize(1, nullptr);
+    m_encounters.resize(1);
 
+    m_encounters[0].resetStats();
     m_worldLevel = 1;
     m_actionsCost = 0;
 }
@@ -48,7 +50,8 @@ void GameSession::createPlayer()
     bool retry{ false };
 
 
-    std::cout << "Kelmod: \"Choose your class among these:\n";
+    std::cout << "Kelmod: \"Before we start, let's choose your class.\n"
+        << "There is no confirm button so be careful~\"\n";
     do
     {
         int failedAmount{ 0 };
@@ -63,6 +66,8 @@ void GameSession::createPlayer()
                 std::cout << "Nanre: \"The OS did not give us any ram for too many times.\n"
                     << "We'll kill the app. Please, open it again and be sure to have enough ram.\n"
                     << "Random Adventure is being killed...\"\n";
+                delay(2);
+                exit(1);
             }
             else
             {
@@ -73,9 +78,12 @@ void GameSession::createPlayer()
         }
     } while (retry);
     
+
+    std::cout << "Kelmod: \"Now we're ready for the next step.\n"
+        << "How do you wanna call yourself?\"\n";
+    m_player->setName(Input::string());
     m_player->resetAllStats();
     //m_player->setStats();
-
 }
 
 bool GameSession::isPlayerAlive()
@@ -105,14 +113,8 @@ void GameSession::playerTurn()
         switch (Input::playerAction())
         {
         case PlayerActions::attack:
-        
-            if (m_encounters[0])
-            {
-                m_player->attack(*m_encounters[0]);
-                m_actionsCost = -1;
-            }
-            else
-                std::cout << "There is no encounter. Wait until a new one spawns.\n";
+            m_player->attack(m_encounters[0]);
+            m_actionsCost = -1;
             break;
 
         case PlayerActions::heal_:
@@ -126,13 +128,8 @@ void GameSession::playerTurn()
             break;
 
         case PlayerActions::talk_:
-            if (m_encounters[0])
-            {
-                m_encounters[0]->getAttack();
-                m_actionsCost = -1;
-            }
-            else
-                std::cout << "There is no encounter. Wait until a new one spawns.\n";
+            m_encounters[0].talk();
+            m_actionsCost = -1;
             break;
 
         case PlayerActions::continue_:
@@ -165,10 +162,7 @@ void GameSession::playerTurn()
             break;
 
         case PlayerActions::seeEncountersStats:
-            if (m_encounters[0])
-                m_encounters[0]->printStats();
-            else
-                std::cout << "There is no encounter for you to see their stats right now.\n";
+            m_encounters[0].printStats();
             break;
 
         case PlayerActions::seeInventory:
@@ -233,51 +227,15 @@ void GameSession::alliesTurn()
 
 void GameSession::encountersTurn()
 {
-    if (m_encounters[0])
+    // if the encounter is alive and not gone
+    if (m_encounters[0].isAlive())
     {
-        // if the encounter is alive and not gone
-        if (m_encounters[0]->isAlive() && !(m_encounters[0]->getIsGone()))
-        {
-            // if the encounter is fighting
-            if (m_encounters[0]->getIsUnderAttack())
-            {
-                m_encounters[0]->attack(*m_player);
-            }
-            else// the encounter is waiting
-            {
-                std::cout << "The encounter is waiting for you.\n";
-            }
-        }
-        else // the encounter is gone or dead
-        {
-            m_encounters[0]->setEncounter();
-        }
+        m_encounters[0].thinkAndAct();
     }
-    else
+    else // the encounter is gone or dead
     {
-        int errorCount{ 0 };
-        bool retry{ true };
-
-
-        // try to create a new encounter. if it fails close the game
-        while (retry)
-        {
-            try
-            {
-                m_encounters[0] = new Encounters;
-                retry = false;
-            }
-            catch (const std::bad_alloc&)
-            {
-                ++errorCount;
-                if (errorCount > 5)
-                {
-                    std::cout << "Nanre: \"Failed to create a new encounter.\n"
-                        << "Killing Random Adventure...\"\n";
-                    exit(1);
-                }
-            }
-        }
+        m_encounters[0].setEncounter();
+        m_encounters[0].setPlayer(m_player);
     }
 }
 

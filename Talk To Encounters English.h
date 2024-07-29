@@ -2,8 +2,11 @@
 #ifndef KIIYUO_RATABS_TALKTOENCOUNTERS_H
 #define KIIYUO_RATABS_TALKTOENCOUNTERS_H
 
+#include "EncounterType.h"
+
 // This choose the encounter to talk to.
 void talkToEncounters();
+void talkToEncounters(Creatures::Encounter::EncounterType encType);
 
 
 // Encounters

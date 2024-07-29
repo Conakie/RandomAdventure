@@ -4,12 +4,10 @@
 
 enum class Places
 {
-
     village,
     dungeon,
     cave,
     forest,
-
 };
 
 #endif // !KIIYUO_PLACENAMES_RATABS_H

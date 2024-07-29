@@ -53,6 +53,24 @@ namespace Creatures
 			}
 		}
 
+		void Playerz::attack(Encounter::Encounterz& enc)
+		{
+			std::cout << "You attack " << enc.getName() << ".\n";
+			if (Random::get(0, 99) <= critRate)
+			{
+				std::cout << "\nYou did a critical hit!\n"
+					<< enc.getName() << " took " << (atk * critDmg) << " dmg.\n";
+				enc.takeDamage(atk * critDmg);
+
+			}
+			else
+			{
+				std::cout << enc.getName() << " took " << (atk) << " dmg.\n";
+				enc.takeDamage(atk);
+
+			}
+		}
+
 		void Playerz::takeDamage(double damage)
 		{
 			// add damageType to say what is the cause for the damage
@@ -121,6 +139,12 @@ namespace Creatures
 		void Playerz::setStats()
 		{
 			stats.setStats();
+		}
+
+		void Playerz::setName(std::string newName)
+		{
+			name = newName;
+			std::cout << "Necoto: \"From now on you shall be known as " << name << ".\"\n";
 		}
 
 		void Playerz::lvlUp()

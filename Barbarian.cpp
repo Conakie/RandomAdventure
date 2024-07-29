@@ -8,9 +8,29 @@ namespace Creatures
     {
         void Barbarian::attack(Encounters& enc)
         {
-            bool isOneShotted{ false };
+            if ((Random::get(0, 99) < oneShotChance))
+            {
+                std::cout << "You oneshotted " << enc.getName() << "!\n";
+                enc.takeDamage(enc.getHealth());
+            }
+            else
+            {
+                if (Random::get(0, 99) < critRate)
+                {
+                    std::cout << "You did a crtitcal hit!\n"
+                        << enc.getName() << " took " << (atk * critDmg) << " dmg.\n";
+                    enc.takeDamage(atk * critDmg);
+                }
+                else
+                {
+                    std::cout << enc.getName() << " took " << (atk) << " dmg.\n";
+                    enc.takeDamage(atk);
+                }
+            }
+        }
 
-
+        void Barbarian::attack(Creatures::Encounter::Encounterz& enc)
+        {
             if ((Random::get(0, 99) < oneShotChance))
             {
                 std::cout << "You oneshotted " << enc.getName() << "!\n";
