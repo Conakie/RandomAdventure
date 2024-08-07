@@ -295,8 +295,6 @@ void argue()
 
 }
 
-
-
 void fight()
 {
 	std::cout << "Ratman: \"Understood. You chose death.\n"
@@ -306,4 +304,19 @@ void fight()
 	std::cout << "Ratman: \"Ready to fight!\n\"";
 
 	encounter().setIsUnderAttack(true);
+}
+
+
+
+void Creatures::Encounter::Ratman::talk()
+{
+}
+
+void Creatures::Encounter::Ratman::setName()
+{
+	name = "Ratman";
+}
+
+void Creatures::Encounter::Ratman::setStats()
+{
 }

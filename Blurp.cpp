@@ -6,6 +6,7 @@
 #include "Input.h"
 #include "Stats.h"
 #include "Random.h"
+#include "Blurp.h"
 
 
 
@@ -69,4 +70,17 @@ void blurp()
 
 	encounter().setCanTalk(false);
 
+}
+
+void Creatures::Encounter::Blurp::talk()
+{
+}
+
+void Creatures::Encounter::Blurp::setName()
+{
+	name = "Blurp";
+}
+
+void Creatures::Encounter::Blurp::setStats()
+{
 }

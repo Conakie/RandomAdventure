@@ -7,6 +7,7 @@
 #include "Stats.h"
 #include "Random.h"
 #include "Print Errors.h"
+#include "Ghost.h"
 
 
 
@@ -42,4 +43,49 @@ void ghost()
 		break;
 	}
 
+}
+
+void Creatures::Encounter::Ghost::talk()
+{
+}
+
+void Creatures::Encounter::Ghost::thinkAndAct()
+{
+	if (isUnderAttack && isAlive() && !isGone)
+	{
+		if (m_player)
+		{
+			heal(2);
+			attack(*m_player);
+		}
+		else
+			heal(4);
+	}
+	else if (isGone)
+	{
+		dropItems();
+	}
+	else
+	{
+		std::cout << "Kelmod: \"" << name << " is waiting...\"\n";
+	}
+}
+
+void Creatures::Encounter::Ghost::setName()
+{
+	name = "Ghost";
+}
+
+void Creatures::Encounter::Ghost::setStats()
+{
+	maxHp = 7 + (7 * (lvl - 1));
+	maxAtk = 1 + (1 * lvl);
+	maxDef = 10;
+	critRate = 0;
+	critDmg = 0;
+	xp = 1;
+
+	hp = maxHp;
+	atk = maxAtk;
+	def = maxDef;
 }

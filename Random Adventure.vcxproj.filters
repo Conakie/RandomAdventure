@@ -366,7 +366,37 @@
     <ClCompile Include="Commands.cpp">
       <Filter>Source Files\Random files</Filter>
     </ClCompile>
+    <ClCompile Include="Witch.cpp">
+      <Filter>Source Files\Tests</Filter>
+    </ClCompile>
     <ClCompile Include="DrunkGuy.cpp">
+      <Filter>Source Files\Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="Priest.cpp">
+      <Filter>Source Files\Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="TheBeer.cpp">
+      <Filter>Source Files\Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="TheRock.cpp">
+      <Filter>Source Files\Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="StoneGolem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SmallRat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Rat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GiantRat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EnormousRat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ColossalRat.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -437,14 +467,8 @@
     <ClInclude Include="Yourself.h">
       <Filter>Header Files\Dialogues</Filter>
     </ClInclude>
-    <ClInclude Include="Bartender.h">
-      <Filter>Header Files\Dialogues</Filter>
-    </ClInclude>
     <ClInclude Include="Inventory.h">
       <Filter>Header Files\Items</Filter>
-    </ClInclude>
-    <ClInclude Include="Prisoner.h">
-      <Filter>Header Files\Dialogues</Filter>
     </ClInclude>
     <ClInclude Include="Ratman.h">
       <Filter>Header Files\Dialogues</Filter>
@@ -530,13 +554,85 @@
     <ClInclude Include="GetEncounterTypePerPlace.h">
       <Filter>Header Files\Stats\Encounter</Filter>
     </ClInclude>
-    <ClInclude Include="Guard.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="DrunkGuy.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="Elf.h">
+      <Filter>Header Files\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="Giant.h">
+      <Filter>Header Files\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="Guard.h">
+      <Filter>Header Files\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="Priest.h">
+      <Filter>Header Files\Tests</Filter>
     </ClInclude>
     <ClInclude Include="Soldier.h">
+      <Filter>Header Files\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="Torturer.h">
+      <Filter>Header Files\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="Dwarf.h">
+      <Filter>Header Files\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="TheRock.h">
+      <Filter>Header Files\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="Prisoner.h">
+      <Filter>Header Files\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="Bard.h">
+      <Filter>Header Files\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="Bartender.h">
+      <Filter>Header Files\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="Trader.h">
+      <Filter>Header Files\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="Skeletron.h">
+      <Filter>Header Files\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="Loli.h">
+      <Filter>Header Files\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="Shota.h">
+      <Filter>Header Files\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="Zombie.h">
+      <Filter>Header Files\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="Ghost.h">
+      <Filter>Header Files\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="TheBeer.h">
+      <Filter>Header Files\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="Witch.h">
+      <Filter>Header Files\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="StoneGolem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Blurp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SmallRat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Rat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GiantRat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EnormousRat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ColossalRat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

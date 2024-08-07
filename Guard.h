@@ -12,12 +12,12 @@ namespace Creatures
         class Guard final : public Encounterz
         {
         public:
-            virtual void talk();
-            virtual void thinkAndAct();
-            virtual void printStats() const;
-            virtual void resetStats();
-            virtual void setName();
-            virtual void setStats();
+            void talk() override;
+            void thinkAndAct() override;
+            void printStats() const override;
+            void resetStats() override;
+            void setName() override;
+            void setStats() override;
         private:
             int healAmount{ 1 };
         };

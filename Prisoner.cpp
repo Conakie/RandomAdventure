@@ -199,3 +199,30 @@ void killOrNot()
 	encounter().takeDamage(encounter().getHealth());
 
 }
+
+void Creatures::Encounter::Prisoner::talk()
+{
+}
+
+void Creatures::Encounter::Prisoner::thinkAndAct()
+{
+}
+
+void Creatures::Encounter::Prisoner::setName()
+{
+	name = "Prisoner";
+}
+
+void Creatures::Encounter::Prisoner::setStats()
+{
+	maxHp = 9 + (6 * (lvl - 1));
+	maxAtk = 1 + (1 * lvl);
+	maxDef = -5;
+	critRate = 0;
+	critDmg = 0;
+	xp = 1;
+
+	hp = maxHp;
+	atk = maxAtk;
+	def = maxDef;
+}

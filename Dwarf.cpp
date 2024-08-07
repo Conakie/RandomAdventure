@@ -7,6 +7,7 @@
 #include "Input.h"
 #include "Stats.h"
 #include "Random.h"
+#include "Dwarf.h"
 
 
 
@@ -217,4 +218,27 @@ void nano()
 
 	encounter().setCanTalk(false);
 
+}
+
+void Creatures::Encounter::Dwarf::talk()
+{
+}
+
+void Creatures::Encounter::Dwarf::setName()
+{
+	name = "Dwarf";
+}
+
+void Creatures::Encounter::Dwarf::setStats()
+{
+	maxHp = 13 + (10 * (lvl - 1));
+	maxAtk = 1.5 + (2.5 * lvl);
+	maxDef = 5;
+	critRate = 0;
+	critDmg = 0;
+	xp = 2;
+
+	hp = maxHp;
+	atk = maxAtk;
+	def = maxDef;
 }

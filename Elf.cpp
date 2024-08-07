@@ -6,6 +6,7 @@
 #include "Encounter Stats.h"
 #include "Input.h"
 #include "Stats.h"
+#include "Elf.h"
 
 
 
@@ -291,4 +292,43 @@ void elfo()
 
 	encounter().setCanTalk(false);
 
+}
+
+void Creatures::Encounter::Elf::talk()
+{
+}
+
+void Creatures::Encounter::Elf::thinkAndAct()
+{
+	if (isAlive() && isUnderAttack)
+	{
+		attack(*m_player);
+	}
+	else if (isAlive() && !isUnderAttack && canTalk)
+	{
+		talk();
+	}
+	else
+	{
+		std::cout << "Kelmod: \"Do something man. I'm bored.\"\n";
+	}
+}
+
+void Creatures::Encounter::Elf::setName()
+{
+	name = "Elf";
+}
+
+void Creatures::Encounter::Elf::setStats()
+{
+	maxHp = 9 + (8 * (lvl - 1));
+	maxAtk = 2 + (2 * lvl);
+	maxDef = 0;
+	critRate = 0;
+	critDmg = 0;
+	xp = 2;
+
+	hp = maxHp;
+	atk = maxAtk;
+	def = maxDef;
 }

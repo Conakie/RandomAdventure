@@ -6,6 +6,7 @@
 #include "Encounter Stats.h"
 #include "Input.h"
 #include "Stats.h"
+#include "Bard.h"
 
 
 
@@ -70,4 +71,51 @@ void bard()
 	encounter().setIsGone(true);
 	encounter().setCanTalk(false);
 	
+}
+
+void Creatures::Encounter::Bard::talk()
+{
+}
+
+void Creatures::Encounter::Bard::thinkAndAct()
+{
+	if (m_player)
+	{
+		if (isAlive() && !isUnderAttack && canTalk)
+		{
+			talk();
+		}
+		else if (isUnderAttack)
+		{
+			isGone = true;
+		}
+		else
+		{
+			std::cout << "Kelmod: \"Do something man. I'm bored.\"\n";
+		}
+	}
+	else
+	{
+		std::cout << "The priest ignores you and keeps going his way.\n";
+		isGone = true;
+	}
+}
+
+void Creatures::Encounter::Bard::setName()
+{
+	name = "Barbonium";
+}
+
+void Creatures::Encounter::Bard::setStats()
+{
+	maxHp = 10 + (10 * (lvl - 1));
+	maxAtk = 1 + (2 * lvl);
+	maxDef = -60;
+	critRate = 0;
+	critDmg = 0;
+	xp = 1;
+
+	hp = maxHp;
+	atk = maxAtk;
+	def = maxDef;
 }

@@ -1,3 +1,4 @@
+
 #ifndef KIIYUO_RATABS_CREATURES_ENCOUNTER_SOLDIER_CLASS
 #define KIIYUO_RATABS_CREATURES_ENCOUNTER_SOLDIER_CLASS
 
@@ -11,12 +12,12 @@ namespace Creatures
         class Soldier final : public Encounterz
         {
         public:
-            virtual void talk();
-            virtual void thinkAndAct();
-            virtual void printStats() const;
-            virtual void resetStats();
-            virtual void setName();
-            virtual void setStats();
+            void talk() override;
+            void thinkAndAct() override;
+            void printStats() const override;
+            void resetStats() override;
+            void setName() override;
+            void setStats() override;
         private:
             int healTurnCooldown{ 1 };
             int lastHealHappenedInTurns{ 0 };

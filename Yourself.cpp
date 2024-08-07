@@ -134,3 +134,39 @@ void dialogue1Part1()
 
 
 }
+
+void Creatures::Encounter::Yourself::talk()
+{
+}
+
+void Creatures::Encounter::Yourself::setName()
+{
+	if (m_player)
+		name = m_player->getName();
+	else
+		name = "Yourself";
+}
+
+void Creatures::Encounter::Yourself::setStats()
+{
+	if (m_player)
+	{
+		maxHp = m_player->getMaxHealth();
+		maxAtk = m_player->getAttack();
+		maxDef = 10;
+		critRate = 0;
+		critDmg = 0;
+		xp = 5;
+	}
+	else
+	{
+		maxHp = 10;
+		for (int i = 0; i < lvl; ++i)
+			maxHp += Random::get(1, 10);
+		maxAtk = 3 + (1.5 * lvl);
+		maxDef = 10;
+		critRate = 0;
+		critDmg = 0;
+		xp = 4;
+	}
+}

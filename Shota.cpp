@@ -5,6 +5,7 @@
 #include "Encounter Stats.h"
 #include "Input.h"
 #include "Stats.h"
+#include "Shota.h"
 
 
 
@@ -46,4 +47,27 @@ void shota()
 
     ++annoyLevel;
 
+}
+
+void Creatures::Encounter::Shota::talk()
+{
+}
+
+void Creatures::Encounter::Shota::setName()
+{
+    name = "Shota";
+}
+
+void Creatures::Encounter::Shota::setStats()
+{
+    maxHp = 20 + (15 * (lvl - 1));
+    maxAtk = 1 + (1.75 * lvl);
+    maxDef = 0;
+    critRate = 0;
+    critDmg = 0;
+    xp = 2;
+
+    hp = maxHp;
+    atk = maxAtk;
+    def = maxDef;
 }

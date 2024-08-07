@@ -6,6 +6,7 @@
 #include "Encounter Stats.h"
 #include "Input.h"
 #include "Stats.h"
+#include "Skeletron.h"
 
 
 
@@ -289,4 +290,27 @@ void skeletro()
 
 	encounter().setCanTalk(false);
 
+}
+
+void Creatures::Encounter::Skeletron::talk()
+{
+}
+
+void Creatures::Encounter::Skeletron::setName()
+{
+	name = "Skeletron";
+}
+
+void Creatures::Encounter::Skeletron::setStats()
+{
+	maxHp = 11 + (9 * (lvl - 1));
+	maxAtk = 1 + (1.25 * lvl);
+	maxDef = 4;
+	critRate = 0;
+	critDmg = 0;
+	xp = 2;
+
+	hp = maxHp;
+	atk = maxAtk;
+	def = maxDef;
 }

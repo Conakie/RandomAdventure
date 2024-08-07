@@ -556,3 +556,50 @@ void questions()
 
 
 }
+
+void Creatures::Encounter::Bartender::talk()
+{
+}
+
+void Creatures::Encounter::Bartender::thinkAndAct()
+{
+	if (m_player)
+	{
+		if (isAlive() && !isUnderAttack && canTalk)
+		{
+			talk();
+		}
+		else if (isUnderAttack)
+		{
+			isGone = true;
+		}
+		else
+		{
+			std::cout << "Kelmod: \"Do something man. I'm bored.\"\n";
+		}
+	}
+	else
+	{
+		std::cout << "The priest ignores you and keeps going his way.\n";
+		isGone = true;
+	}
+}
+
+void Creatures::Encounter::Bartender::setName()
+{
+	name = "Bartenderererer";
+}
+
+void Creatures::Encounter::Bartender::setStats()
+{
+	maxHp = 10 + (10 * (lvl - 1));
+	maxAtk = 1 + (1 * lvl);
+	maxDef = -60;
+	critRate = 0;
+	critDmg = 0;
+	xp = 1;
+
+	hp = maxHp;
+	atk = maxAtk;
+	def = maxDef;
+}

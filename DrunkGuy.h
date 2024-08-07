@@ -1,3 +1,4 @@
+
 #ifndef KIIYUO_RATABS_CREATURES_ENCOUNTER_DRUNKGUY_CLASS
 #define KIIYUO_RATABS_CREATURES_ENCOUNTER_DRUNKGUY_CLASS
 
@@ -11,10 +12,10 @@ namespace Creatures
         class DrunkGuy final : public Encounterz
         {
         public:
-            virtual void attack(Creatures::Player::Playerz& player);
-            virtual void talk();
-            virtual void setName();
-            virtual void setStats();
+            void attack(Creatures::Player::Playerz& player) override;
+            void talk() override;
+            void setName() override;
+            void setStats() override;
         private:
         };
     }

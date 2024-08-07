@@ -7,6 +7,7 @@
 #include "Yugei Sansae.h"
 #include "Input.h"
 #include "Stats.h"
+#include "Zombie.h"
 
 
 
@@ -575,4 +576,27 @@ void zombiRevenge()
 
 	} while (answerAgain == true);
 
+}
+
+void Creatures::Encounter::Zombie::talk()
+{
+}
+
+void Creatures::Encounter::Zombie::setName()
+{
+	name = "Zombie";
+}
+
+void Creatures::Encounter::Zombie::setStats()
+{
+	maxHp = 12 + (10 * (lvl - 1));
+	maxAtk = 2 + (1.25 * lvl);
+	maxDef = 5;
+	critRate = 0;
+	critDmg = 0;
+	xp = 2;
+
+	hp = maxHp;
+	atk = maxAtk;
+	def = maxDef;
 }

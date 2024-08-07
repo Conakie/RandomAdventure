@@ -6,6 +6,7 @@
 #include "Encounter Stats.h"
 #include "Input.h"
 #include "Stats.h"
+#include "Torturer.h"
 
 
 
@@ -287,4 +288,27 @@ void torturatore()
 
 	encounter().setCanTalk(false);
 	
+}
+
+void Creatures::Encounter::Torturer::talk()
+{
+}
+
+void Creatures::Encounter::Torturer::setName()
+{
+	name = "Torturer";
+}
+
+void Creatures::Encounter::Torturer::setStats()
+{
+	maxHp = 10 + (8 * (lvl - 1));
+	maxAtk = 2 + (2 * lvl);
+	maxDef = 5;
+	critRate = 0;
+	critDmg = 0;
+	xp = 1;
+
+	hp = maxHp;
+	atk = maxAtk;
+	def = maxDef;
 }

@@ -5,6 +5,7 @@
 #include "Encounter Stats.h"
 #include "Input.h"
 #include "Stats.h"
+#include "Loli.h"
 
 
 
@@ -47,4 +48,27 @@ void loli()
 
 	++annoyLevel;
 
+}
+
+void Creatures::Encounter::Loli::talk()
+{
+}
+
+void Creatures::Encounter::Loli::setName()
+{
+	name = "Loli";
+}
+
+void Creatures::Encounter::Loli::setStats()
+{
+	maxHp = 6 + (5.5 * (lvl - 1));
+	maxAtk = 1 + (3.75 * lvl);
+	maxDef = 0;
+	critRate = 0;
+	critDmg = 0;
+	xp = 2;
+
+	hp = maxHp;
+	atk = maxAtk;
+	def = maxDef;
 }
