@@ -3,7 +3,6 @@
 #define KIIYUO_RATABS_CREATURES_ENCOUNTER_SKELETRON_CLASS
 
 #include "Encounterz.h"
-#include "Skeletron.h"
 
 namespace Creatures
 {

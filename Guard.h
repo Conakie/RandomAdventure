@@ -3,7 +3,6 @@
 #define KIIYUO_RATABS_CREATURES_ENCOUNTER_GUARD_CLASS
 
 #include "Encounterz.h"
-#include "Guard.h"
 
 namespace Creatures
 {

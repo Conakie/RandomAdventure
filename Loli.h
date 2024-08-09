@@ -3,7 +3,6 @@
 #define KIIYUO_RATABS_CREATURES_ENCOUNTER_LOLI_CLASS
 
 #include "Encounterz.h"
-#include "Loli.h"
 
 namespace Creatures
 {

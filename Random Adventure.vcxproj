@@ -141,7 +141,9 @@
     <ClCompile Include="Blurp.cpp" />
     <ClCompile Include="Chishao.cpp" />
     <ClCompile Include="Chishao.h" />
+    <ClCompile Include="Cockblin.cpp" />
     <ClCompile Include="ColossalRat.cpp" />
+    <ClCompile Include="ColossalSpider.cpp" />
     <ClCompile Include="Commands.cpp" />
     <ClCompile Include="Compare.cpp" />
     <ClCompile Include="ConsoleColor.h" />
@@ -161,10 +163,12 @@
     <ClCompile Include="Ghost.cpp" />
     <ClCompile Include="Giant.cpp" />
     <ClCompile Include="GiantRat.cpp" />
+    <ClCompile Include="HobGoblin.cpp" />
     <ClCompile Include="Intro And Outro.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Kobold.cpp" />
     <ClCompile Include="Kock Encounters.cpp" />
+    <ClCompile Include="Kockbold.cpp" />
     <ClCompile Include="Loli.cpp" />
     <ClCompile Include="Mage.cpp" />
     <ClCompile Include="Miiro.cpp" />
@@ -179,6 +183,7 @@
     <ClCompile Include="Goblin.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Kyo.cpp" />
+    <ClCompile Include="Orc.cpp" />
     <ClCompile Include="Parla Con Gli Incontri.h" />
     <ClCompile Include="No Talking.cpp" />
     <ClCompile Include="Places.cpp" />
@@ -219,6 +224,7 @@
     <ClCompile Include="Talk To Encounters.cpp" />
     <ClCompile Include="The Beer.cpp" />
     <ClCompile Include="The Rock.cpp" />
+    <ClCompile Include="The104.cpp" />
     <ClCompile Include="TheBeer.cpp" />
     <ClCompile Include="TheRock.cpp" />
     <ClCompile Include="Thief.cpp" />
@@ -245,7 +251,9 @@
     <ClInclude Include="Berserker.h" />
     <ClInclude Include="Blurp.h" />
     <ClInclude Include="Cleric.h" />
+    <ClInclude Include="Cockblin.h" />
     <ClInclude Include="ColossalRat.h" />
+    <ClInclude Include="ColossalSpider.h" />
     <ClInclude Include="ConsoleStyle.h" />
     <ClInclude Include="Costants.h" />
     <ClInclude Include="CreatureBase.h" />
@@ -267,14 +275,19 @@
     <ClInclude Include="Ghost.h" />
     <ClInclude Include="Giant.h" />
     <ClInclude Include="GiantRat.h" />
+    <ClInclude Include="Goblin.h" />
     <ClInclude Include="Guard.h" />
+    <ClInclude Include="HobGoblin.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Items.h" />
+    <ClInclude Include="Kobold.h" />
+    <ClInclude Include="Kockbold.h" />
     <ClInclude Include="Loli.h" />
     <ClInclude Include="Mage.h" />
     <ClInclude Include="Miiro.h" />
     <ClInclude Include="Object UID.h" />
+    <ClInclude Include="Orc.h" />
     <ClInclude Include="Place Name.h" />
     <ClInclude Include="Place.h" />
     <ClInclude Include="PlaceNames.h" />
@@ -303,6 +316,7 @@
     <ClInclude Include="Random Adventure English.h" />
     <ClInclude Include="Random Adventure Italiano.h" />
     <ClInclude Include="Tests.h" />
+    <ClInclude Include="The104.h" />
     <ClInclude Include="TheBeer.h" />
     <ClInclude Include="TheRock.h" />
     <ClInclude Include="Thief.h" />

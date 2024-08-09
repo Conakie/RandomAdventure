@@ -3,7 +3,6 @@
 #define KIIYUO_RATABS_CREATURES_ENCOUNTER_BLURP_CLASS
 
 #include "Encounterz.h"
-#include "Blurp.h"
 
 namespace Creatures
 {

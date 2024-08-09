@@ -3,7 +3,6 @@
 #define KIIYUO_RATABS_CREATURES_ENCOUNTER_THEBEER_CLASS
 
 #include "Encounterz.h"
-#include "TheBeer.h"
 
 namespace Creatures
 {

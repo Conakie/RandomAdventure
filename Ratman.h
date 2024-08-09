@@ -17,7 +17,6 @@ void argue();
 #define KIIYUO_RATABS_CREATURES_ENCOUNTER_RATMAN_CLASS
 
 #include "Encounterz.h"
-#include "Ratman.h"
 
 namespace Creatures
 {

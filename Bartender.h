@@ -18,7 +18,6 @@ void eatAtTable();
 #define KIIYUO_RATABS_CREATURES_ENCOUNTER_BARTENDER_CLASS
 
 #include "Encounterz.h"
-#include "Bartender.h"
 
 namespace Creatures
 {

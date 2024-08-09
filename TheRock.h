@@ -3,7 +3,6 @@
 #define KIIYUO_RATABS_CREATURES_ENCOUNTER_THEROCK_CLASS
 
 #include "Encounterz.h"
-#include "TheRock.h"
 
 namespace Creatures
 {

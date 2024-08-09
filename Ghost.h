@@ -3,7 +3,6 @@
 #define KIIYUO_RATABS_CREATURES_ENCOUNTER_GHOST_CLASS
 
 #include "Encounterz.h"
-#include "Ghost.h"
 
 namespace Creatures
 {

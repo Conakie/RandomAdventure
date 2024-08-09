@@ -83,4 +83,14 @@ void Creatures::Encounter::Blurp::setName()
 
 void Creatures::Encounter::Blurp::setStats()
 {
+	maxHp = 3 + (3 * (lvl - 1));
+	maxAtk = 2.5 + (2.5 * lvl);
+	maxDef = 0;
+	critRate = 0;
+	critDmg = 0;
+	xp = 1;
+
+	hp = maxHp;
+	atk = maxAtk;
+	def = maxDef;
 }

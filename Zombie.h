@@ -3,7 +3,6 @@
 #define KIIYUO_RATABS_CREATURES_ENCOUNTER_ZOMBIE_CLASS
 
 #include "Encounterz.h"
-#include "Zombie.h"
 
 namespace Creatures
 {

@@ -40,6 +40,7 @@ namespace Creatures
 
             double getHealth() const { return hp; }
             std::string_view getName() const { return name; }
+
         protected:
             void announceEncounter() const;
             virtual void setName();

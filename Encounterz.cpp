@@ -16,19 +16,6 @@
 #include "Talk To Encounters English.h"
 
 
-/*
-heal
-takeDamage
-attack
-increasexp
-setEcnounter
-dropItem
-getName
-thinkAndAct
-printStats
-isAlive
-resetStats
-*/
 
 void Creatures::Encounter::Encounterz::heal(double healing)
 {

@@ -3,7 +3,6 @@
 #define KIIYUO_RATABS_CREATURES_ENCOUNTER_DRUNKGUY_CLASS
 
 #include "Encounterz.h"
-#include "DrunkGuy.h"
 
 namespace Creatures
 {

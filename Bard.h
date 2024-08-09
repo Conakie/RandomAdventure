@@ -3,7 +3,6 @@
 #define KIIYUO_RATABS_CREATURES_ENCOUNTER_BARD_CLASS
 
 #include "Encounterz.h"
-#include "Bard.h"
 
 namespace Creatures
 {

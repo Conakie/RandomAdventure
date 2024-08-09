@@ -11,7 +11,6 @@ void killOrNot();
 #define KIIYUO_RATABS_CREATURES_ENCOUNTER_PRISONER_CLASS
 
 #include "Encounterz.h"
-#include "Prisoner.h"
 
 namespace Creatures
 {

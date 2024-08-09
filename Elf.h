@@ -3,7 +3,6 @@
 #define KIIYUO_RATABS_CREATURES_ENCOUNTER_ELF_CLASS
 
 #include "Encounterz.h"
-#include "Elf.h"
 
 namespace Creatures
 {

@@ -319,4 +319,14 @@ void Creatures::Encounter::Ratman::setName()
 
 void Creatures::Encounter::Ratman::setStats()
 {
+	maxHp = 22 + (21 * (lvl - 1));
+	maxAtk = 1 + (0.5 * lvl);
+	maxDef = 0;
+	critRate = 0;
+	critDmg = 0;
+	xp = 2;
+
+	hp = maxHp;
+	atk = maxAtk;
+	def = maxDef;
 }

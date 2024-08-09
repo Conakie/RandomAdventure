@@ -4,6 +4,7 @@
 #include "Input.h"
 #include "Talk To Encounters English.h"
 #include "Stats.h"
+#include "Kobold.h"
 
 
 
@@ -62,4 +63,29 @@ void kobold()
 
 	encounter().setCanTalk(false);
 
+}
+
+
+
+void Creatures::Encounter::Kobold::talk()
+{
+}
+
+void Creatures::Encounter::Kobold::setName()
+{
+	name = "Kobold";
+}
+
+void Creatures::Encounter::Kobold::setStats()
+{
+	maxHp = 6 + (4 * (lvl - 1));
+	maxAtk = 1 + (1 * lvl);
+	maxDef = 0;
+	critRate = 0;
+	critDmg = 0;
+	xp = 1;
+
+	hp = maxHp;
+	atk = maxAtk;
+	def = maxDef;
 }

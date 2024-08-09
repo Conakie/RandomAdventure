@@ -10,7 +10,6 @@ void dialogue1Part1();
 #define KIIYUO_RATABS_CREATURES_ENCOUNTER_YOURSELF_CLASS
 
 #include "Encounterz.h"
-#include "Yourself.h"
 
 namespace Creatures
 {

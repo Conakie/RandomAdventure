@@ -1,6 +1,6 @@
 
-#ifndef KIIYUO_RATABS_CREATURES_ENCOUNTER_SHOTA_CLASS
-#define KIIYUO_RATABS_CREATURES_ENCOUNTER_SHOTA_CLASS
+#ifndef KIIYUO_RATABS_CREATURES_ENCOUNTER_ORC_CLASS
+#define KIIYUO_RATABS_CREATURES_ENCOUNTER_ORC_CLASS
 
 #include "Encounterz.h"
 
@@ -8,7 +8,7 @@ namespace Creatures
 {
     namespace Encounter
     {
-        class Shota final : public Encounterz
+        class Orc final : public Encounterz
         {
         public:
             void talk() override;
@@ -18,4 +18,4 @@ namespace Creatures
         };
     }
 }
-#endif // !KIIYUO_RATABS_CREATURES_ENCOUNTER_SHOTA_CLASS
+#endif // !KIIYUO_RATABS_CREATURES_ENCOUNTER_ORC_CLASS

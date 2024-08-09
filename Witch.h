@@ -3,7 +3,6 @@
 #define KIIYUO_RATABS_CREATURES_ENCOUNTER_WITCH_CLASS
 
 #include "Encounterz.h"
-#include "Witch.h"
 
 namespace Creatures
 {

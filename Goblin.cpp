@@ -6,6 +6,7 @@
 #include "Encounter Stats.h"
 #include "Input.h"
 #include "Stats.h"
+#include "Goblin.h"
 
 
 
@@ -278,4 +279,29 @@ void goblino()
 
 	encounter().setCanTalk(false);
 
+}
+
+
+
+void Creatures::Encounter::Goblin::talk()
+{
+}
+
+void Creatures::Encounter::Goblin::setName()
+{
+	name = "Goblin";
+}
+
+void Creatures::Encounter::Goblin::setStats()
+{
+	maxHp = 6.5 + (4 * (lvl - 1));
+	maxAtk = 1 + (1 * lvl);
+	maxDef = 0;
+	critRate = 0;
+	critDmg = 0;
+	xp = 1;
+
+	hp = maxHp;
+	atk = maxAtk;
+	def = maxDef;
 }

@@ -3,7 +3,6 @@
 #define KIIYUO_RATABS_CREATURES_ENCOUNTER_COLOSSALRAT_CLASS
 
 #include "Encounterz.h"
-#include "ColossalRat.h"
 
 namespace Creatures
 {

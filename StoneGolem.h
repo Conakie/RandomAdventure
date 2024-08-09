@@ -3,7 +3,6 @@
 #define KIIYUO_RATABS_CREATURES_ENCOUNTER_STONEGOLEM_CLASS
 
 #include "Encounterz.h"
-#include "StoneGolem.h"
 
 namespace Creatures
 {

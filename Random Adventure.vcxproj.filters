@@ -399,6 +399,24 @@
     <ClCompile Include="ColossalRat.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ColossalSpider.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HobGoblin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Orc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Kockbold.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cockblin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="The104.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Random Adventure English.h">
@@ -554,86 +572,110 @@
     <ClInclude Include="GetEncounterTypePerPlace.h">
       <Filter>Header Files\Stats\Encounter</Filter>
     </ClInclude>
-    <ClInclude Include="DrunkGuy.h">
-      <Filter>Header Files\Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="Elf.h">
-      <Filter>Header Files\Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="Giant.h">
-      <Filter>Header Files\Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="Guard.h">
-      <Filter>Header Files\Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="Priest.h">
-      <Filter>Header Files\Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="Soldier.h">
-      <Filter>Header Files\Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="Torturer.h">
-      <Filter>Header Files\Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="Dwarf.h">
-      <Filter>Header Files\Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="TheRock.h">
-      <Filter>Header Files\Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="Prisoner.h">
-      <Filter>Header Files\Tests</Filter>
-    </ClInclude>
     <ClInclude Include="Bard.h">
-      <Filter>Header Files\Tests</Filter>
+      <Filter>Header Files\Stats\Encounter\Types</Filter>
     </ClInclude>
     <ClInclude Include="Bartender.h">
-      <Filter>Header Files\Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="Trader.h">
-      <Filter>Header Files\Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="Skeletron.h">
-      <Filter>Header Files\Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="Loli.h">
-      <Filter>Header Files\Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="Shota.h">
-      <Filter>Header Files\Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="Zombie.h">
-      <Filter>Header Files\Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="Ghost.h">
-      <Filter>Header Files\Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="TheBeer.h">
-      <Filter>Header Files\Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="Witch.h">
-      <Filter>Header Files\Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="StoneGolem.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Stats\Encounter\Types</Filter>
     </ClInclude>
     <ClInclude Include="Blurp.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Stats\Encounter\Types</Filter>
     </ClInclude>
-    <ClInclude Include="SmallRat.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Rat.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GiantRat.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EnormousRat.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Cockblin.h">
+      <Filter>Header Files\Stats\Encounter\Types</Filter>
     </ClInclude>
     <ClInclude Include="ColossalRat.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Stats\Encounter\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="ColossalSpider.h">
+      <Filter>Header Files\Stats\Encounter\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="DrunkGuy.h">
+      <Filter>Header Files\Stats\Encounter\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Dwarf.h">
+      <Filter>Header Files\Stats\Encounter\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Elf.h">
+      <Filter>Header Files\Stats\Encounter\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="EnormousRat.h">
+      <Filter>Header Files\Stats\Encounter\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Ghost.h">
+      <Filter>Header Files\Stats\Encounter\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Giant.h">
+      <Filter>Header Files\Stats\Encounter\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="GiantRat.h">
+      <Filter>Header Files\Stats\Encounter\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Goblin.h">
+      <Filter>Header Files\Stats\Encounter\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Guard.h">
+      <Filter>Header Files\Stats\Encounter\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="HobGoblin.h">
+      <Filter>Header Files\Stats\Encounter\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Kobold.h">
+      <Filter>Header Files\Stats\Encounter\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Kockbold.h">
+      <Filter>Header Files\Stats\Encounter\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Loli.h">
+      <Filter>Header Files\Stats\Encounter\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Orc.h">
+      <Filter>Header Files\Stats\Encounter\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Priest.h">
+      <Filter>Header Files\Stats\Encounter\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Prisoner.h">
+      <Filter>Header Files\Stats\Encounter\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Rat.h">
+      <Filter>Header Files\Stats\Encounter\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Shota.h">
+      <Filter>Header Files\Stats\Encounter\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Skeletron.h">
+      <Filter>Header Files\Stats\Encounter\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="SmallRat.h">
+      <Filter>Header Files\Stats\Encounter\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Soldier.h">
+      <Filter>Header Files\Stats\Encounter\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="StoneGolem.h">
+      <Filter>Header Files\Stats\Encounter\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="The104.h">
+      <Filter>Header Files\Stats\Encounter\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="TheBeer.h">
+      <Filter>Header Files\Stats\Encounter\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="TheRock.h">
+      <Filter>Header Files\Stats\Encounter\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Torturer.h">
+      <Filter>Header Files\Stats\Encounter\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Trader.h">
+      <Filter>Header Files\Stats\Encounter\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Witch.h">
+      <Filter>Header Files\Stats\Encounter\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Zombie.h">
+      <Filter>Header Files\Stats\Encounter\Types</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

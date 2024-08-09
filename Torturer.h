@@ -3,7 +3,6 @@
 #define KIIYUO_RATABS_CREATURES_ENCOUNTER_TORTURER_CLASS
 
 #include "Encounterz.h"
-#include "Torturer.h"
 
 namespace Creatures
 {
