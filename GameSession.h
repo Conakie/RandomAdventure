@@ -29,7 +29,7 @@ private:
 
 
     Creatures::Player::Playerz* m_player{ nullptr };
-    std::vector<Creatures::Encounter::Encounterz> m_encounters{ };
+    std::vector<Creatures::Encounter::Encounterz*> m_encounters{ };
 
     int m_worldLevel{ 0 };
     short m_actionsCost{ 0 };

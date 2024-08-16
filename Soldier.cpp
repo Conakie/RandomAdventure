@@ -240,12 +240,27 @@ void soldato()
 
 void Creatures::Encounter::Soldier::talk()
 {
+	if (m_canTalk && !(m_isUnderAttack))
+	{
+		dialogue();
+	}
+	else
+	{
+		if (m_isUnderAttack)
+		{
+			std::cout << "Kelmod: \"" << name << " refuses to talk after you attacked it.\"\n";
+		}
+		else
+		{
+			std::cout << "Kelmod: \"You have already talked to him.\n";
+		}
+	}
 }
 
 void Creatures::Encounter::Soldier::thinkAndAct()
 {
 	
-	if (isUnderAttack && isAlive() && !isGone)
+	if (m_isUnderAttack && isAlive() && !m_isGone)
 	{
 		if ((hp < maxHp / 2) && (lastHealHappenedInTurns >= healTurnCooldown))
 		{
@@ -256,7 +271,7 @@ void Creatures::Encounter::Soldier::thinkAndAct()
 			attack(*m_player);
 		}
 	}
-	else if (isGone)
+	else if (m_isGone)
 	{
 		dropItems();
 	}
@@ -300,4 +315,83 @@ void Creatures::Encounter::Soldier::setStats()
 	hp = maxHp;
 	atk = maxAtk;
 	def = maxDef;
+}
+
+void Creatures::Encounter::Soldier::dialogue()
+{
+	bool answerAgain{ false };
+
+
+	std::cout << name << ": \"Identify yourself!\"\n";
+	do
+	{
+		if (m_player)
+			std::cout << "1: I am " << m_player->getName() << '\n';
+		else
+			std::cout << "1: (Tell him your name)\n";
+		std::cout << "2: Who are you?!\n"
+				<< "3: Wanna fight?\n";
+		switch (Input::character())
+		{
+		case '1':// option 1: (Tell him your name)
+			std::cout << name << ": \"Oh, sorry for not recognising you sooner.\n"
+				<< "If you're not here to fight against our enemies you shold go away.\n"
+				<< "This place is not safe for you. Go! Before anything happens.\"\n";
+			waitForAnyKey();
+			std::cout << "(You decide to go away from this place)\n"
+				<< "(While you're going away you hear some loud noises)\n"
+				<< "(You look behind you and see many explosions and projectiles flying)\n";
+			waitForAnyKey();
+			std::cout << "(You run away as fast as possible)\n"
+				<< "Nanre: \"He's fine. Don't worry.\"\n"
+				<< "(You keep running)\n";
+			m_isGone = true;
+			answerAgain = false;
+			break;
+
+		case '2':// option 2: Who are you?!
+			std::cout << name << ": \"I am a soldier, and you look like an enemy...\n"
+				<< "This place is not safe, better if you go away.\"\n"
+				<< "(Projectiles starts falling from the sky)\n";
+			takeDamage(Random::get(1, 5));
+			waitForAnyKey();
+			std::cout << name << ": \"Are you okay?!\"";
+			if (m_player)
+			{
+				if (m_player->getHealth() < m_player->getMaxHealth() / 2)
+				{
+					std::cout << name << ": \"You don't look that well, here, take this.\"\n"
+						<< "(The soldier gives you a medium healing potion)\n"
+						<< name << ": \"See if this helps. Now, go away before something happens\"\n";
+					m_player->setInventory().addItem(ObjectUid::mediumHealingPotion);
+					waitForAnyKey();
+					std::cout << name << ": \"GO! NOW!\"\n"
+						<< "(You follow what he said and you go away)\n";
+					m_isGone = true;
+				}
+				else
+				{
+					std::cout << name << ": \"It's time you go now. GO!\"\n"
+						<< "(Before anything happens you decide to go awawy, like he said)\n";
+					m_isGone = true;
+				}
+			}
+			answerAgain = false;
+			break;
+
+		case '3':// option 3: Wanna fight?
+			std::cout << name << ": \"Bring it on, enemy of Ratabs soldiers!\"\n";
+			m_isUnderAttack = true;
+			answerAgain = false;
+			break;
+
+		default:
+			printNotPossible();
+			answerAgain = true;
+			break;
+		}
+	} while (answerAgain);
+
+	m_canTalk = false;
+	waitForAnyKey();
 }

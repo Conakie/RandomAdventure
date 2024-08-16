@@ -7,6 +7,7 @@
 #include "Input.h"
 #include "Stats.h"
 #include "Elf.h"
+#include "Print Errors.h"
 
 
 
@@ -296,15 +297,30 @@ void elfo()
 
 void Creatures::Encounter::Elf::talk()
 {
+	if (m_canTalk && !(m_isUnderAttack))
+	{
+		dialogue();
+	}
+	else
+	{
+		if (m_isUnderAttack)
+		{
+			std::cout << "Kelmod: \"" << name << " refuses to talk after you attacked it.\"\n";
+		}
+		else
+		{
+			std::cout << "Kelmod: \"You have already talked to him.\n";
+		}
+	}
 }
 
 void Creatures::Encounter::Elf::thinkAndAct()
 {
-	if (isAlive() && isUnderAttack)
+	if (isAlive() && m_isUnderAttack)
 	{
 		attack(*m_player);
 	}
-	else if (isAlive() && !isUnderAttack && canTalk)
+	else if (isAlive() && !m_isUnderAttack && m_canTalk)
 	{
 		talk();
 	}
@@ -331,4 +347,188 @@ void Creatures::Encounter::Elf::setStats()
 	hp = maxHp;
 	atk = maxAtk;
 	def = maxDef;
+}
+
+void Creatures::Encounter::Elf::dialogue()
+{
+	bool answerAgain{ false };
+
+
+	std::cout << name << ": \"You're here to kill me, aren't you?\"\n";
+	do
+	{
+		std::cout << "1: Why would I?!\n"
+			<< "2: Yes, I'm here for your head.\n"
+			<< "3: No, but should I?\n";
+		switch (Input::character())
+		{
+		case '1':// option 1: Why would I?!
+			dialogueWhyWouldI();
+			answerAgain = false;
+			break;
+
+		case '2':// option 2: Yes, I'm here for your head.
+			dialogueKillHim();
+			answerAgain = false;
+			break;
+
+		case '3':// option 3: No, but should I?
+			dialogueWhyWouldI();
+			answerAgain = false;
+			break;
+
+		default:
+			printNotPossible();
+			answerAgain = true;
+			break;
+		}
+	} while (answerAgain);
+
+
+	m_canTalk = false;
+	waitForAnyKey();
+}
+
+void Creatures::Encounter::Elf::dialogueWhyWouldI()
+{
+	bool answerAgain{ false };
+
+
+	std::cout << name << ": \"Huh?! You aren't here for the bounty on me?\n"
+				<< "I thought you were here because they didn't want me to live...\n"
+				<< "So you'll let me live, right?\"\n";
+	do
+	{
+		std::cout << "1: I don't have any reason to kill you.\n"
+			<< "2: A bounty you said? Let's see how much it is.\n"
+			<< "3: Do what you want. I'm just an adventurer.\n";
+		switch (Input::character())
+		{
+		case '1':// option 1: I don't have any reason to kill you.
+			std::cout << name << ": \"Really? Thank you!\n"
+				<< "I'm sorry but could you hide where I am?\n"
+				<< "The other elves don't want me to be free.\"\n";
+			waitForAnyKey();
+			std::cout << name << ": \"You see, not long ago I had to run away.\n"
+				<< "They were scared of me for summoning a demon at my age.\n"
+				<< "So they chose to put a bounty on my head and had me killed.\"\n";
+			waitForAnyKey();
+			std::cout << name << ": \"That's why I would like you to not reveal my new home to them"
+				<< ".\nIf you don't want to, you're not obliged to do it.\n"
+				<< "Even for letting me live, I would like to give you something.\"\n";
+			waitForAnyKey();
+			std::cout << name << ": \"Oh! I know, take these herbs.\n"
+				<< "It may not be much but it's all I have. Please, take them.\"\n"
+				<< "(The elf gives you 10 herbs)\n";
+			if (m_player)
+			{
+				m_player->setInventory().addItem(ObjectUid::herbs, 10);
+			}
+			else
+			{
+				PrintError::playerNotFound();
+			}
+			answerAgain = false;
+			m_isGone = false;
+			break;
+
+		case '2':// option 2: A bounty you said? Let's see how much it is.
+			std::cout << name << ": \"So you want to fight, so be it.\n"
+				<< "Be ready to die!\"\n";
+			m_isUnderAttack = true;
+			answerAgain = false;
+			break;
+
+		case '3':// option 3: Do what you want. I'm just an adventurer.
+			dialogueDoWhatYouWant();
+			answerAgain = false;
+			break;
+
+		default:
+			printNotPossible();
+			answerAgain = true;
+			break;
+		}
+	} while (answerAgain);
+}
+
+void Creatures::Encounter::Elf::dialogueKillHim()
+{
+	std::cout << name << ": \"So you were here for me, huh?\n"
+		<< "Then be ready to fall under my sword!\"\n";
+	m_isUnderAttack = true;
+}
+
+void Creatures::Encounter::Elf::dialogueDoWhatYouWant()
+{
+	bool answerAgain{ false };
+
+
+	std::cout << name << ": \"You're an adventurer? Really?\n"
+		<< "So can I ask something of you? It's nothing important so, if you don't want\n"
+		<< "I understand. But just in case, could hide where I live?\"\n";
+	waitForAnyKey();
+	std::cout << name << ": \"'Cause, you know, if any of the other elves finds out...\n"
+		<< "Well, let's just say I will have to change country if that happened.\n"
+		<< "And if possible I would like to avoid it.\"\n";
+	waitForAnyKey();
+	std::cout << name << ": \"Sorry if it looked selfish but I don't wanna die now.\n"
+		<< "Not until I find Shaktea again. I want to see her once again before the end "
+		<< "of me.\"\n";
+
+	do
+	{
+		std::cout << "1: If you want, I can look for her.\n"
+			<< "2: I wish you good luck, I also am looking for someone.\n"
+			<< "3: My mouth is sealed.\n";
+		switch (Input::character())
+		{
+		case '1':// option 1: If you want, I can look for her.
+			std::cout << name << ": \"Wait, you will do that for me?\n"
+				<< "I-I don't know how to repay you... Oh I know, take this.\n"
+				<< "It may not be much but it's all I have.\"\n";
+			waitForAnyKey();
+			std::cout << "(+2 magic scrolls)\n"
+				<< name << ": \"When you see her, tell her my name, I'm Catyer.\n"
+				<< "She'll understand everything after she hears my name.\"\n";
+			name = "Catyer";
+			if (m_player)
+			{
+				m_player->setInventory().addItem(ObjectUid::magicScroll, 10);
+			}
+			else
+			{
+				PrintError::playerNotFound();
+			}
+			waitForAnyKey();
+			std::cout << name << ": \"Anyway, you should go. Someone's coming\"\n"
+				<< "(You both say goodbye to the each other and go on separate ways)\n"
+				<< "(One day you shall find Shaktea)\n";
+			m_isGone = true;
+			answerAgain = false;
+			break;
+
+		case '2':// option 2: I wish you good luck, I also am looking for someone.
+			std::cout << name << ": \"Then let's be on our way. Your friend is probably more "
+				<< "important.\nI wish you good luck too. I hope you find him or her soon.\"\n"
+				<< "(You say thank you and go away. He does the same)\n";
+			m_isGone = true;
+			answerAgain = false;
+			break;
+
+		case '3':// option 3: My mouth is sealed.
+			std::cout << name << ": \"You have my gratitude. If you did't say that I don't know "
+				<< "what could have happened.\n"
+				<< "Well then, I'll be on my way, goodbye.\"\n"
+				<< "(The elf goes away. You're now alone)\n";
+			m_isGone = true;
+			answerAgain = false;
+			break;
+
+		default:
+			printNotPossible();
+			answerAgain = true;
+			break;
+		}
+	} while (answerAgain);
 }

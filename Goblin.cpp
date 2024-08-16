@@ -285,6 +285,21 @@ void goblino()
 
 void Creatures::Encounter::Goblin::talk()
 {
+	if (m_canTalk && !(m_isUnderAttack))
+	{
+		dialogue();
+	}
+	else
+	{
+		if (m_isUnderAttack)
+		{
+			std::cout << "Kelmod: \"" << name << " refuses to talk after you attacked it.\"\n";
+		}
+		else
+		{
+			std::cout << "Kelmod: \"You have already talked to him.\n";
+		}
+	}
 }
 
 void Creatures::Encounter::Goblin::setName()
@@ -304,4 +319,113 @@ void Creatures::Encounter::Goblin::setStats()
 	hp = maxHp;
 	atk = maxAtk;
 	def = maxDef;
+}
+
+void Creatures::Encounter::Goblin::dialogue()
+{
+	bool answerAgain{ false };
+
+
+	
+	std::cout << "(The goblin looks at you)\n";
+		
+	do
+	{
+		std::cout << "y: Yes.\n"
+			<< "n: No, please no.\n"
+			<< "s: (Intense stare)\n"
+			<< "a: Die, goblin!\n"
+			<< "t: Let's talk!\n";
+		switch (Input::character())
+		{
+		case '1':// option y: Yes.
+			std::cout << "\nGoblin: \"What yes? Is it for your death? I think so. DIE!\"\n";
+			m_isUnderAttack = true;
+			answerAgain = false;
+			break;
+
+		case '2':// option n: No, please no.
+			dialogueScared();
+			answerAgain = false;
+			break;
+
+		case '3':// option s: (Intense stare)
+			std::cout << "Goblin: \"YOU ARE IGNORING ME? HOW DARE YOU IGNORE ME. DIE!\"\n";
+			m_isUnderAttack = true;
+			answerAgain = false;
+			break;
+
+		case '4':// option a: Die, goblin!
+			std::cout << "Goblin: \"Do you want to challenge me? Prepare to die here and now.\"\n";
+			m_isUnderAttack = true;
+			answerAgain = false;
+			break;
+
+		case '5':// option t: Let's talk!
+			std::cout << "Goblin: \"You want to talk to me? Why?\"\n"
+				<< "(The goblin runs away and leave you there)\n";
+			m_isGone = true;
+			answerAgain = false;
+			break;
+
+		default:
+			printNotPossible();
+			answerAgain = true;
+			break;
+		}
+	} while (answerAgain);
+	
+	m_canTalk = false;
+	waitForAnyKey();
+}
+
+void Creatures::Encounter::Goblin::dialogueScared()
+{
+	bool answerAgain{ false };
+
+
+	std::cout << "Goblin: \"Too scared of me? That's new. You're scared of me.\"\n"
+		<< "(The goblin start laughing at you)\n(What do you do?)\n";
+				
+	do
+	{
+		if (answerAgain)
+			std::cout << "(The goblin keeps laughing)\n";
+
+		std::cout << "y: Yes, and what is the problem with that?\n"
+			<< "n: Who is scared of you?\n"
+			<< "s: (Stay silent)\n"
+			<< "a: Do you want me to show you I'm not scared? Die.\n";
+		switch (Input::character())
+		{
+		case 'y':// option 1: Yes, and what is the problem with that?
+			std::cout << "\nGoblin: \"This was so fun! Come on, go! Or I'm gonna do something.\n"
+				<< "(You go away)\n";
+			m_isGone = true;
+			answerAgain = false;
+			break;
+
+		case 'n':// option 2: Who is scared of you?
+			std::cout << "\nGoblin: \"Yeah yeah, I trust you. With all my leg.\n"
+				<< "If you're so sure fight me.\"\n";
+			answerAgain = true;
+			break;
+
+		case 's':// option 3: (Stay silent)
+			std::cout << "\nGoblin: \"You're so scared that you can't even talk.\"\n";
+			answerAgain = true;
+			break;
+
+		case 'a':// option 4: Do you want me to show you I'm not scared? Die.
+			std::cout << "\nGoblin: \"You do really want lo lose. Then prepare to die!\"\n";
+			m_isUnderAttack = true;
+			answerAgain = false;
+			break;
+
+		default:
+			printNotPossible();
+			answerAgain = true;
+			break;
+		}
+	} while (answerAgain);
 }

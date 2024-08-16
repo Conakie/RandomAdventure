@@ -4,7 +4,6 @@
 
 namespace PrintError
 {
-
 	void printPleaseReport();
 
 	void notFound();
@@ -15,6 +14,7 @@ namespace PrintError
 
 	void actionNotFound();
 
+	void playerNotFound();
 }
 
 #endif//!RATABS_PRINTERRORS

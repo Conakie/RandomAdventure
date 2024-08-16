@@ -26,9 +26,16 @@ namespace Creatures
         {
         public:
             void talk() override;
+            void resetStats() override;
             void setName() override;
             void setStats() override;
         private:
+            int stayedSilentFor{ 0 };
+            void dialogue();
+            void dialogueRequestHelp();
+            void dialogueTakeHead();
+            void dialogueFight();
+            void dialogueArgue();
         };
     }
 }

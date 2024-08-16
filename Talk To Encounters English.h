@@ -3,6 +3,7 @@
 #define KIIYUO_RATABS_TALKTOENCOUNTERS_H
 
 #include "EncounterType.h"
+#include "Encounterz.h"
 
 // This choose the encounter to talk to.
 void talkToEncounters();
@@ -59,6 +60,8 @@ void loli();
 void shota();
 
 void ratman();
+
+void rats(Creatures::Encounter::Encounterz* rat);
 
 // also known as Yugei sansae
 void zombie();

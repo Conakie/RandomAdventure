@@ -18,6 +18,7 @@ namespace Creatures
             void setName() override;
             void setStats() override;
         private:
+            void dialogue();
             int healTurnCooldown{ 1 };
             int lastHealHappenedInTurns{ 0 };
         };

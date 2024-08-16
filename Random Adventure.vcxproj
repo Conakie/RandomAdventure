@@ -148,6 +148,7 @@
     <ClCompile Include="Compare.cpp" />
     <ClCompile Include="ConsoleColor.h" />
     <ClCompile Include="ConsoleStyle.cpp" />
+    <ClCompile Include="Create Encounters.cpp" />
     <ClCompile Include="DrunkGuy.cpp" />
     <ClCompile Include="Encounter Actions.cpp" />
     <ClCompile Include="Encounter Turn.cpp" />
@@ -256,6 +257,7 @@
     <ClInclude Include="ColossalSpider.h" />
     <ClInclude Include="ConsoleStyle.h" />
     <ClInclude Include="Costants.h" />
+    <ClInclude Include="Create Encounters.h" />
     <ClInclude Include="CreatureBase.h" />
     <ClInclude Include="DrunkGuy.h" />
     <ClInclude Include="Dwarf.h" />

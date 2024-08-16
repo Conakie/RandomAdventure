@@ -22,7 +22,7 @@ namespace Creatures
         int maxDef{ 0 };
         int xp{ 0 };
         int xpPerLvl{ 0 };
-        int lvl{ 0 };
+        int lvl{ 1 };
     private:
 
     };

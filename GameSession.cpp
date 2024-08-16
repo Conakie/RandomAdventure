@@ -18,6 +18,10 @@
 #include "Cleric.h"
 #include "Barbarian.h"
 #include "Encounterz.h"
+#include "GetEncounterTypePerPlace.h"
+#include "Print Errors.h"
+#include "Create Encounters.h"
+
 
 
 
@@ -26,7 +30,7 @@ void GameSession::startSession()
     createPlayer();
     m_encounters.resize(1);
 
-    m_encounters[0].resetStats();
+    m_encounters[0] = nullptr;
     m_worldLevel = 1;
     m_actionsCost = 0;
 }
@@ -113,8 +117,15 @@ void GameSession::playerTurn()
         switch (Input::playerAction())
         {
         case PlayerActions::attack:
-            m_player->attack(m_encounters[0]);
-            m_actionsCost = -1;
+            if (m_encounters[0])
+            {
+                m_player->attack(*m_encounters[0]);
+                m_actionsCost = -1;
+            }
+            else
+            {
+                std::cout << "No encounter available...\n";
+            }
             break;
 
         case PlayerActions::heal_:
@@ -128,8 +139,15 @@ void GameSession::playerTurn()
             break;
 
         case PlayerActions::talk_:
-            m_encounters[0].talk();
-            m_actionsCost = -1;
+            if (m_encounters[0])
+            {
+                m_encounters[0]->talk();
+                m_actionsCost = -1;
+            }
+            else
+            {
+                std::cout << "No encounter in sight...\n";
+            }
             break;
 
         case PlayerActions::continue_:
@@ -162,7 +180,14 @@ void GameSession::playerTurn()
             break;
 
         case PlayerActions::seeEncountersStats:
-            m_encounters[0].printStats();
+            if (m_encounters[0])
+            {
+                m_encounters[0]->printStats();
+            }
+            else
+            {
+                std::cout << "There seem to be no encounter here...\n";
+            }
             break;
 
         case PlayerActions::seeInventory:
@@ -227,15 +252,25 @@ void GameSession::alliesTurn()
 
 void GameSession::encountersTurn()
 {
-    // if the encounter is alive and not gone
-    if (m_encounters[0].isAlive())
+    if (m_encounters[0])
     {
-        m_encounters[0].thinkAndAct();
+        // if the encounter is alive and not gone
+        if (m_encounters[0]->isAlive() && !m_encounters[0]->isGone())
+        {
+            m_encounters[0]->thinkAndAct();
+        }
+        else // the encounter is gone or dead
+        {
+            delete m_encounters[0];
+            m_encounters[0] = createEncounter(getEncounterTypePerPlace(printMainPlace(false)));
+            m_encounters[0]->setPlayer(m_player);
+        }
     }
-    else // the encounter is gone or dead
+    else
     {
-        m_encounters[0].setEncounter();
-        m_encounters[0].setPlayer(m_player);
+        delete m_encounters[0];
+        m_encounters[0] = createEncounter(getEncounterTypePerPlace(printMainPlace(false)));
+        m_encounters[0]->setPlayer(m_player);
     }
 }
 

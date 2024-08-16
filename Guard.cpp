@@ -172,13 +172,28 @@ void guardia()
 
 void Creatures::Encounter::Guard::talk()
 {
+	if (m_canTalk && !(m_isUnderAttack))
+	{
+		dialogue();
+	}
+	else
+	{
+		if (m_isUnderAttack)
+		{
+			std::cout << "Kelmod: \"" << name << " refuses to talk after you attacked it.\"\n";
+		}
+		else
+		{
+			std::cout << "Kelmod: \"You have already talked to him.\n";
+		}
+	}
 }
 
 void Creatures::Encounter::Guard::thinkAndAct()
 {
 	if (isAlive())
 	{
-		if (isUnderAttack)
+		if (m_isUnderAttack)
 		{
 			if (hp < maxHp - (maxHp * 0.3) && (healAmount != 0))
 				heal(Random::get(1, 3 * lvl));
@@ -226,4 +241,120 @@ void Creatures::Encounter::Guard::setStats()
 	hp = maxHp;
 	atk = maxAtk;
 	def = maxDef;
+}
+
+void Creatures::Encounter::Guard::dialogue()
+{
+	bool answerAgain{ false };
+
+
+	std::cout << name << ": \"Good morning sir, may I check the content of you backpack?\n"
+		<< "I'm looking for a thief who stole 10 kilos of dinamyte.\n"
+		<< "So, can I check your backpack?\"\n";
+	do
+	{
+		std::cout << "1: Yes, here's my backpack.\n"
+			<< "2: No, I won't let you see what's inside.\n"
+			<< "3: You'll have to kill me to see its content.\n"
+			<< "4: Look! (Try to run away)\n";
+		switch (Input::character())
+		{
+		case '1':// option 1: Yes, here's my backpack.
+			std::cout << name << ": \"Sorry for taking your time. You can go.\n"
+				<< "Here's your backpack. Have a good day.\"\n";
+			m_isGone = true;
+			answerAgain = false;
+			break;
+
+		case '2':// option 2: No, I won't let you see what's inside.
+			dialogueRefuse();
+			answerAgain = false;
+			break;
+
+		case '3':// option 3: You'll have to kill me to see its content.
+			std::cout << name << ": \"Don't go back to your daddy crying when I'll beat you!\"\n";
+			m_isUnderAttack = true;
+			answerAgain = false;
+			break;
+
+		case '4':// option 4: Look! (Try to run away)
+			dialogueRunAway();
+			answerAgain = false;
+			break;
+
+		default:
+			printNotPossible();
+			answerAgain = true;
+			break;
+		}
+	} while (answerAgain);
+	
+	waitForAnyKey();
+	m_canTalk = false;
+}
+
+void Creatures::Encounter::Guard::dialogueRefuse()
+{
+	bool answerAgain{ false };
+
+
+	std::cout << name << "\"Look, I'll let you go. But, if you do anything against the law,\n"
+		<< "I won't let you go away that easily.\"\n";
+	do
+	{
+		std::cout << "1: Understood. Thanks!\n"
+			<< "2: Yeah yeah, whatever.\n"
+			<< "3: Yes daddy!\n";
+		switch (Input::character())
+		{
+		case '1':// option 1: Understood. Thanks!
+			std::cout << name << ": \"Everyone has something they want to hide.\n"
+				<< "And you too. but you don't look like a bad person.\n"
+				<< "Now go! Enjoy your life while you still can.\"\n";
+			m_isGone = true;
+			answerAgain = false;
+			break;
+
+		case '2':// option 2: Yeah yeah, whatever.
+			std::cout << name << ": \"You know, I should teach you a lesson...\n"
+				<< "Come here, let's see if MY lesson will make you reason.\"\n";
+			m_isUnderAttack = true;
+			answerAgain = false;
+			break;
+
+		case '3':// option 3: Yes daddy!
+			std::cout << name << ": \"Go before I change my mind.\"\n"
+				<< "(The guard goes away with a disappointed face)\n";
+			m_isGone = true;
+			answerAgain = false;
+			break;
+
+		default:
+			printNotPossible();
+			answerAgain = true;
+			break;
+		}
+	} while (answerAgain);
+}
+
+void Creatures::Encounter::Guard::dialogueRunAway()
+{
+	bool answerAgain{ false };
+	bool failedToEscape{ false };
+
+
+	std::cout << name << ": \"Come here!\"\n";
+	if (Random::get(0, 99) < 49)
+	{
+		std::cout << "(The guard catches up to you)"
+			<< name << ": \"Where do you think of going?!\n"
+			<< "Let me teach you a lesson, youngster.\"\n";
+		m_isUnderAttack = true;
+	}
+	else
+	{
+		std::cout << "(You ran so fast the guard lost you)\n"
+			<< "You're now free to go everywhere)\n";
+		m_isGone = true;
+	}
 }

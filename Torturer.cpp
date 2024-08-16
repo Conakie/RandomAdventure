@@ -7,6 +7,7 @@
 #include "Input.h"
 #include "Stats.h"
 #include "Torturer.h"
+#include "Print Errors.h"
 
 
 
@@ -292,6 +293,21 @@ void torturatore()
 
 void Creatures::Encounter::Torturer::talk()
 {
+	if (m_canTalk && !(m_isUnderAttack))
+	{
+		dialogue();
+	}
+	else
+	{
+		if (m_isUnderAttack)
+		{
+			std::cout << "Kelmod: \"" << name << " refuses to talk after you attacked it.\"\n";
+		}
+		else
+		{
+			std::cout << "Kelmod: \"You have already talked to him.\n";
+		}
+	}
 }
 
 void Creatures::Encounter::Torturer::setName()
@@ -311,4 +327,84 @@ void Creatures::Encounter::Torturer::setStats()
 	hp = maxHp;
 	atk = maxAtk;
 	def = maxDef;
+}
+
+void Creatures::Encounter::Torturer::dialogue()
+{
+	bool answerAgain{ false };
+
+
+	std::cout << name << ": \"Have ya seen a prisoner?\n"
+		<< "She's wearing some leather rags and probably some chains.\n"
+		<< "She ran away from me...\"(He looks sad while saying this last sentence)\n";
+	do
+	{
+		std::cout << "1: I saw someone looking like that going there.\n"
+			<< "2: Nope, sorry...\n"
+			<< "3: Wanna see where she went? (Take out your weapon)\n";
+		switch (Input::character())
+		{
+		case '1':// option 1: I saw someone looking like that going there.
+			std::cout << name << ": \"Thank ya man. I'll go look for her right away.\n"
+				<< "Thanks again. See ya.\"\n(The torturer goes away)\n"
+				<< "(His eyes were sparkling from happiness)\n";
+			m_isGone = true;
+			answerAgain = false;
+			break;
+
+		case '2':// option 2: Nope, sorry...
+			std::cout << name << ": \"Don't worry, I'll find her myself.\"\n"
+				<< "(You hear a voice shouting: \"Hey, hey, Isaac! I found ye!\")\n"
+				<< "(Both you and the torturer look at the direction the voice came from)\n";
+			waitForAnyKey();
+			std::cout << name << ": \"Is that you, Nakami?\"\n"
+				<< "Nakami: \"So ye were here, Isaac. I went out to get new chains,\n"
+				<< "but when I came back ye weren't there so I went to find ye.\"\n";
+			name = "Isaac";
+			waitForAnyKey();
+			std::cout << name << ": \"Ya made me worry so much, I thought ya ran away...\n"
+				<< "I also looked everywhere for ya...\"\n"
+				<< "Nakami: \"Didn't ye read ma' message on da chair?\"\n";
+			waitForAnyKey();
+			std::cout << name << ": \"Message? I didn't find any...\"\n"
+				<< "Nakami: \"Maybe it fell.Ye know, there's much current in ma' room.\n"
+				<< "Well, shall we go home? I have new chains now.\"\n";
+			waitForAnyKey();
+			std::cout << name << ": \"Let's a go. Thank ya man, take these.\"\n"
+				<< "(+1 nuke)\n";
+			if (m_player)
+			{
+				m_player->setInventory().addItem(ObjectUid::nuke);
+			}
+			else
+			{
+				PrintError::playerNotFound();
+			}
+			m_isGone = true;
+			answerAgain = false;
+			break;
+
+		case '3':// option 3: Wanna see where she went? (Take out your weapon)
+			std::cout << name << ": \"What have you done to my precious...\n"
+				<< "(He starts crying. After a bit he takes out a giant hammer)\n"
+				<< name << ": \"You! I will avenge you, Nakami! And if I fail, I'll join you!\"\n";
+			waitForAnyKey();
+			std::cout << "(He jumps at you to fight back)\n"
+				<< name << ": \"Stat boost! Now I'm ready!\"\n";
+			maxAtk += 1 * lvl;
+			atk += 1 * lvl;
+			m_isUnderAttack = true;
+			answerAgain = false;
+			break;
+
+		default:
+			printNotPossible();
+			answerAgain = true;
+			break;
+		}
+	} while (answerAgain);
+
+
+	m_canTalk = false;
+	waitForAnyKey();
 }

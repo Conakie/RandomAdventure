@@ -38,7 +38,7 @@ void Creatures::Encounter::Encounterz::takeDamage(double damage)
     if (isAlive())
     {
         std::cout << name << " has " << hp << " hp now.\n";
-        isUnderAttack = true;
+        m_isUnderAttack = true;
     }
     else
     {
@@ -55,13 +55,13 @@ void Creatures::Encounter::Encounterz::attack(Creatures::Player::Playerz& player
 
 void Creatures::Encounter::Encounterz::talk()
 {
-    if (canTalk && !(isUnderAttack))
+    if (m_canTalk && !(m_isUnderAttack))
     {
         talkToEncounters(encounterType);
     }
     else
     {
-        if (isUnderAttack)
+        if (m_isUnderAttack)
         {
             std::cout << "Kelmod: \"" << name << " refuses to talk after you attacked it.\"\n";
         }
@@ -197,14 +197,14 @@ void Creatures::Encounter::Encounterz::dropItems() const
 
 void Creatures::Encounter::Encounterz::thinkAndAct()
 {
-    if (isUnderAttack && isAlive() && !isGone)
+    if (m_isUnderAttack && isAlive() && !m_isGone)
     {
         if (m_player)
             attack(*m_player);
         else
             heal(1);
     }
-    else if (isGone)
+    else if (m_isGone)
     {
         dropItems();
     }
@@ -244,9 +244,9 @@ void Creatures::Encounter::Encounterz::resetStats()
     xp = 0;
     xpPerLvl = 0;
     lvl = 1;
-    isGone = false;
-    isUnderAttack = false;
-    canTalk = true;
+    m_isGone = false;
+    m_isUnderAttack = false;
+    m_canTalk = true;
     encounterType = EncounterType::none;
 }
 
@@ -257,9 +257,6 @@ void Creatures::Encounter::Encounterz::setPlayer(Creatures::Player::Playerz* pla
 
 void Creatures::Encounter::Encounterz::setEncounter()
 {
-    encounterType = getEncounterTypePerPlace(printMainPlace(false));
-    // uncomment the following line for a specific encounter
-    //encounterType = EncounterType::guard;
     setStats();
     setState();
     setName();
@@ -1154,7 +1151,7 @@ void Creatures::Encounter::Encounterz::setStats()
 
 void Creatures::Encounter::Encounterz::setState()
 {
-    isGone = false;
-    isUnderAttack = false;
-    canTalk = true;
+    m_isGone = false;
+    m_isUnderAttack = false;
+    m_canTalk = true;
 }

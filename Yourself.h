@@ -22,6 +22,8 @@ namespace Creatures
             void setName() override;
             void setStats() override;
         private:
+            void diarogue();
+            void dialogueOne();
         };
     }
 }

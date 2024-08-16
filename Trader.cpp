@@ -29,19 +29,34 @@ void trader()
 
 void Creatures::Encounter::Trader::talk()
 {
+    if (m_canTalk && !(m_isUnderAttack))
+    {
+        talkToEncounters(encounterType);
+    }
+    else
+    {
+        if (m_isUnderAttack)
+        {
+            std::cout << "Kelmod: \"" << name << " refuses to talk after you attacked it.\"\n";
+        }
+        else
+        {
+            std::cout << "Kelmod: \"You have already talked to him.\n";
+        }
+    }
 }
 
 void Creatures::Encounter::Trader::thinkAndAct()
 {
     if (m_player)
     {
-        if (isAlive() && !isUnderAttack && canTalk)
+        if (isAlive() && !m_isUnderAttack && m_canTalk)
         {
             talk();
         }
-        else if (isUnderAttack)
+        else if (m_isUnderAttack)
         {
-            isGone = true;
+            m_isGone = true;
         }
         else
         {
@@ -51,7 +66,7 @@ void Creatures::Encounter::Trader::thinkAndAct()
     else
     {
         std::cout << "The priest ignores you and keeps going his way.\n";
-        isGone = true;
+        m_isGone = true;
     }
 }
 

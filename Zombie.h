@@ -15,6 +15,11 @@ namespace Creatures
             void setName() override;
             void setStats() override;
         private:
+            void dialogue();
+            void dialogueDidYaKillSkely();
+            void dialogueDoyaKnowWhoKilledSkely();
+            void dialogueRememberMyName();
+            void dialogueRevenge();
         };
     }
 }

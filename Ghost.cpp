@@ -47,11 +47,26 @@ void ghost()
 
 void Creatures::Encounter::Ghost::talk()
 {
+	if (m_canTalk && !(m_isUnderAttack))
+	{
+		dialogue();
+	}
+	else
+	{
+		if (m_isUnderAttack)
+		{
+			std::cout << "Kelmod: \"" << name << " refuses to talk after you attacked it.\"\n";
+		}
+		else
+		{
+			std::cout << "Kelmod: \"You have already talked to him.\n";
+		}
+	}
 }
 
 void Creatures::Encounter::Ghost::thinkAndAct()
 {
-	if (isUnderAttack && isAlive() && !isGone)
+	if (m_isUnderAttack && isAlive() && !m_isGone)
 	{
 		if (m_player)
 		{
@@ -61,7 +76,7 @@ void Creatures::Encounter::Ghost::thinkAndAct()
 		else
 			heal(4);
 	}
-	else if (isGone)
+	else if (m_isGone)
 	{
 		dropItems();
 	}
@@ -88,4 +103,37 @@ void Creatures::Encounter::Ghost::setStats()
 	hp = maxHp;
 	atk = maxAtk;
 	def = maxDef;
+}
+
+void Creatures::Encounter::Ghost::dialogue()
+{
+	switch (Random::get(0, 6))
+	{
+	case 0:
+		std::cout << "Ghost: \"Boo!\"\n";
+		break;
+	case 1:
+		std::cout << "Ghost: \"I see you~\"\n";
+		break;
+	case 2:
+		std::cout << "Ghost: \"I can hear you~\"\n";
+		break;
+	case 3:
+		std::cout << "Ghost: \"Where are you~?\"\n";
+		break;
+	case 4:
+		std::cout << "Ghost: \"What are you doing, step-bro~\"\n";
+		break;
+	case 5:
+		std::cout << "Ghost: \"Help me, I'm stuck onii-chan~\"\n";
+		break;
+	case 6:
+		std::cout << "Ghost: \":3\"\n";
+		break;
+	case 7:
+		std::cout << name << ": \"<3\"\n";
+	default:
+		PrintError::wrongRandomNumber();
+		break;
+	}
 }

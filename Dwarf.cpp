@@ -222,6 +222,21 @@ void nano()
 
 void Creatures::Encounter::Dwarf::talk()
 {
+	if (m_canTalk && !(m_isUnderAttack))
+	{
+		dialogue();
+	}
+	else
+	{
+		if (m_isUnderAttack)
+		{
+			std::cout << "Kelmod: \"" << name << " refuses to talk after you attacked it.\"\n";
+		}
+		else
+		{
+			std::cout << "Kelmod: \"You have already talked to him.\n";
+		}
+	}
 }
 
 void Creatures::Encounter::Dwarf::setName()
@@ -241,4 +256,96 @@ void Creatures::Encounter::Dwarf::setStats()
 	hp = maxHp;
 	atk = maxAtk;
 	def = maxDef;
+}
+
+void Creatures::Encounter::Dwarf::dialogue()
+{
+	bool answerAgain{ false };
+
+
+	std::cout << "Dwarf: \"Hey you. Why are you looking at me like this? Have you ever seen a "
+		<< "dwarf?\"\n";
+	do
+	{
+		std::cout << "1: I have seen many dwarves in my life.\n"
+		<< "2: Nope, never.\n"
+		<< "3: How does a dwarf looks like?\n";
+
+		switch (Input::character())
+		{
+		case '1':// option 1: I have seen many dwarves in my life.
+			dialogueJoinMe();
+			answerAgain = false;
+			break;
+
+		case '2':// option 2: Nope. Never.
+			std::cout << "Dwarf: \"You're a lost cause. I'll go and get a good beer with "
+				<< "my friends and leave someone like you here.\"\n"
+				<< "(The dwarf goes away)\n";
+			answerAgain = false;
+			break;
+
+		case '3':// option 3: How does a dwarf looks like?
+			std::cout << "Dwarf: \"Maybe you should go in a library and study a little bit.\n"
+				<< "It doesn't hurt ya know?\"\n"
+				<< "(The dwarf leave you there and goes away)\n";
+			answerAgain = false;
+			break;
+
+		default:
+			printNotPossible();
+			answerAgain = true;
+			break;
+		}
+	} while (answerAgain);
+
+	
+	m_isGone = true;
+	waitForAnyKey();
+}
+
+void Creatures::Encounter::Dwarf::dialogueJoinMe()
+{
+	bool answerAgain{ false };
+
+
+	std::cout << "Dwarf: \"Finally a good answer. Wanna go to the nearest tavern?\n"
+		<< "After an hour of mining I want a good ol' beer.\n"
+		<< "Wanna come?\"\n";
+	do
+	{
+		std::cout << "1: Oh yeah!\n"
+			<< "2: No, I don't wanna.\n"
+			<< "3: I'm not so sure I want one right now...\n";
+		switch (Input::character())
+		{
+		case '1':// option 1: Oh yeah!
+			std::cout << "Dwarf: \"Good, good now come with me.\"\n"
+				<< "(You stay the entire night at a tavern dinking beer)\n"
+				<< "(Then you go away)\n";
+			// heal like he drank a beer
+			player().heal(3.3 * player().getLvl());
+			answerAgain = false;
+			break;
+
+		case '2':// option 2: No, I don't wanna.
+			std::cout << "Dwarf: \"You don't? How can you survive without beer?\n"
+				<< "Now I need two or three more after what you said. Bye.\"\n";
+			answerAgain = false;
+			break;
+
+		case '3':// option 3: I'm not so sure I want one right now...
+			std::cout << "Dwarf: \"Come on join me, you won't regret it. Trust me.\"\n"
+				<< "(You have drank so many beers you forgot everything)\n";
+			// heal like he drank many beers
+			player().heal(Random::get(8, 38) * player().getLvl());
+			answerAgain = false;
+			break;
+
+		default:
+			printNotPossible();
+			answerAgain = true;
+			break;
+		}
+	} while (answerAgain);
 }

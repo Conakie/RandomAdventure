@@ -13,8 +13,11 @@ namespace Creatures
         public:
             void talk() override;
             void setName() override;
+            void resetStats() override;
             void setStats() override;
         private:
+            void dialogue();
+            int annoyLevel{ 0 };
         };
     }
 }

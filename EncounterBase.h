@@ -12,9 +12,9 @@ namespace Creatures
         class EncounterBase : public CreatureBase
         {
         public:
-            bool isGone         { false };
-            bool isUnderAttack  { false };
-            bool canTalk        { true };
+            bool m_isGone         { false };
+            bool m_isUnderAttack  { false };
+            bool m_canTalk        { true };
             EncounterType encounterType{ EncounterType::none };
         private:
         };

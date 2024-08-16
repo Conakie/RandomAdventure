@@ -246,9 +246,6 @@
     <ClCompile Include="Print Errors.cpp">
       <Filter>Source Files\Random files</Filter>
     </ClCompile>
-    <ClCompile Include="Stats.cpp">
-      <Filter>Source Files\Game\Stats</Filter>
-    </ClCompile>
     <ClCompile Include="Set Place.cpp">
       <Filter>Source Files\Game\Places</Filter>
     </ClCompile>
@@ -366,56 +363,62 @@
     <ClCompile Include="Commands.cpp">
       <Filter>Source Files\Random files</Filter>
     </ClCompile>
-    <ClCompile Include="Witch.cpp">
-      <Filter>Source Files\Tests</Filter>
-    </ClCompile>
     <ClCompile Include="DrunkGuy.cpp">
-      <Filter>Source Files\Tests</Filter>
+      <Filter>Source Files\Game\Stats\Encounters\Types</Filter>
     </ClCompile>
     <ClCompile Include="Priest.cpp">
-      <Filter>Source Files\Tests</Filter>
+      <Filter>Source Files\Game\Stats\Encounters\Types</Filter>
     </ClCompile>
     <ClCompile Include="TheBeer.cpp">
-      <Filter>Source Files\Tests</Filter>
+      <Filter>Source Files\Game\Stats\Encounters\Types</Filter>
     </ClCompile>
     <ClCompile Include="TheRock.cpp">
-      <Filter>Source Files\Tests</Filter>
+      <Filter>Source Files\Game\Stats\Encounters\Types</Filter>
     </ClCompile>
-    <ClCompile Include="StoneGolem.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SmallRat.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Rat.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GiantRat.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EnormousRat.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ColossalRat.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ColossalSpider.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="HobGoblin.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Orc.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Kockbold.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Witch.cpp">
+      <Filter>Source Files\Game\Stats\Encounters\Types</Filter>
     </ClCompile>
     <ClCompile Include="Cockblin.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Game\Stats\Encounters\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="ColossalRat.cpp">
+      <Filter>Source Files\Game\Stats\Encounters\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="ColossalSpider.cpp">
+      <Filter>Source Files\Game\Stats\Encounters\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="EnormousRat.cpp">
+      <Filter>Source Files\Game\Stats\Encounters\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="GiantRat.cpp">
+      <Filter>Source Files\Game\Stats\Encounters\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="HobGoblin.cpp">
+      <Filter>Source Files\Game\Stats\Encounters\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="Kockbold.cpp">
+      <Filter>Source Files\Game\Stats\Encounters\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="Orc.cpp">
+      <Filter>Source Files\Game\Stats\Encounters\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="Rat.cpp">
+      <Filter>Source Files\Game\Stats\Encounters\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="SmallRat.cpp">
+      <Filter>Source Files\Game\Stats\Encounters\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="StoneGolem.cpp">
+      <Filter>Source Files\Game\Stats\Encounters\Types</Filter>
     </ClCompile>
     <ClCompile Include="The104.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Game\Stats\Encounters\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="Stats.cpp">
+      <Filter>Source Files\Game\Stats\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Create Encounters.cpp">
+      <Filter>Source Files\Tests</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -676,6 +679,9 @@
     </ClInclude>
     <ClInclude Include="Zombie.h">
       <Filter>Header Files\Stats\Encounter\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Create Encounters.h">
+      <Filter>Header Files\Tests</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

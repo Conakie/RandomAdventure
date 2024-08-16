@@ -6,6 +6,7 @@
 #include "Encounter Stats.h"
 #include "Input.h"
 #include "Stats.h"
+#include "Encounterz.h"
 
 
 
@@ -124,4 +125,13 @@ void tuttiGliAnimali()
 	encounter().setIsUnderAttack(true);
 	encounter().setCanTalk(false);
 
+}
+
+
+void rats(Creatures::Encounter::Encounterz* rat)
+{
+	std::cout << "Nanre: \"You do not have the skill: Animal language\"\n"
+		<< "Go, fight and die with honour!\"\n";
+	rat->takeDamage(0);
+	std::cout << "Nanre: \"Look! He's now angry!\"\n";
 }

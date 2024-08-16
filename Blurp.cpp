@@ -94,3 +94,57 @@ void Creatures::Encounter::Blurp::setStats()
 	atk = maxAtk;
 	def = maxDef;
 }
+
+void Creatures::Encounter::Blurp::dialogue()
+{
+	bool answerAgain{ false };
+
+
+	if (Random::get(0, 99) > 69)
+    {
+
+        std::cout << "Blurp: \"Squish squash\nYour opinion is trash.\"\n";
+		m_isUnderAttack = true;
+
+    }
+    else
+    {
+
+		std::cout << "Blurp: \"Blurp blurp, squish, blurp squash?\"\n";
+		do
+		{
+			std::cout << "y: Yes, I'll do it.\n"
+				<< "n: No, I won't do it.\n";
+			switch (Input::character())
+			{
+			case 'y':// yes: Yes, I'll do it.
+
+				std::cout << "Blurp: \"Squish squash. Blurp!\"\n";
+				answerAgain = false;
+				m_isUnderAttack = true;
+
+				break;
+
+			case 'n':// no: No, I won't do it.
+
+				std::cout << "Blurp: \"Blurp blurp. Squish blurp squash.\"\n";
+				answerAgain = false;
+				m_isGone = true;
+
+				break;
+
+			default:
+
+				printNotPossible();
+				answerAgain = true;
+
+				break;
+			}
+
+		} while (answerAgain);
+    }
+
+
+	m_canTalk = false;
+	waitForAnyKey();
+}

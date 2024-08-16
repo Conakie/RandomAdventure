@@ -20,10 +20,11 @@ namespace Creatures
         {
         public:
             void talk() override;
-            void thinkAndAct() override;
             void setName() override;
             void setStats() override;
         private:
+            void dialogue();
+            void dialogueKillOrNot();
         };
     }
 }

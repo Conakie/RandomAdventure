@@ -295,8 +295,6 @@ void zombieRevenge()
 
 }
 
-
-
 void zombi()
 {
 
@@ -478,8 +476,6 @@ void zombi()
 
 }
 
-
-
 void zombiRevenge()
 {
 
@@ -580,6 +576,21 @@ void zombiRevenge()
 
 void Creatures::Encounter::Zombie::talk()
 {
+	if (m_canTalk && !(m_isUnderAttack))
+	{
+		dialogue();
+	}
+	else
+	{
+		if (m_isUnderAttack)
+		{
+			std::cout << "Kelmod: \"" << name << " refuses to talk after you attacked it.\"\n";
+		}
+		else
+		{
+			std::cout << "Kelmod: \"You have already talked to him.\n";
+		}
+	}
 }
 
 void Creatures::Encounter::Zombie::setName()
@@ -599,4 +610,265 @@ void Creatures::Encounter::Zombie::setStats()
 	hp = maxHp;
 	atk = maxAtk;
 	def = maxDef;
+}
+
+void Creatures::Encounter::Zombie::dialogue()
+{
+	bool answerAgain{ false };
+
+
+	std::cout << "Zombie: \"You are someone I know... Oh now I may know why. You killed me.\n";
+	do
+	{
+		std::cout << "1: Yes, I was the one and only!\n"
+			<< "2: Nope, I didn't kill ya.\n"
+			<< "3: I don't remember you...\n";
+		switch (Input::character())
+		{
+		case '1':// option 1: Yes, I was the one and only!
+			std::cout << "Zombie: \"Time for my revenge. Die.\"\n";
+			m_isUnderAttack = true;
+			answerAgain = false;
+			break;
+
+		case '2':// option 2: Nope, I didn't kill ya.
+			dialogueDidYaKillSkely();
+			answerAgain = false;
+			break;
+
+		case '3':// option 3: I don't remember you...
+			dialogueRememberMyName();
+			answerAgain = false;
+			break;
+
+		default:
+			printNotPossible();
+			answerAgain = true;
+			break;
+		}
+	} while (answerAgain);
+
+
+	m_canTalk = false;
+	waitForAnyKey();
+}
+
+void Creatures::Encounter::Zombie::dialogueDidYaKillSkely()
+{
+	bool answerAgain{ false };
+
+
+	std::cout << "Zombie: \"Then are you the one who killed my friend Skeletron?\"\n";
+	do
+	{
+		std::cout << "1: Yes, I killed her! Muahahaha!\n"
+			<< "2: Nope, I didn't.\n"
+			<< "3: I don't remember.\n";
+		switch (Input::character())
+		{
+		case '1':// option 1: Yes, I killed her! Muahahaha!
+			std::cout << "Zombie: \"What have you done? He was a good skeleton.\n You'll "
+						<< "pay with your own life for what you've done.\"\n";
+			m_isUnderAttack = true;
+			answerAgain = false;
+			break;
+
+		case '2':// option 2: Nope, I didn't.
+			dialogueDoyaKnowWhoKilledSkely();
+			answerAgain = false;
+			break;
+
+		case '3':// option 3: I don't remember.
+			std::cout << "Zombie: \"How is it possible that you don't know if you killed "
+						<< "him or not?\nAnyway after you remembered answer me again.\"\n";
+			answerAgain = true;
+			break;
+
+		default:
+			printNotPossible();
+			answerAgain = true;
+			break;
+		}
+	} while (answerAgain);
+
+	m_canTalk = false;
+	waitForAnyKey();
+}
+
+void Creatures::Encounter::Zombie::dialogueDoyaKnowWhoKilledSkely()
+{
+	bool answerAgain{ false };
+
+
+	std::cout << "Zombie: \"Strange. You seem so familiar but I still don't "
+		<< "remember you.\nDo you know who killed my friend skeletron?\"\n";
+	do
+	{
+		std::cout << "1: Yes, I know.\n"
+			<< "2: No, I don't know.\n"
+			<< "3: I don't remember.\n";
+		switch (Input::character())
+		{
+		case '1':// option 1: Yes, I know.
+			dialogueRevenge();
+			answerAgain = false;
+			break;
+
+		case '2':// option 2: No, I don't know.
+			std::cout << "Zombie: \"Oh. Sorry to make these kind of questions but "
+				<< "I would like to take revenge.\nSomone killed her and I couldn'"
+				<< "t help her.\nI'll leave you there. Bye\"\n";
+			m_isGone = true;
+			answerAgain = false;
+			break;
+
+		case '3':// option 3: I don't remember.
+			std::cout << "Zombie: \"Are you not sure about that? I'll leave you "
+				<< "some time to think and then answer me again.\nSo have you "
+				<< "remembered who did that?\"\n";
+			answerAgain = true;
+			break;
+
+		default:
+			printNotPossible();
+			answerAgain = true;
+			break;
+		}
+	} while (answerAgain);
+}
+
+void Creatures::Encounter::Zombie::dialogueRememberMyName()
+{
+	bool answerAgain{ false };
+
+
+	std::cout << "Zombie: \"You don't remember me? I'm Yugei Sansae.\n"
+		<< "Does that says something to you?\"\n";
+	name = "Yugei Sansae";
+	do
+	{
+		std::cout << "1: Yeah, I remember something...\n"
+			<< "2: Nope, doesn't ring a bell.\n"
+			<< "3: I don't remember. Let me think...\n";
+		switch (Input::character())
+		{
+		case '1':// option 1: Yeah, I remember something...
+			std::cout << "Zombie: \"Oh finally it's been a long time. Now time for my "
+				<< "revenge.\nDiee!\"\n";
+			m_isUnderAttack = true;
+			answerAgain = false;
+			break;
+
+		case '2':// option 2: Nope, doesn't ring a bell.
+			std::cout << "Zombie: \"Then you aren't my enemy. For now. Don't see you again.\"\n";
+			m_isGone = true;
+			answerAgain = false;
+			break;
+
+		case '3':// option 3: I don't remember. Let me think...
+			std::cout << "Zombie: \"You're still thinking? You never changed. So I can "
+				<< "beat you now. DIEE!\"\n";
+			m_isUnderAttack = true;
+			answerAgain = false;
+			break;
+
+		default:
+			printNotPossible();
+			answerAgain = true;
+			break;
+		}
+	} while (answerAgain);
+}
+
+void Creatures::Encounter::Zombie::dialogueRevenge()
+{
+	bool answerAgain{ false };
+	bool alreadyAsked{ false };
+	bool repeat{ true };
+
+
+	std::cout << "Zombie: \"Give me his name. Maybe write that on a piece "
+		<< "of paper.\nAnd maybe add a description of him or her.\n"
+		<< "So will you give me the name and description?\"\n";
+	do
+	{
+		if (alreadyAsked)
+		{
+			do
+			{
+				std::cout << "1: "
+					<< "2: "
+					<< "3: ";
+				switch (Input::character())
+				{
+				case '1':// option 1: 
+					std::cout << "Zombie: \"Good. Now I'll go. Bye.\"\n(The zombie goes away)\n";
+					m_isGone = true;
+					answerAgain = false;
+					repeat = false;
+					break;
+
+				case '2':// option 2: 
+					std::cout << "Zombie: \"Are you really sure you don't want to give that to me?\n"
+						<< "Well then prepare to die.\"\n";
+					m_isUnderAttack = true;
+					answerAgain = false;
+					repeat = false;
+					break;
+
+				case '3':// option 3: 
+					std::cout << "Zombie: \"How much time do you need to decide to say yes? An hour?\n"
+						<< "You know what? You stressed me. Die.\"\n";
+					m_isUnderAttack = true;
+					answerAgain = false;
+					repeat = false;
+					break;
+
+				default:
+					printNotPossible();
+					answerAgain = true;
+					break;
+				}
+			} while (answerAgain);
+		}
+		else
+		{
+			do
+			{
+				std::cout << "1: Yes, here it is.\n"
+					<< "2: Mmm, I don't want to.\n"
+					<< "3: Nope, I won't.\n";
+				switch (Input::character())
+				{
+				case '1':// option 1: Yes, here it is.
+					std::cout << "Zombie: \"Thank you. You're a really gentle guy.\"\n";
+					answerAgain = false;
+					repeat = false;
+					break;
+
+				case '2':// option 2: Mmm, I don't want to.
+					std::cout << "Zombie: \"You shouldn't say that. You may not survive this.\nSo will you"
+						<< " give me the name and description?\"\n";
+					answerAgain = false;
+					alreadyAsked = true;
+					repeat = true;
+					break;
+
+				case '3':// option 3: Nope, I won't.
+					std::cout << "Zombie: \"Don't leave me take that with violence. I hate doing "
+						<< "things this way.\nSo you will now give it to me. Right?\"\n";
+					answerAgain = false;
+					alreadyAsked = true;
+					repeat = true;
+					break;
+
+				default:
+					printNotPossible();
+					answerAgain = true;
+					break;
+				}
+			} while (answerAgain);
+			answerAgain = true;
+		}
+	} while (answerAgain);
 }

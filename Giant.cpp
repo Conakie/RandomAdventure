@@ -19,6 +19,21 @@ void giant()
 
 void Creatures::Encounter::Giant::talk()
 {
+    if (m_canTalk && !(m_isUnderAttack))
+    {
+        dialogue();
+    }
+    else
+    {
+        if (m_isUnderAttack)
+        {
+            std::cout << "Kelmod: \"" << name << " refuses to talk after you attacked it.\"\n";
+        }
+        else
+        {
+            std::cout << "Kelmod: \"You have already talked to him.\n";
+        }
+    }
 }
 
 void Creatures::Encounter::Giant::setName()
@@ -38,4 +53,24 @@ void Creatures::Encounter::Giant::setStats()
     hp = maxHp;
     atk = maxAtk;
     def = maxDef;
+}
+
+void Creatures::Encounter::Giant::dialogue()
+{
+    std::cout << name << ": \">++++++++[<+++++++++>-]<.\n"
+        << "> ++++[<++++++ + >-]<+.\n"
+        << "++++++ + ..\n"
+        << "++ + .\n"
+        << ">> ++++++[<++++++ + >-]<++.\n"
+        << "------------.\n"
+        << ">++++++[<++++++++ + >-]<+.\n"
+        << "<.\n"
+        << "++ + .\n"
+        << "------.\n"
+        << "--------.\n"
+        << ">> > ++++[<++++++++>-] < +.\"\n";
+
+    m_isGone = true;
+    m_canTalk = false;
+    waitForAnyKey();
 }

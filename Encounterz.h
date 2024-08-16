@@ -32,6 +32,7 @@ namespace Creatures
             virtual void thinkAndAct();
             virtual void printStats() const;
             bool isAlive() const { return (hp >= 0.01); }
+            bool isGone() const { return m_isGone; }
             virtual void resetStats();
 
             void setPlayer(Creatures::Player::Playerz* player);
