@@ -60,7 +60,6 @@ void attackEncounter(Encounters& encounter)
 
 void printActionsLeft(int actionsLeft)
 {
-
     if (actionsLeft >= 1)
     {
 
