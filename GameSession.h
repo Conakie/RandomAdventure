@@ -27,11 +27,16 @@ private:
 
     Creatures::Player::Playerz* setAndGetPlayer();
 
+    void addXp(int value);
+    void lvlUpWorldLvl();
 
     Creatures::Player::Playerz* m_player{ nullptr };
     std::vector<Creatures::Encounter::Encounterz*> m_encounters{ };
+    
 
-    int m_worldLevel{ 0 };
+    int m_worldLevel{ 1 };
+    int m_worldXp{ 0 };
+    int m_worldXpNecessaryForLvlUp{ 22 };
     short m_actionsCost{ 0 };
 };
 

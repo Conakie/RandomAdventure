@@ -12,6 +12,7 @@ namespace Creatures
         class Mage final : public Playerz
         {
         public:
+            void heal(double healing) override;
             // attack a single encounter with a spell
             void attack(Encounters& enc) override;
             // attack a single encounter with a spell

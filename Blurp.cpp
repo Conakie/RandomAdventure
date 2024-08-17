@@ -74,6 +74,7 @@ void blurp()
 
 void Creatures::Encounter::Blurp::talk()
 {
+	dialogue();
 }
 
 void Creatures::Encounter::Blurp::setName()

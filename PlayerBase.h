@@ -15,8 +15,8 @@ namespace Creatures
         class PlayerBase : public Creatures::CreatureBase
         {
         public:
-            int stamina{ 0 };
-            int weight{ 0 };
+            int stamina         { 0 };
+            int weight          { 0 };
             PlayerRole role     { PlayerRole::none };
             AbilityScores stats { };
             Inventory inventory { };

@@ -23,13 +23,31 @@ Places printMainPlace(bool canBeDecremented)
     {
 
         // choose a random place
-        place = static_cast<Places>(Random::get(0, 3));
+        switch (Random::get(0, 3))
+        {
+        case 0:
+            place = Places::village;
+            break;
+        case 1:
+            place = Places::dungeon;
+            break;
+        case 2:
+            place = Places::cave;
+            break;
+        case 3:
+            place = Places::forest;
+            break;
+        default:
+            PrintError::wrongRandomNumber();
+            place = Places::forest;
+            break;
+        }
         // choose in how many rooms the player will go through before changing the main place
         changePlaceIn = Random::get(2, 10);
 
 
         // print where the player is
-        std::cout << "You arrived in a ";
+        std::cout << "\n\nYou arrived in a ";
         switch (place)
         {
         case Places::village:// village
@@ -64,7 +82,7 @@ Places printMainPlace(bool canBeDecremented)
         }
 
         std::cout << "\n";
-        printRoom(Places::village);
+        printRoom(place);
 
     }
     else if (canBeDecremented)
@@ -72,7 +90,7 @@ Places printMainPlace(bool canBeDecremented)
 
         // print the room the player is
         --changePlaceIn;
-        printRoom(Places::village);
+        printRoom(place);
 
     }
     else

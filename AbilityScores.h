@@ -16,6 +16,12 @@ namespace Creatures
             void reset();
             void setStats();
             void print() const;
+            double getStrengthBonus() const;
+            int getDexterityBonus() const;
+            double getConstitutionBonus() const;
+            double getIntelligenceBonus() const;
+            double getWisdomBonus() const;
+            double getCharismaBonus() const;
 
             friend std::ostream& operator<< (std::ostream out, AbilityScores& stats);
         private:

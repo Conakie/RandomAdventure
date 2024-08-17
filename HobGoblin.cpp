@@ -1,5 +1,9 @@
 
+#include <iostream>
 #include "HobGoblin.h"
+#include "Everywhere Used Func.h"
+
+
 
 void Creatures::Encounter::HobGoblin::talk()
 {
@@ -41,4 +45,8 @@ void Creatures::Encounter::HobGoblin::setStats()
 
 void Creatures::Encounter::HobGoblin::dialogue()
 {
+	std::cout << "I forgot about this. Not writing it now.\n"
+		<< "Fight 'till you drop!\n";
+	m_isUnderAttack = true;
+	waitForAnyKey();
 }

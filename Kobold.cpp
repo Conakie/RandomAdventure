@@ -69,6 +69,21 @@ void kobold()
 
 void Creatures::Encounter::Kobold::talk()
 {
+	if (m_canTalk && !(m_isUnderAttack))
+	{
+		dialogue();
+	}
+	else
+	{
+		if (m_isUnderAttack)
+		{
+			std::cout << "Kelmod: \"" << name << " refuses to talk after you attacked it.\"\n";
+		}
+		else
+		{
+			std::cout << "Kelmod: \"You have already talked to him.\n";
+		}
+	}
 }
 
 void Creatures::Encounter::Kobold::setName()
@@ -88,4 +103,12 @@ void Creatures::Encounter::Kobold::setStats()
 	hp = maxHp;
 	atk = maxAtk;
 	def = maxDef;
+}
+
+void Creatures::Encounter::Kobold::dialogue()
+{
+	std::cout << "Nanre: \"Sometimes a kobold appears.\n"
+		<< "And do you know what you've gotta do.\n"
+		<< "Go and fight him!\"\n";
+	m_isUnderAttack = true;
 }

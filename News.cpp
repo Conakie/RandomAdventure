@@ -14,27 +14,23 @@ void newz()
     bool answerAgain{ false };
 
 
-    std::cout << "Necoto: \"The current version is 0.0.4: the Random Update.\n"
-        << "To read all the changes use this link:\n"
-        << "https://docs.google.com/document/d/1HGnkRQi1B1nbXYYJLaOiHeqwSvJIo_RteeR7n2gAaWE/edit?usp=sharing"
-        << '\n';
+    std::cout << "Necoto: \"The current version is 0.0.5: the Stats Update.\n"
+        << "And this is also the first public version of Random Adventure.\n"
+        << "Unfortunately there are many bugs right now, we're sorry about that.\"\n";
     waitForAnyKey();
-    std::cout << "Necoto: \"Do you want to know why blurp oneshotted you?\n"
-        << "Check the wiki at this link:\n"
-        << "https://docs.google.com/spreadsheets/d/16ghCx4eWSLNN9NrB-XN0d859A6BURuI9YRh21GXaoko/edit?usp=sharing"
-        << '\n';
+    std::cout << "Necoto: \"The inventory doesn't work as expected.\n"
+        << "When Nanre tried to make it work he received 1952 errors so we had to cancel the idea."
+        << "\nNext update should fix everything, or so Nanre says.\"\n";
     waitForAnyKey();
     std::cout << "Necoto: \"Nanre has something to say. I'll leave the word to him.\"\n"
-        << "Nanre: \"Thanks. Do you like this game? Do you want to suggest anything?\n"
-        << "Send me a message! I'll answer after as soon as possible!\"\n";
+        << "Nanre: \"Thanks. I hope you liked the game so far. If you want to add something,\n"
+        << "let me know. I am trying to add everything as fast as possible.\"\n";
     waitForAnyKey();
-    std::cout << "Nanre: \"I am looking for help. Want to join me on this project?\n"
-        << "I don't need only developers, but also artists, writers and everything you can "
-        << "think of.\"\n";
+    std::cout << "Nanre: \"Not that it worked well this time. But I am still trying to meet\n"
+        << "my goals every update.\n"
+        << "Unfortunately this time didn't work as expected.\n";
     waitForAnyKey();
-    std::cout << "Nanre: \"Maybe someone will talk to me now.\n"
-        << "Well, seeing you want to play so much, good luck on your adventure!\"\n"
-        << "Necoto: \"We don't have anything else to say about news and announcements,\n"
-        << "So anything else you wanna know?";
-    waitForAnyKey();
+    std::cout << "Nanre: \"Anyway, I'll be rewriting the entire game in another project.\n"
+        << "This will save me many future problems.\"\n"
+        << "Necoto: \"Thanks for being here. Now, anything else you wanna do or know?\"\n";
 }

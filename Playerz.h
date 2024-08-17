@@ -46,7 +46,7 @@ namespace Creatures
 			Playerz() = default;
 
 			// increase the hp of healing or to max hp
-			void heal(double healing);
+			void virtual heal(double healing);
 
 			// attack one encounter
 			void virtual attack(Encounters& enc);

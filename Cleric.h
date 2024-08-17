@@ -12,6 +12,7 @@ namespace Creatures
         class Cleric final : public Playerz
         {
         public:
+            void heal(double healing) override;
             // attack a single encounter with a spell
             // or heal an ally/himself
             void attack(Encounters& enc) override;

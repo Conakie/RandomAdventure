@@ -49,14 +49,13 @@ void intro()
                 << "fight('a'): attack everyone and everything;\"\n";
             waitForAnyKey();
             std::cout << "Necoto: \"When you're playing, and you want to check what you can do"
-                << " use 'c'.\n"
+                << " use 'z'.\n"
                 << "When an encounter goes away or is defeated he/she/it will drop something.\n"
                 << "You'll be able to use these objects with 'i'.\"\n";
             waitForAnyKey();
             std::cout << "Necoto: \"Almost everything in the game is generated randomly.\n"
-                << "Except for your damage and the healing you receive.\n"
+                << "Except for your main stats and the main stats of encounters.\n"
                 << "Now you are ready to play!\"\n";
-            waitForAnyKey();
             answerAgain = true;
             break;
         }
@@ -84,26 +83,22 @@ int selectGameMode()
             std::cout << "Kelmod: \"Hello, I am Kelmod and I'm here to guide you.\n"
                 << "Wanna know the actions you can do?\"\n"
                 << "y: Yes, I want to see the actions I can do.\n"
-                << "n: No, I don't want to";
-            Input::integer();
+                << "n: No, I don't want to.\n";
+            Input::character();
             std::cout << "Kelmod: \"I don't care about your opinion.\n"
                 << "Here is the list.\"\n";
             actionsList();
             waitForAnyKey();
             std::cout << "Kelmod: \"I would ask the same about your stats "
                 << "but I'm not paid enough.\n"
-                << "You have 10 hp and 4 atk. Now go and destroy everyone!\"\n";
+                << "Look at them with 'q'. Now go and destroy everyone!\"\n";
             waitForAnyKey();
             return 1;
 
         case 2:// italian
-            std::cout << "Lenre: \"Hey, sei pronto a giocare?\n"
-                << "Io sono Lenre, il narratore per l'italiano,\n"
-                << "e a differenza di Kelmod io faccio il mio lavoro!\"\n";
-            waitForAnyKey();
-            std::cout << "Lenre: \"Il tuo personaggio avrà 10 hp e 4 atk.\n"
-                << "Buona fortuna, avventuriero.\n"
-                << "Avrai il mio supporto in questa missione.\n\"";
+            std::cout << "Lenre: \"Mi dispiace dirlo ma l'italiano non e' piu' supportato.\n"
+                << "Pero' ci sono ancora alcuni file in italiano che nessuno vuole rimuovere.\n"
+                << "Se vuoi, apri la repo e leggili.\"\n";
             waitForAnyKey();
             return 2;
 
@@ -137,7 +132,7 @@ bool playAgain(bool isKelmodTheNarrator)
     else
     {
         std::cout << "Lenre: \"Vuoi riprovare a non morire?\"\n"
-            << "y: Questa volta non moriro'\n"
+            << "y: Questa volta non moriro'.\n"
             << "n: Non ne ho voglia. Domani.\n";
     }
 
@@ -173,43 +168,47 @@ void outro()
     do
     {
         std::cout << "Elesya: \"Write something to close the game.\"\n";
-        switch (Input::character())
-        {
-        case 'K':// Kelomd
-            encounter().setUid(EncounterUid::kelmod);
-            talkToEncounters();
-            answerAgain = true;
-            break;
+        Input::string();
+        //switch (Input::character())
+        //{
+        //case 'K':// Kelomd
+        //    encounter().setUid(EncounterUid::kelmod);
+        //    talkToEncounters();
+        //    answerAgain = true;
+        //    break;
 
-        case 'L':// Lenre
-            encounter().setUid(EncounterUid::lenre);
-            talkToEncounters();
-            answerAgain = true;
-            break;
+        //case 'L':// Lenre
+        //    encounter().setUid(EncounterUid::lenre);
+        //    talkToEncounters();
+        //    answerAgain = true;
+        //    break;
 
-        case 'E':// Elesya
-            encounter().setUid(EncounterUid::elesya);
-            talkToEncounters();
-            answerAgain = true;
-            break;
+        //case 'E':// Elesya
+        //    encounter().setUid(EncounterUid::elesya);
+        //    talkToEncounters();
+        //    answerAgain = true;
+        //    break;
 
-        case 'N':// Necoto
-            encounter().setUid(EncounterUid::necoto);
-            talkToEncounters();
-            answerAgain = true;
-            break;
+        //case 'N':// Necoto
+        //    encounter().setUid(EncounterUid::necoto);
+        //    talkToEncounters();
+        //    answerAgain = true;
+        //    break;
 
-        case 'C':// Kyo
-            encounter().setUid(EncounterUid::kyo);
-            talkToEncounters();
-            answerAgain = true;
-            break;
+        //case 'C':// Kyo
+        //    encounter().setUid(EncounterUid::kyo);
+        //    talkToEncounters();
+        //    answerAgain = true;
+        //    break;
 
-        default:
-            printNotPossible();
-            answerAgain = false;
-            break;
-        }
+        //default:
+        //    std::cout << "Necoto: \"Goodbye~ Come back again, I'll be waiting for you.\"\n";
+        //    delay(2);
+        //    answerAgain = false;
+        //    break;
+        //}
+        std::cout << "Necoto: \"Goodbye~ Come back again, I'll be waiting for you.\"\n";
+        delay(2);
     } while (answerAgain);
 
 }

@@ -10,6 +10,15 @@ namespace Creatures
 {
     namespace Player
     {
+        void Mage::heal(double healing)
+        {
+            Playerz::heal(healing);
+            if (mana + 10 < maxMana)
+                mana += 10;
+            else
+                mana = maxMana;
+        }
+
         void Mage::attack(Encounters& enc)
         {
             bool isACritHit{ false };

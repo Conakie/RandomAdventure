@@ -331,11 +331,11 @@ void Creatures::Encounter::Goblin::dialogue()
 		
 	do
 	{
-		std::cout << "y: Yes.\n"
-			<< "n: No, please no.\n"
-			<< "s: (Intense stare)\n"
-			<< "a: Die, goblin!\n"
-			<< "t: Let's talk!\n";
+		std::cout << "1: Yes.\n"
+			<< "2: No, please no.\n"
+			<< "3: (Intense stare)\n"
+			<< "4: Die, goblin!\n"
+			<< "5: Let's talk!\n";
 		switch (Input::character())
 		{
 		case '1':// option y: Yes.

@@ -50,6 +50,96 @@ void Creatures::Player::AbilityScores::print() const
 		<< "Charisma: " << charisma << '\n';
 }
 
+double Creatures::Player::AbilityScores::getStrengthBonus() const
+{
+	if (strength <= 5 && strength >= 0)
+		return -0.5;
+	else if (strength <= 10 && strength >= 5)
+		return 1;
+	else if (strength <= 15 && strength >= 10)
+		return 1.5;
+	else if (strength <= 20 && strength >= 15)
+		return 2;
+	else
+		return 0;
+	return 0;
+}
+
+int Creatures::Player::AbilityScores::getDexterityBonus() const
+{
+	if (dexterity <= 5 && dexterity >= 0)
+		return -1;
+	else if (dexterity <= 10 && dexterity >= 5)
+		return 1;
+	else if (dexterity <= 15 && dexterity >= 10)
+		return 1;
+	else if (dexterity <= 20 && dexterity >= 15)
+		return 2;
+	else
+		return 0;
+	return 0;
+}
+
+double Creatures::Player::AbilityScores::getConstitutionBonus() const
+{
+	if (constitution <= 5 && constitution >= 0)
+		return -1;
+	else if (constitution <= 10 && constitution >= 5)
+		return 1;
+	else if (constitution <= 15 && constitution >= 10)
+		return 2;
+	else if (constitution <= 20 && constitution >= 15)
+		return 3;
+	else
+		return 0;
+	return 0;
+}
+
+double Creatures::Player::AbilityScores::getIntelligenceBonus() const
+{
+	if (intelligence <= 5 && intelligence >= 0)
+		return -0.5;
+	else if (intelligence <= 10 && intelligence >= 5)
+		return 1;
+	else if (intelligence <= 15 && intelligence >= 10)
+		return 1.5;
+	else if (intelligence <= 20 && intelligence >= 15)
+		return 2;
+	else
+		return 0;
+	return 0;
+}
+
+double Creatures::Player::AbilityScores::getWisdomBonus() const
+{
+	if (wisdom <= 5 && wisdom >= 0)
+		return -0.5;
+	else if (wisdom <= 10 && wisdom >= 5)
+		return 1;
+	else if (wisdom <= 15 && wisdom >= 10)
+		return 1.5;
+	else if (wisdom <= 20 && wisdom >= 15)
+		return 2;
+	else
+		return 0;
+	return 0;
+}
+
+double Creatures::Player::AbilityScores::getCharismaBonus() const
+{
+	if (charisma <= 5 && charisma >= 0)
+		return -0.5;
+	else if (charisma <= 10 && charisma >= 5)
+		return 1;
+	else if (charisma <= 15 && charisma >= 10)
+		return 1.5;
+	else if (charisma <= 20 && charisma >= 15)
+		return 2;
+	else
+		return 0;
+	return 0;
+}
+
 void Creatures::Player::AbilityScores::rollStats(short arr[k_statsAmount]) const
 {
 	for (int i = 0; i < k_statsAmount; ++i)

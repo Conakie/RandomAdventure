@@ -1,6 +1,7 @@
 
 #include <string>
 #include <string_view>
+#include "Stats.h"
 #include "Input.h"
 #include "GameSession.h"
 #include "Everywhere Used Func.h"
@@ -32,6 +33,8 @@ void GameSession::startSession()
 
     m_encounters[0] = nullptr;
     m_worldLevel = 1;
+    m_worldXp = 0;
+    m_worldXpNecessaryForLvlUp = 22;
     m_actionsCost = 0;
 }
 
@@ -40,9 +43,10 @@ void GameSession::play()
     if (!m_player)
         throw ("No player created");
 
-    while (m_player->isAlive())
+    while (m_player->getHealth() > 0.00)
     {
         encountersTurn();
+        redrawConsole();
         playerTurn();
     }
     std::cout << "UwU\n";
@@ -87,7 +91,7 @@ void GameSession::createPlayer()
         << "How do you wanna call yourself?\"\n";
     m_player->setName(Input::string());
     m_player->resetAllStats();
-    //m_player->setStats();
+    m_player->setStats();
 }
 
 bool GameSession::isPlayerAlive()
@@ -151,18 +155,7 @@ void GameSession::playerTurn()
             break;
 
         case PlayerActions::continue_:
-            std::cout << "Kelmod: \"here is what you can have with the premium account:\n"
-                << "You'll gain access to commands: kill or create anything you want easily;\n"
-                << "More colors! The game never has enough color in it;\n"
-                << "Single color mode: you don't like too many colors? Problem solved.\n"
-                << "Want to see the map? With the premium you can have it.\n"
-                << "Want to save the game for later? With the premium you can!\n"
-                << "Tired of always having to press buttons? automode is here to save the day!"
-                << "\"\n";
-            waitForAnyKey();
-            std::cout << "Kelmod: \"Interested? It's also pretty cheap.\n"
-                << "Just 1 cota per month. So, what do you think?\n"
-                << "If you want to buy it, press '0'\"\n";
+            
             break;
 
         case PlayerActions::skip:
@@ -209,6 +202,8 @@ void GameSession::playerTurn()
             std::cout << "Write the amount you want to use:";
             quantity = Input::integer();
 
+            // set the targets of possible effects
+            //m_player->setInventory().setUtilities(m_player, m_encounters[0]);
             // use the item
             // if @useItem fails, notify the player otherwise let
             if ((m_player->setInventory().useItem(item, quantity)))
@@ -218,27 +213,16 @@ void GameSession::playerTurn()
             break;
         }
         case PlayerActions::useCommands:
-            std::cout << "Kelmod: \"Commands are a premium feature.\n"
-                << "It seems you don't have a premium account...\n"
-                << "Do you want to see the benefits?\"\n"
-                << "(Press 'w' to see the details)\n";
+            
             break;
 
         case PlayerActions::none:
-            std::cout << "Nanre: \"You chose to buy the premium account...\n"
-                << "Collecting information...\"\n";
-            delay(3);
-            std::cout << "Nanre: \"We gathered all the info needed.\n"
-                << "From now on we will take 1$ per month starting from now.\"\n";
-            delay(5);
-            std::cout << "Nanre: \"I'm joking. There's no premium account here.\n"
-                << "It requires too much work for me to maintain two different versions.\n"
-                << "See ya around.\"\n";
+            
             break;
 
         default:
             std::cout << "Necoto: \"How can you be here? This is the default case...\n"
-                << "Please, report this to Nanre. His the one taking care of bugs.\n"
+                << "Please, report this to Nanre. He is the one taking care of bugs.\n"
                 << "If you can, please, add a screenshot. It helps a lot.\"\n";
             break;
         }
@@ -261,16 +245,20 @@ void GameSession::encountersTurn()
         }
         else // the encounter is gone or dead
         {
+            addXp(m_encounters[0]->getXp());
+            m_player->increaseXpAndCheckForLvlUp(m_encounters[0]->getXp());
             delete m_encounters[0];
-            m_encounters[0] = createEncounter(getEncounterTypePerPlace(printMainPlace(false)));
+            m_encounters[0] = createEncounter(getEncounterTypePerPlace(printMainPlace(false)), m_worldLevel);
             m_encounters[0]->setPlayer(m_player);
+            printMainPlace(true);
         }
     }
     else
     {
         delete m_encounters[0];
-        m_encounters[0] = createEncounter(getEncounterTypePerPlace(printMainPlace(false)));
+        m_encounters[0] = createEncounter(getEncounterTypePerPlace(printMainPlace(false)), m_worldLevel);
         m_encounters[0]->setPlayer(m_player);
+        
     }
 }
 
@@ -323,4 +311,26 @@ Creatures::Player::Playerz* GameSession::setAndGetPlayer()
     } while (answerAgain);
 
     return nullptr;
+}
+
+void GameSession::addXp(int value)
+{
+    m_worldXp += value;
+    lvlUpWorldLvl();
+}
+
+void GameSession::lvlUpWorldLvl()
+{
+    if (m_worldXp >= m_worldXpNecessaryForLvlUp)
+    {
+        ++m_worldLevel;
+        m_worldXp -= m_worldXpNecessaryForLvlUp;
+        m_worldXpNecessaryForLvlUp = m_worldXpNecessaryForLvlUp + ((m_worldXpNecessaryForLvlUp * 50) / 100);
+        std::cout << "Kelmod: \"World level increased!\n"
+            << "From now on, all new encounters are going to be stronger.\"\n";
+    }
+    else
+    {
+
+    }
 }

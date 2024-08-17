@@ -418,7 +418,7 @@
       <Filter>Source Files\Game\Stats\Player</Filter>
     </ClCompile>
     <ClCompile Include="Create Encounters.cpp">
-      <Filter>Source Files\Tests</Filter>
+      <Filter>Source Files\Game\Game - English</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -681,7 +681,7 @@
       <Filter>Header Files\Stats\Encounter\Types</Filter>
     </ClInclude>
     <ClInclude Include="Create Encounters.h">
-      <Filter>Header Files\Tests</Filter>
+      <Filter>Header Files\Ing</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

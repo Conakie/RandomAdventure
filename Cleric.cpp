@@ -192,6 +192,15 @@ namespace Creatures
 {
 	namespace Player
 	{
+		void Cleric::heal(double healing)
+		{
+			Playerz::heal(healing);
+			if (spiritualEnergy + 10 < maxSpiritualEnergy)
+				spiritualEnergy += 10;
+			else
+				spiritualEnergy = maxSpiritualEnergy;
+		}
+
 		void Cleric::attack(Encounters& enc)
 		{
 			bool answerAgain{ false };

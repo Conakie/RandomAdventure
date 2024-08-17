@@ -16,7 +16,6 @@
 int main()
 {
     setup();
-    gameEn();
     EncounterUid endDialogue{ EncounterUid::none };
     intro();
 //+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -34,16 +33,19 @@ int main()
         endDialogue = EncounterUid::kelmod;
         break;
     case 2:
-        do
+        std::cout << "Lenre: \"Sorry but the italian version is not supported anymore\n"
+            << "One day it shall be back but for now it's not available.\"\n";
+        /*do
         {
             gameIt();
-        } while (playAgain(false));
+        } while (playAgain(false));*/
         endDialogue = EncounterUid::lenre;
         break;
     case 3:
-        endDialogue = EncounterUid::none;
+        endDialogue = EncounterUid::necoto;
         break;
     default:
+        endDialogue = EncounterUid::none;
         break;
     }
 //+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -53,46 +55,33 @@ int main()
         std::cout << "Elesya: \"Nanre said to delete him. Go on, do it!\"\n";
         break;
     case EncounterUid::kelmod:
-        std::cout << "Kelmod: \"Hey Elesya, how do you feel?\"\n"
-            << "Elesya: \"Shut up kelmod. Say that again and you won't go back home alive.\"\n"
-            << "Kelmod: \"I won and you lost!\"\n";
+        std::cout << "Kelmod: \"See? It wasn't even a good game.\n"
+            << "And Nanre is even planning to rewrite it from scratch.\n"
+            << "I surely won't help him, my job is here as a narrator, not a dev.\"\n";
         waitForAnyKey();
-        std::cout << "(You see Kelmod running away as fast as possible from Elesya.\n"
-            << "She is following him with a greatsword.)\n"
-            << "Kelmod: \"Elesya, please, I have my entire life in front of me.\"\n";
+        std::cout << "Elesya: \"You know that without him we wouldn't be here?\n"
+            << "And you were here from the 0.0.2. I'm disappointed.\"\n"
+            << "Kelmod: \"\nYeah, I don't care.\"\n";
         waitForAnyKey();
-        std::cout << "(Elesya stops following Kelmod)\n"
-            << "Elesya: \"I'm going to wait until the player is closing the game.\n"
-            << "After he does everything he has to, you're dead.\n"
-            << "Understood?\"\n";
+        std::cout << "Kelmod: \"Well, I'm going to have that AI do some drawings.\n"
+            << "It's interesting seeing her work.\"\n"
+            << "Elesya: \"You know that half of the workers here are AI?\"\n";
         waitForAnyKey();
-        std::cout << "Kelmod: \"Yes, ma'am.\n"
-            << "Hey, player, will you play Nanre's next game?\n"
-            << "Wait, why not?\"\n";
-        waitForAnyKey();
-        std::cout << "Nanre: \"You know why? Because I never told that I'll release it soon.\"\n"
-            << "Kelmod: \"Wait, Nanre, can you do something to Elesya?\"\n"
-            << "Nanre: \"Let's see... Mmmmm... Nope, good luck!\"\n";
-        waitForAnyKey();
-        std::cout << "Kelmod: \"Goodbye player. If I won't survive this, don't leave my place "
-            << "her!\"\n";
-        waitForAnyKey();
+        std::cout << "Kelmod: \"Yes, and I don't care.\"\n"
+            << "Elesya: \"Then come here, taste the wrath of The slayer of planets!\"\n";
         outro();
         break;
 
     case EncounterUid::lenre:
-        std::cout << "Lenre: \"L'italiano non e' ancora supportato.\n"
-            << "Nanre non vuole fare il suo lavoro, tanto vale che si spari.\"\n"
-            << "Nanre: \"T'ho sentito. Vieni qua ora.\"\n";
+        std::cout << "Lenre: \"Non c'e' ancora l'italiano. Chissa' quando tornera'\n"
+            << "Secondo Nanre non ci sara' per un bel po' di tempo.\n"
+            << "Quindi, che ci faccio io qua? Non servo piu'.\"\n";
         waitForAnyKey();
-        std::cout << "Lenre: \"Scusa, scusa. Non mi licenzierai vero?\"\n"
-            << "Nanre: \"Sai che non gestisco io queste cose vero?\n"
-            << "Fa tutto Necoto, quindi chiedi a lei.\"\n"
-            << "Lenre: \"Quindi posso darti tutto il fastidio che voglio?\"\n";
+        std::cout << "Lenre: \"Oh be', andiamo a lavorare su Unreal Engine.\n"
+            << "In qualche modo bisogna produrre un altro gioco.\n"
+            << "Secondo Nanre ci vogliono ancora 2 anni prima di avere qualcosa.\"\n";
         waitForAnyKey();
-        std::cout << "Nanre: \"Non potro' licenziarti ma posso fare molto altro. Ricordalo.\"\n"
-            << "lenre: \"Ok ok ti lascio stare. Per ora.\"\n";
-        waitForAnyKey();
+        std::cout << "Lenre: \"Ci si vede. Buon viaggio.\"\n";
         outro();
         break;
 

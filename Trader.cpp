@@ -32,6 +32,8 @@ void Creatures::Encounter::Trader::talk()
     if (m_canTalk && !(m_isUnderAttack))
     {
         talkToEncounters(encounterType);
+        m_isGone = true;
+        hp = -1;
     }
     else
     {

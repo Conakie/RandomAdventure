@@ -562,6 +562,8 @@ void Creatures::Encounter::Bartender::talk()
 	if (m_canTalk && !(m_isUnderAttack))
 	{
 		talkToEncounters(encounterType);
+		m_isGone = true;
+		hp = -1;
 	}
 	else
 	{

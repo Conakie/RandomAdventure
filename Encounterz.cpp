@@ -72,10 +72,6 @@ void Creatures::Encounter::Encounterz::talk()
     }
 }
 
-void Creatures::Encounter::Encounterz::increaseXp()
-{
-}
-
 void Creatures::Encounter::Encounterz::dropItems() const
 {
     // if no player has been set return early
@@ -194,7 +190,126 @@ void Creatures::Encounter::Encounterz::dropItems() const
         std::cout << name << " didn't drop any item.";
     std::cout << '\n';
 }
+/*
+void Creatures::Encounter::Encounterz::dropItems(Inventoryz* inventory) const
+{
+    // if no player has been set return early
+    if (!m_player)
+    {
+        std::cout << name << " didn't have any items to drop.\n";
+        return;
+    }
+    ObjectUid item{ ObjectUid::none };
+    int percentage{ Random::get(0,99) };
+    int quantity{ Random::get(1, 3) };
+    Player::Playerz& player{ *m_player };
+    // common -> 40%
+    // rare -> 30%
+    // epic -> 20%
+    //legendary -> 10%
 
+    if (percentage < 40)
+    {// the drop is a common item
+        switch (Random::get(0, 4))
+        {
+        case 0:// small healing potion
+            std::cout << "You got " << quantity << " small healing potions.";
+            player.setInventory().addItem(ObjectUid::smallHealingPotion, quantity);
+            break;
+        case 1:// herbs
+            std::cout << "You got " << quantity << " herbs.";
+            player.setInventory().addItem(ObjectUid::herbs, quantity);
+            break;
+        case 2:// bone
+            item = ObjectUid::bone;
+            std::cout << "You got " << quantity << " bones.";
+            player.setInventory().addItem(ObjectUid::bone, quantity);
+            break;
+        case 3:// meat
+            std::cout << "You got " << quantity << " steaks.";
+            player.setInventory().addItem(ObjectUid::meat, quantity);
+            break;
+        case 4:// fish
+            std::cout << "You got " << quantity << " fish.";
+            player.setInventory().addItem(ObjectUid::fish, quantity);
+            break;
+        default:
+            PrintError::wrongRandomNumber();
+            break;
+        }
+    }
+    else if (percentage >= 40 && percentage < 70)
+    {// the drop is a rare item
+        switch (Random::get(0, 4))
+        {
+        case 0:// medium healing potion
+            std::cout << "You got " << quantity << " medium healing potions.";
+            player.setInventory().addItem(ObjectUid::mediumHealingPotion, quantity);
+            break;
+        case 1:// molotov
+            std::cout << "You got " << quantity << " molotov.";
+            player.setInventory().addItem(ObjectUid::molotov, quantity);
+            break;
+        case 2:// arrow
+            std::cout << "You got " << quantity << " arrows.";
+            player.setInventory().addItem(ObjectUid::arrow, quantity);
+            break;
+        case 3:// stone
+            std::cout << "You got " << quantity << " stone.";
+            player.setInventory().addItem(ObjectUid::stone, quantity);
+            break;
+        case 4:// paper
+            std::cout << "You got " << quantity << " sheets of papers.";
+            player.setInventory().addItem(ObjectUid::paper, quantity);
+            break;
+        default:
+            PrintError::wrongRandomNumber();
+            break;
+        }
+    }
+    else if (percentage >= 70 && percentage < 90)
+    {// the drop is a epic item
+        switch (Random::get(0, 2))
+        {
+        case 0:// big healing potion
+            std::cout << "You got " << quantity << " big healing potions.";
+            player.setInventory().addItem(ObjectUid::bigHealingPotion, quantity);
+            break;
+        case 1:// wood
+            std::cout << "You got " << quantity << " wood logs.";
+            player.setInventory().addItem(ObjectUid::wood, quantity);
+            break;
+        case 2:// leather
+            std::cout << "You got " << quantity << " leather.";
+            player.setInventory().addItem(ObjectUid::leather, quantity);
+            break;
+        default:
+            PrintError::wrongRandomNumber();
+            break;
+        }
+    }
+    else if (percentage <= 90)
+    {// the drop is a legendary item
+        switch (Random::get(0, 1))
+        {
+        case 0:// nuke
+            std::cout << "You got " << quantity << " nukes.";
+            player.setInventory().addItem(ObjectUid::nuke, quantity);
+            break;
+        case 1:// magic scroll
+            std::cout << "You got " << quantity << " magic scroll.";
+            player.setInventory().addItem(ObjectUid::magicScroll, quantity);
+            break;
+        default:
+            PrintError::wrongRandomNumber();
+            break;
+        }
+    }
+    else
+        std::cout << name << " didn't drop any item.";
+    std::cout << '\n';
+}
+*/
 void Creatures::Encounter::Encounterz::thinkAndAct()
 {
     if (m_isUnderAttack && isAlive() && !m_isGone)

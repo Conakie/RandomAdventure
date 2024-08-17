@@ -100,6 +100,8 @@ namespace Creatures
 				<< "Max Health: " << maxHp << "\n"
 				<< "Attack: " << atk << "\n"
 				<< "Max Attack: " << maxAtk << "\n"
+				<< "Defence: " << def << '\n'
+				<< "Max defence: " << maxDef << '\n'
 				<< "Xp: " << xp << "\n"
 				<< "Xp to reach for level up: " << xpPerLvl << "\n"
 				<< "Level: " << lvl << "\n"
@@ -139,6 +141,7 @@ namespace Creatures
 		void Playerz::setStats()
 		{
 			stats.setStats();
+			applyStatBonus();
 		}
 
 		void Playerz::setName(std::string newName)
@@ -154,15 +157,19 @@ namespace Creatures
 			if (xpPerLvl <= xp)
 			{
 
-				int hpIncrease{ Random::get(1, 10) };
+				int hpIncrease{  };
+				double atkIncrease{ static_cast<double>(Random::get(10, 60)) / 10.0 };
 				++lvl;
-				xpPerLvl += xpPerLvl * 25 / 100;
+				xpPerLvl += xpPerLvl * 50 / 100;
 				xp = 0;
-				maxAtk += 1.5;
-				atk += 1.5;
-				maxHp += hpIncrease;
-				hp += hpIncrease;
-
+				maxAtk += atkIncrease + stats.getStrengthBonus();
+				atk += atkIncrease + stats.getStrengthBonus();
+				maxHp += hpIncrease + stats.getConstitutionBonus();
+				hp += hpIncrease + stats.getConstitutionBonus();
+				if (stats.getDexterityBonus() >= 0)
+					critRate += stats.getDexterityBonus();
+				else
+					critRate += 1;
 				std::cout << "Your stats increased.\n";
 
 			}
@@ -176,8 +183,11 @@ namespace Creatures
 		void Playerz::applyStatBonus()
 		{
 			// add strenght bonus
-			atk += 0.5;
-			maxAtk += 0.5;
+			atk += stats.getStrengthBonus();
+			maxAtk += stats.getStrengthBonus();
+			hp += stats.getConstitutionBonus();
+			maxHp += stats.getConstitutionBonus();
+			critRate += stats.getDexterityBonus();
 			// add dexterity bonus
 			// add intelligence bonus
 			// add wisdom bonus

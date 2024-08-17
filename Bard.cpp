@@ -78,6 +78,7 @@ void Creatures::Encounter::Bard::talk()
 	if (m_canTalk && !(m_isUnderAttack))
 	{
 		talkToEncounters(encounterType);
+		m_isGone = true;
 	}
 	else
 	{

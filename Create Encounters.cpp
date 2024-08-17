@@ -42,7 +42,7 @@
 
 
 
-Creatures::Encounter::Encounterz* createEncounter(Creatures::Encounter::EncounterType encType)
+Creatures::Encounter::Encounterz* createEncounter(Creatures::Encounter::EncounterType encType, int level)
 {
     Creatures::Encounter::Encounterz* enc{ nullptr };
     int i{ 0 };
@@ -54,7 +54,7 @@ Creatures::Encounter::Encounterz* createEncounter(Creatures::Encounter::Encounte
         try
         {
             // next line is for specific tests. Comment it after finishing
-            encType = Creatures::Encounter::EncounterType::witch;
+            //encType = Creatures::Encounter::EncounterType::goblin;
             enc = setAndGetEncounter(encType);
             retry = false;
         }
@@ -76,6 +76,7 @@ Creatures::Encounter::Encounterz* createEncounter(Creatures::Encounter::Encounte
     } while (retry);
     
     enc->resetStats();
+    enc->setLevel(level);
     enc->setType(encType);
     enc->setEncounter();
 
