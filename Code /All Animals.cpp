@@ -97,7 +97,7 @@ void tuttiGliAnimali()
 
 		case 'n'://no
 
-			std::cout << "Nanre: \"Sono così fiero di te. Hai ragione. Non la hai.\n"
+			std::cout << "Nanre: \"Sono cosÃ¬ fiero di te. Hai ragione. Non la hai.\n"
 				<< "Ora vai e muori con onore. Buona fortuna.\"\n";
 			answerAgain = false;
 
