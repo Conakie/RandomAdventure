@@ -162,7 +162,7 @@ void treeQuestion30B()
 void liedTo30B()
 {
 
-	std::cout << "£=B: \"YOU LIED TO ME!\n"
+	std::cout << "Â£=B: \"YOU LIED TO ME!\n"
 		<< "I don't care. So I'll leave you in the hands of Nanre.\"\n";
 
 	waitForAnyKey();
