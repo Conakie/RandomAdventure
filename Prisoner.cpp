@@ -327,8 +327,8 @@ void Creatures::Encounter::Prisoner::dialogue()
 			waitForAnyKey();
 			std::cout << "Prisoner: \"Take this as a token of my appreciation. Byee!\"\n"
 				<< "Torturer: \"Thank you. Goodbye.\"\n";
-
-			player().setInventory().addItem(ObjectUid::magicScroll);
+			if (m_player)
+				m_player->setInventory().addItem(ObjectUid::magicScroll);
 			m_isGone = true;
 			answerAgain = false;
 			

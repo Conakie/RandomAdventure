@@ -100,7 +100,8 @@ void Creatures::Encounter::Loli::dialogue()
 	case 4:
 		std::cout << "Loli: \"Fine here take this and go away!\"\n"
 			<< "(The loli gives you 8 nukes)\n";
-		player().setInventory().addItem(ObjectUid::nuke, 8);
+		if (m_player)
+			m_player->setInventory().addItem(ObjectUid::nuke, 8);
 		break;
 	case 5:
 		std::cout << "Loli: \"Talk to me again and I'll kill myself!\"\n";

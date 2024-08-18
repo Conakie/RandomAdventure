@@ -150,6 +150,7 @@
     <ClCompile Include="ConsoleStyle.cpp" />
     <ClCompile Include="Create Encounters.cpp" />
     <ClCompile Include="DrunkGuy.cpp" />
+    <ClCompile Include="Enc type to uid.cpp" />
     <ClCompile Include="Encounter Actions.cpp" />
     <ClCompile Include="Encounter Turn.cpp" />
     <ClCompile Include="Encounters.cpp" />

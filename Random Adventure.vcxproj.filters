@@ -420,6 +420,9 @@
     <ClCompile Include="Create Encounters.cpp">
       <Filter>Source Files\Game\Game - English</Filter>
     </ClCompile>
+    <ClCompile Include="Enc type to uid.cpp">
+      <Filter>Source Files\Tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Random Adventure English.h">

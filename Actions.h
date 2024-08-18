@@ -10,7 +10,7 @@
 void talk();
 
 // Makes the player attack an encounter
-//void attackEncounter(Encounters& encounter);
+void attackEncounter(Encounters& encounter);
 
 // notify the player on the amount of actions he can do before the end of his turn
 void printActionsLeft(int actionsLeft);

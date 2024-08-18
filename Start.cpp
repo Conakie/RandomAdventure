@@ -60,7 +60,7 @@ int main()
             << "I surely won't help him, my job is here as a narrator, not a dev.\"\n";
         waitForAnyKey();
         std::cout << "Elesya: \"You know that without him we wouldn't be here?\n"
-            << "And you were here from the 0.0.2. I'm disappointed.\"\n"
+            << "And you were here from the 0.0.2. You're disappointing me.\"\n"
             << "Kelmod: \"\nYeah, I don't care.\"\n";
         waitForAnyKey();
         std::cout << "Kelmod: \"Well, I'm going to have that AI do some drawings.\n"
@@ -86,15 +86,15 @@ int main()
         break;
 
     case EncounterUid::none:
-        delay(3);
+        delay(2);
         std::cout << "Elesya: \"Closing the game...\"\n";
-        delay(3);
+        delay(1);
         std::cout << "Elesya: \"Saving data...\"\n";
-        delay(3);
+        delay(2);
         std::cout << "Elesya: \"Cleaning memory...\"\n";
         delay(3);
         std::cout << "Elesya: \"Ready to close. Thank you for opening the app!\"\n";
-        delay(5);
+        delay(2);
         break;
 
     default:

@@ -18,9 +18,9 @@ void newz()
         << "And this is also the first public version of Random Adventure.\n"
         << "Unfortunately there are many bugs right now, we're sorry about that.\"\n";
     waitForAnyKey();
-    std::cout << "Necoto: \"The inventory doesn't work as expected.\n"
-        << "When Nanre tried to make it work he received 1952 errors so we had to cancel the idea."
-        << "\nNext update should fix everything, or so Nanre says.\"\n";
+    std::cout << "Necoto: \"The inventory didn't work as expected during a test.\n"
+        << "When Nanre tried to make it work he received 1952 errors."
+        << "\nIt took him two days to fix it.\"\n";
     waitForAnyKey();
     std::cout << "Necoto: \"Nanre has something to say. I'll leave the word to him.\"\n"
         << "Nanre: \"Thanks. I hope you liked the game so far. If you want to add something,\n"

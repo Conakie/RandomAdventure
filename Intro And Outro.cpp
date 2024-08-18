@@ -54,7 +54,6 @@ void intro()
                 << "You'll be able to use these objects with 'i'.\"\n";
             waitForAnyKey();
             std::cout << "Necoto: \"Almost everything in the game is generated randomly.\n"
-                << "Except for your main stats and the main stats of encounters.\n"
                 << "Now you are ready to play!\"\n";
             answerAgain = true;
             break;
@@ -207,7 +206,7 @@ void outro()
         //    answerAgain = false;
         //    break;
         //}
-        std::cout << "Necoto: \"Goodbye~ Come back again, I'll be waiting for you.\"\n";
+        std::cout << "Necoto: \"Goodbye master~ Come back again, I'll be waiting for you.\"\n";
         delay(2);
     } while (answerAgain);
 

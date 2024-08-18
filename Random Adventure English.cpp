@@ -17,8 +17,6 @@
 void gameEn()
 {
 	// reset stats
-	player().resetAllStats();
-	encounter().resetAllStats();
 
 	GameSession game{ };
 	game.startSession();

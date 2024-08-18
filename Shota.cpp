@@ -99,7 +99,8 @@ void Creatures::Encounter::Shota::dialogue()
     case 4:
         std::cout << "Shota: \"Here take this and go away.\"\n"
             << "(The shota gives you 8 magic scrolls)\n";
-        player().setInventory().addItem(ObjectUid::magicScroll, 8);
+        if(m_player)
+            m_player->setInventory().addItem(ObjectUid::magicScroll, 8);
         break;
     case 5:
         std::cout << "Shota: \"Now leave me alone!\"\n";

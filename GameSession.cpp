@@ -36,6 +36,8 @@ void GameSession::startSession()
     m_worldXp = 0;
     m_worldXpNecessaryForLvlUp = 22;
     m_actionsCost = 0;
+
+    g_player = m_player;
 }
 
 void GameSession::play()
@@ -50,6 +52,12 @@ void GameSession::play()
         playerTurn();
     }
     std::cout << "UwU\n";
+}
+
+GameSession::~GameSession()
+{
+    delete m_player;
+    delete m_encounters[0];
 }
 
 void GameSession::createPlayer()
@@ -250,6 +258,7 @@ void GameSession::encountersTurn()
             delete m_encounters[0];
             m_encounters[0] = createEncounter(getEncounterTypePerPlace(printMainPlace(false)), m_worldLevel);
             m_encounters[0]->setPlayer(m_player);
+            g_encounter = m_encounters[0];
             printMainPlace(true);
         }
     }
@@ -258,7 +267,7 @@ void GameSession::encountersTurn()
         delete m_encounters[0];
         m_encounters[0] = createEncounter(getEncounterTypePerPlace(printMainPlace(false)), m_worldLevel);
         m_encounters[0]->setPlayer(m_player);
-        
+        g_encounter = m_encounters[0];
     }
 }
 

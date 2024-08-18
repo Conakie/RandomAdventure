@@ -16,6 +16,4 @@ void setup()
     Console::setColor(Console::Color::light);
 
     // reset the player and the encounter stats to default
-    player().resetAllStats();
-    encounter().resetAllStats();
 }

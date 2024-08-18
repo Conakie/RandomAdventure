@@ -6,6 +6,8 @@
 #include <string_view>
 #include "EncounterBase.h"
 #include "Costants.h"
+#include "Tests.h"
+#include "Encounter UID.h"
 
 
 namespace Creatures
@@ -31,6 +33,7 @@ namespace Creatures
             //void dropItems(Inventoryz* inventory) const;
             virtual void thinkAndAct();
             virtual void printStats() const;
+
             bool isAlive() const { return (hp >= 0.01); }
             bool isGone() const { return m_isGone; }
             virtual void resetStats();
@@ -43,6 +46,21 @@ namespace Creatures
             double getHealth() const { return hp; }
             std::string_view getName() const { return name; }
             int getXp() const { return xp; }
+
+            // delete these later. Just for older versions
+            bool getIsGone() const { return m_isGone; }
+            bool getIsUnderAttack() const { return m_isUnderAttack; }
+            bool getCanTalk() const { return m_canTalk; }
+            double getAttack() const { return atk; }
+            int getLvl() const { return lvl; }
+            EncounterUid getUid() const { return toEncUid(encounterType); }
+
+            void setUid(EncounterUid uid) const { return; }
+            void setCanTalk(bool burb) { m_canTalk = burb; }
+            void setIsGone(bool burb) { m_isGone = burb; }
+            void setIsUnderAttack(bool burb) { m_isUnderAttack = burb; }
+
+            int increaseXp(int i) const { return xp; }
         protected:
             void announceEncounter() const;
             virtual void setName();

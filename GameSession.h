@@ -13,7 +13,7 @@ class GameSession
 public:
     void startSession();
     void play();
-    
+    ~GameSession();
 
     Creatures::Player::Playerz& player() { return *m_player; }
 private:

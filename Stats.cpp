@@ -12,16 +12,24 @@
 #include "Archer.h"
 #include "Cleric.h"
 #include "Barbarian.h"
+#include "Encounterz.h"
 
 
+
+//Creatures::Player::Playerz& player()
+//{
+//	static Creatures::Player::Barbarian s_player{ };
+//
+//    return s_player;
+//}
 
 Creatures::Player::Playerz& player()
 {
-	static Creatures::Player::Barbarian s_player{ };
-
-    return s_player;
+	return *g_player;
 }
 
+Creatures::Player::Playerz* g_player{ nullptr };
+Creatures::Encounter::Encounterz* g_encounter{ nullptr };
 /*
 std::cout << "Short" << sizeof(short) << "\n"
 		<< "Int" << sizeof(int) << "\n"
@@ -31,13 +39,19 @@ std::cout << "Short" << sizeof(short) << "\n"
 		<< "\n";
 */
 
-Encounters& encounter()
+//Encounters& encounter()
+//{
+//
+//    static Encounters s_encounter{ };
+//
+//    return s_encounter;
+//
+//}
+
+Creatures::Encounter::Encounterz& encounter()
 {
-
-    static Encounters s_encounter{ };
-
-    return s_encounter;
-
+	return *g_encounter;
 }
+
 //Playerz player{ };
 //Encounters encounter{ };
