@@ -235,9 +235,10 @@ void Creatures::Player::AbilityScores::assignStats(short arr[k_statsAmount])
 			<< "Where do you want to put " << arr[j] << "?\"\n"
 			<< "1: Strength.\n"
 			<< "2: Dexterity.\n"
-			<< "3: Intelligence.\n"
-			<< "4: Wisdom.\n"
-			<< "5: Charisma.\n"
+			<< "3: Constitution.\n"
+			<< "4: Intelligence.\n"
+			<< "5: Wisdom.\n"
+			<< "6: Charisma.\n"
 			<< "d: Place automatically what's left.\n";
 
 		do
