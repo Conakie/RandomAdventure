@@ -272,7 +272,7 @@ void angry30A()
 
 		case 'n':// no
 
-			std::cout << "£=A: \"Perfect. Hopefully she's working.\n"
+			std::cout << "Â£=A: \"Perfect. Hopefully she's working.\n"
 				<< "Mmm, I should probably go and clean my ship.\n"
 				<< "It's been a week since last cleaning and last use.\n"
 				<< "Well then, I'm going to clean the ship. Byee\"\n";
