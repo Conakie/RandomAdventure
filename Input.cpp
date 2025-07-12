@@ -1,11 +1,10 @@
 
+
 #include <iostream>
 #include <limits>
 #include <string>
 #include <string_view>
-#include "Everywhere Used Func.h"
 #include "Input.h"
-#include "PlayerActions.h"
 
 
 
@@ -190,45 +189,45 @@ namespace Input
 
     }
 
-    PlayerActions playerAction()
-    {
-        PlayerActions input{ '0' };
+    //PlayerActions playerAction()
+    //{
+    //    PlayerActions input{ '0' };
 
-        while (true)
-        {
-            std::cout << std::endl;
+    //    while (true)
+    //    {
+    //        std::cout << std::endl;
 
-            std::cin >> input;
+    //        std::cin >> input;
 
-            if (!std::cin) // has a previous extraction failed or overflowed?
-            {
-                if (std::cin.eof()) // if the stream was closed
-                {
-                    exit(0); // shut down the program
-                }
-                else // the stream is not closed so nothing happens here
-                {
-                }
+    //        if (!std::cin) // has a previous extraction failed or overflowed?
+    //        {
+    //            if (std::cin.eof()) // if the stream was closed
+    //            {
+    //                exit(0); // shut down the program
+    //            }
+    //            else // the stream is not closed so nothing happens here
+    //            {
+    //            }
 
-                std::cin.clear(); // put cin in 'normal' operation mode
-            }
-            else // the extraction didn't fail nor it overflowed
-            {
-            }
+    //            std::cin.clear(); // put cin in 'normal' operation mode
+    //        }
+    //        else // the extraction didn't fail nor it overflowed
+    //        {
+    //        }
 
-            ignoreLine();
+    //        ignoreLine();
 
-            std::cout << std::endl;
-            if (input == PlayerActions::seeActions)
-            {
-                actionsList();
-            }
-            else
-            {
-                return input;
-            }
+    //        std::cout << std::endl;
+    //        if (input == PlayerActions::seeActions)
+    //        {
+    //            actionsList();
+    //        }
+    //        else
+    //        {
+    //            return input;
+    //        }
 
-        }
+    //    }
 
-    }
+    //}
 }

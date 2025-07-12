@@ -1,197 +1,83 @@
 
 #include <iostream>
-#include "Player Stats.h"
-#include "Random.h"
-#include "Encounters.h"
 #include "Playerz.h"
-#include "Input.h"
-#include "Everywhere Used Func.h"
-#include "Costants.h"
+#include "Encounterz.h"
+#include "Random.h"
 #include "AbilityScores.h"
+#include "Inventory.h"
+#include "KiiyuoMath.h"
 
 
 
-namespace Creatures
+void Creatures::Player::Playerz::attack(Encounter::Encounterz& encounter)
 {
-	namespace Player
-	{
-		void Playerz::heal(double healing)
-		{
+    std::cout << "You attack " << encounter.getName();
+    // if it's a crit hit, multiply the atk with critDmg
+    // otherwise do normal damaga
+    if (Random::get(0, 99) < m_critRate)
+    {
+        std::cout << "You did a critical hit!\n";
+        encounter.takeDamage(m_atk * m_critDmg);
+    }
+    else
+    {
+        encounter.takeDamage(m_atk);
+    }
+}
 
-			std::cout << name << " healed of " << healing << "hp.\n";
-			if (hp + healing >= maxHp)
-			{
+void Creatures::Player::Playerz::heal(double healing)
+{
+    healing = roundToTwoDecimals(healing);
+    std::cout << "You healed of " << healing << " hp.\n";
+    // if the hp plus the healing is less than the max hp
+    // add healing to hp
+    // otherwise hp is set to maxHp
+    if (m_hp + healing < m_maxHp)
+        m_hp += healing;
+    else
+        m_hp = m_maxHp;
 
-				hp = maxHp;
+    std::cout << "Now you have " << m_hp << " hp.\n";
+}
 
-			}
-			else
-			{
+void Creatures::Player::Playerz::takeDamage(double damage)
+{
+    damage = roundToTwoDecimals(damage);
+    m_hp -= roundToTwoDecimals((damage - (damage * m_def / 100)));
 
-				hp += healing;
+    if (isAlive())
+        std::cout << "You took " << damage << " hp of damage.\n"
+        << "Now you have " << m_hp << " hp.\n";
+    else
+        std::cout << "You died!\n";
+}
 
-			}
-			std::cout << "Now you have " << hp << "hp.\n";
+// useless: delete it
+void Creatures::Player::Playerz::talk()
+{
+}
 
-		}
+void Creatures::Player::Playerz::resetPlayer()
+{
+    m_name = "UwU";
+    m_hp = 10;
+    m_maxHp = 10;
+    m_atk = 4;
+    m_maxAtk = 4;
+    m_critDmg = 2;
+    m_critRate = 10;
+    m_def = 10;
+    m_maxDef = 10;
+    m_xp = 0;
+    m_xpForLvlUp = 22;
+    m_lvl = 1;
+    m_role = PlayerRole::narrator;
+    m_abilityScores.reset();
+    m_inventory.reset();
+    m_inventory.setTarget(this);
+}
 
-		void Playerz::attack(Encounters& enc)
-		{
-			std::cout << "You attack " << enc.getName() << ".\n";
-			if (Random::get(0, 99) <= critRate)
-			{
-				std::cout << "\nYou did a critical hit!\n"
-					<< enc.getName() << " took " << (atk * critDmg) << "dmg.\n";
-				enc.takeDamage(atk * critDmg);
-
-			}
-			else
-			{
-				std::cout << enc.getName() << " took " << (atk) << "dmg.\n";
-				enc.takeDamage(atk);
-
-			}
-		}
-
-		void Playerz::attack(Encounter::Encounterz& enc)
-		{
-			std::cout << "You attack " << enc.getName() << ".\n";
-			if (Random::get(0, 99) <= critRate)
-			{
-				std::cout << "\nYou did a critical hit!\n"
-					<< enc.getName() << " took " << (atk * critDmg) << " dmg.\n";
-				enc.takeDamage(atk * critDmg);
-
-			}
-			else
-			{
-				std::cout << enc.getName() << " took " << (atk) << " dmg.\n";
-				enc.takeDamage(atk);
-
-			}
-		}
-
-		void Playerz::takeDamage(double damage)
-		{
-			// add damageType to say what is the cause for the damage
-			damage = damage - (damage * def / 100);
-			hp -= damage;
-			std::cout << "\n" << name << " took " << damage << "dmg.\n";
-
-			if (hp <= 0.0)
-				std::cout << "Kelmod: \"You died. Haha, loser!\"\n";
-			else
-				std::cout << "Now you have " << hp << "hp.\n";
-		}
-
-		void Playerz::increaseXpAndCheckForLvlUp(short value)
-		{
-
-			xp += value;
-			std::cout << "Xp increased of " << value;
-			lvlUp();
-
-		}
-
-		void Playerz::printStats() const
-		{
-			std::cout << "\n\nYour stats are:\n"
-				<< "Health: " << hp << "\n"
-				<< "Max Health: " << maxHp << "\n"
-				<< "Attack: " << atk << "\n"
-				<< "Max Attack: " << maxAtk << "\n"
-				<< "Defence: " << def << '\n'
-				<< "Max defence: " << maxDef << '\n'
-				<< "Xp: " << xp << "\n"
-				<< "Xp to reach for level up: " << xpPerLvl << "\n"
-				<< "Level: " << lvl << "\n"
-				<< "Crit Rate: " << critRate << "\n"
-				<< "Crit Damage: " << critDmg << "\n"
-				<< "Stamina: " << stamina << "\n"
-				<< "Weight: " << weight << "\n";
-			stats.print();
-		}
-
-		void Playerz::resetAllStats()
-		{
-			// reset player character stats
-			hp = 10;
-			maxHp = 10;
-			atk = 4;
-			maxAtk = 4;
-			def = 10;
-			maxDef = 10;
-			xp = 0;
-			xpPerLvl = 22;
-			lvl = 1;
-			critRate = 10;
-			critDmg = 2;
-			stamina = 100;
-			weight = 0;
-
-			// reset stats
-			stats.reset();
-
-			//reset the inventory
-			inventory.reset();
-		}
-
-		// under this line there are all the private member functions
-
-		void Playerz::setStats()
-		{
-			stats.setStats();
-			applyStatBonus();
-		}
-
-		void Playerz::setName(std::string newName)
-		{
-			name = newName;
-			std::cout << "Necoto: \"From now on you shall be known as " << name << ".\"\n";
-		}
-
-		void Playerz::lvlUp()
-		{
-
-			// if the xp needed to lvl up is the same as the xp the player has increase stats
-			if (xpPerLvl <= xp)
-			{
-
-				int hpIncrease{  };
-				double atkIncrease{ static_cast<double>(Random::get(10, 60)) / 10.0 };
-				++lvl;
-				xpPerLvl += xpPerLvl * 50 / 100;
-				xp = 0;
-				maxAtk += atkIncrease + stats.getStrengthBonus();
-				atk += atkIncrease + stats.getStrengthBonus();
-				maxHp += hpIncrease + stats.getConstitutionBonus();
-				hp += hpIncrease + stats.getConstitutionBonus();
-				if (stats.getDexterityBonus() >= 0)
-					critRate += stats.getDexterityBonus();
-				else
-					critRate += 1;
-				std::cout << "Your stats increased.\n";
-
-			}
-			else// nothing happens
-			{
-				// IIOOOII-IIOOOII-IIOOOII-IIOOOII-IIOOOII-IOI-IIIOOII>
-			}
-
-		}
-
-		void Playerz::applyStatBonus()
-		{
-			// add strenght bonus
-			atk += stats.getStrengthBonus();
-			maxAtk += stats.getStrengthBonus();
-			hp += stats.getConstitutionBonus();
-			maxHp += stats.getConstitutionBonus();
-			critRate += stats.getDexterityBonus();
-			// add dexterity bonus
-			// add intelligence bonus
-			// add wisdom bonus
-			// add charisma bonus
-		}
-	};
-};
+void Creatures::Player::Playerz::setRole(PlayerRole role)
+{
+    m_role = role;
+}

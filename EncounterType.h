@@ -1,6 +1,8 @@
 
-#ifndef KIIYUO_RATABS_ENCOUNTERTYPE_ENUM_CLASS_H
-#define KIIYUO_RATABS_ENCOUNTERTYPE_ENUM_CLASS_H
+#ifndef KIIYUO_RATABS_CREATURES_ENCOUNTER_ENCOUNTERTYPE_CLASSE_H
+#define KIIYUO_RATABS_CREATURES_ENCOUNTER_ENCOUNTERTYPE_CLASSE_H
+
+#include "CreatureBase.h"
 
 namespace Creatures
 {
@@ -13,7 +15,7 @@ namespace Creatures
             soldier,
             torturer,
             giant,
-            cleric,
+            priest,
             elf,
             dwarf,
             prisoner,
@@ -58,9 +60,11 @@ namespace Creatures
             armNuc,
             miiro,
             chishao,
+            nanre,
+            conakie,
             none,
         };
-    };
-};
+    }
+}
 
-#endif // !KIIYUO_RATABS_ENCOUNTERTYPE_ENUM_CLASS_H
+#endif // !KIIYUO_RATABS_CREATURES_ENCOUNTER_ENCOUNTERTYPE_CLASSE_H

@@ -1,43 +1,21 @@
 
-#ifndef KIIYUO_RANDOMADVENTURE_GAMESESSION_H
-#define KIIYUO_RANDOMADVENTURE_GAMESESSION_H
+#ifndef KIIYUO_RATABS_GAMESESSION_CLASS_H
+#define KIIYUO_RATABS_GAMESESSION_CLASS_H
 
-#include <vector>
 #include "Playerz.h"
 #include "Encounterz.h"
-#include "ConsoleStyle.h"
-
 
 class GameSession
 {
 public:
-    void startSession();
+    bool startSession();
     void play();
-    ~GameSession();
-
-    Creatures::Player::Playerz& player() { return *m_player; }
-private:
+protected:
     void createPlayer();
-    bool isPlayerAlive();
-    void redrawConsole();
+    bool setPlayer(int playerClasss);
 
-    void playerTurn();
-    void alliesTurn();
-    void encountersTurn();
-
-    Creatures::Player::Playerz* setAndGetPlayer();
-
-    void addXp(int value);
-    void lvlUpWorldLvl();
-
-    Creatures::Player::Playerz* m_player{ nullptr };
-    std::vector<Creatures::Encounter::Encounterz*> m_encounters{ };
-    
-
-    int m_worldLevel{ 1 };
-    int m_worldXp{ 0 };
-    int m_worldXpNecessaryForLvlUp{ 22 };
-    short m_actionsCost{ 0 };
+    Creatures::Player::Playerz* player{ nullptr };
+    Creatures::Encounter::Encounterz* encounter{ nullptr };
 };
 
-#endif //KIIYUO_RANDOMADVENTURE_GAMESESSION_H
+#endif KIIYUO_RATABS_GAMESESSION_CLASS_H

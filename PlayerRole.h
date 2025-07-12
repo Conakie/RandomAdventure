@@ -1,6 +1,9 @@
 
-#ifndef KIIYUO_RATABS_PLAYERROLE_ENUM_CLASS_H
-#define KIIYUO_RATABS_PLAYERROLE_ENUM_CLASS_H
+
+#ifndef KIIYUO_RATABS_CREATURES_PLAYER_PLAYERROLE_KLASSE_H
+#define KIIYUO_RATABS_CREATURES_PLAYER_PLAYERROLE_KLASSE_H
+
+#include "CreatureBase.h"
 
 namespace Creatures
 {
@@ -11,15 +14,16 @@ namespace Creatures
             warrior,
             mage,
             archer,
+            cleric,
+            thief,
             shielder,
+            lancer,
             berserker,
             barbarian,
-            thief,
-            cleric,
-            villager,
+            narrator,
             none,
         };
     }
-};
+}
 
-#endif // !KIIYUO_RATABS_PLAYERROLE_ENUM_CLASS_H
+#endif // !KIIYUO_RATABS_CREATURES_PLAYER_PLAYERROLE_KLASSE_H

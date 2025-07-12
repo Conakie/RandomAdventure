@@ -1,6 +1,6 @@
 
-#ifndef KIIYUO_RATABS_CREATURE_BASE_CLASS_H
-#define KIIYUO_RATABS_CREATURE_BASE_CLASS_H
+#ifndef KIIYOU_RATABS_CREATURES_CREATUREBASE_CLASS_H
+#define KIIYOU_RATABS_CREATURES_CREATUREBASE_CLASS_H
 
 #include <string>
 
@@ -8,24 +8,20 @@ namespace Creatures
 {
     class CreatureBase
     {
-    public:
-        CreatureBase() = default;
-
-        std::string name{ "None" };
-        double hp{ 0.00 };
-        double maxHp{ 0.00 };
-        double atk{ 0.00 };
-        double maxAtk{ 0.00 };
-        double critDmg{ 0.00 };
-        int critRate{ 0 };
-        int def{ 0 };
-        int maxDef{ 0 };
-        int xp{ 0 };
-        int xpPerLvl{ 0 };
-        int lvl{ 1 };
-    private:
-
+    protected:
+        std::string m_name{ "None" };
+        double m_hp{ 0 };
+        double m_maxHp{ 0 };
+        double m_atk{ 0 };
+        double m_maxAtk{ 0 };
+        double m_critDmg{ 0 };
+        int m_critRate{ 0 };
+        int m_def{ 0 };
+        int m_maxDef{ 0 };
+        int m_xp{ 0 };
+        int m_xpForLvlUp{ 0 };
+        int m_lvl{ 1 };
     };
-};
+}
 
-#endif // !KIIYUO_RATABS_CREATURE_BASE_CLASS_H
+#endif // !KIIYOU_RATABS_CREATURES_CREATUREBASE_CLASS_H

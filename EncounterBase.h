@@ -1,24 +1,29 @@
 
-#ifndef KIIYUO_RATABS_ENCOUNTERBASE_CLASS_H
-#define KIIYUO_RATABS_ENCOUNTERBASE_CLASS_H
+#ifndef KIIYUO_RATABS_CREATURES_ENCOUNTER_ENCOUNTERBASE_CLASSE_H
+#define KIIYUO_RATABS_CREATURES_ENCOUNTER_ENCOUNTERBASE_CLASSE_H
 
 #include "CreatureBase.h"
 #include "EncounterType.h"
 
 namespace Creatures
 {
+    namespace Player
+    {
+        class Playerz;
+    }
     namespace Encounter
     {
         class EncounterBase : public CreatureBase
         {
         public:
-            bool m_isGone         { false };
-            bool m_isUnderAttack  { false };
-            bool m_canTalk        { true };
-            EncounterType encounterType{ EncounterType::none };
-        private:
+        protected:
+            Player::Playerz* m_player{ nullptr };
+            EncounterType m_type{ EncounterType::none };
+            bool m_isGone{ false };
+            bool m_isUnderAttack{ false };
+            bool m_canTalk{ true };
         };
     }
-};
+}
 
-#endif // !KIIYUO_RATABS_ENCOUNTERBASE_CLASS_H
+#endif // !KIIYUO_RATABS_CREATURES_ENCOUNTER_ENCOUNTERBASE_CLASSE_H

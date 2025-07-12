@@ -1,38 +1,40 @@
 
-#ifndef KIIYUO_INVENTORY_CLASS
-#define KIIYUO_INVENTORY_CLASS
+#ifndef KIIYUO_RATABS_CREATURE_PLAYER_PLAYER_INVENTORY_CLASS_H
+#define KIIYUO_RATABS_CREATURE_PLAYER_PLAYER_INVENTORY_CLASS_H
 
-#include "Object UID.h"
+#include <string_view>
 #include "Items.h"
 
-
-class Inventory
+namespace Creatures
 {
-public:
+    namespace Encounter
+    {
+        class Encounterz;
+    }
+    namespace Player
+    {
+        class Playerz;
 
-    // set item to value
-    void setItem(ObjectUid item, int value = 0);
+        class Inventory final
+        {
+        public:
+            bool useItem(Items::ItemName item, int quantity = 1);
+            void addItem(Items::ItemName item, int quantity = 1);
+            void printAndAdd(Items::ItemName item, int quantity = 1);
+            void reset();
 
-    // adds to item value
-    void addItem(ObjectUid item, int value = 1);
+            void setTarget(Playerz* player);
+            void setTarget(Encounter::Encounterz* encounter);
+        private:
+            Items::Items m_items{ };
+            Playerz* m_player{ nullptr };
+            Encounter::Encounterz* m_encounter{ nullptr };
 
-    // set all members to 0
-    void reset();
+            bool isTheQuantityOk(int* item, int quantity) const;
+            void printInsufficientItems() const;
+            void printMessage(std::string_view message) const;
+        };
+    }
+}
 
-    // true when the function fails to use an item, false otherwise
-    // use an item as many times quantity says
-    bool useItem(ObjectUid item, int quantity = 1);
-
-    // print all members
-    void print() const;
-
-    // get a single item
-    const Items& getItem() const { return m_items; }
-
-private:
-
-    Items m_items{ };
-
-};
-
-#endif // !KIIYUO_INVENTORY_CLASS
+#endif // !KIIYUO_RATABS_CREATURE_PLAYER_PLAYER_INVENTORY_CLASS_H

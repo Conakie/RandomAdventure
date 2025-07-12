@@ -1,7 +1,7 @@
 
-#ifndef KIIYUO_RANDOMADVENTURE_COSTANTS_H
-#define KIIYUO_RANDOMADVENTURE_COSTANTS_H
+#ifndef KIIYUO_RATABS_COSTANTS_H
+#define KIIYUO_RATABS_COSTANTS_H
 
-const int k_statsAmount{ 6 };
+constexpr short k_statsAmount{ 6 };
 
-#endif //KIIYUO_RANDOMADVENTURE_COSTANTS_H
+#endif // !KIIYUO_RATABS_COSTANTS_H

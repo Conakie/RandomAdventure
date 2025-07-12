@@ -1,267 +1,458 @@
 
 #include <iostream>
 #include "Inventory.h"
-#include "Object UID.h"
-#include "Print Errors.h"
-#include "Stats.h"
+#include "PrintErrors.h"
+#include "Playerz.h"
+#include "Encounterz.h"
+#include "Random.h"
 
 
 
-void Inventory::setItem(ObjectUid item, int value)
+bool Creatures::Player::Inventory::useItem(Items::ItemName item, int quantity)
 {
-
-	if (value < 0)
-	{
-		value = 0;
-	}
-	else
-	{
-
-	}
-
-
 	switch (item)
 	{
-	case ObjectUid::smallHealingPotion:
-
-		m_items.smallHealingPotion = value;
-
+	case Items::ItemName::cota:
+		if (m_items.cota >= quantity)
+		{
+			if (m_player)
+			{
+				m_items.cota -= quantity;
+				printMessage("You used some money");
+				return true;
+			}
+		}
+		else
+		{
+			printInsufficientItems();
+			return false;
+		}
 		break;
-
-	case ObjectUid::mediumHealingPotion:
-
-		m_items.mediumHealingPotion = value;
-
+	case Items::ItemName::smallHealingPotion:
+		if (isTheQuantityOk(&m_items.smallHealingPotion, quantity))
+		{
+			if (m_player)
+			{
+				double uwu{ 0 };
+				m_items.smallHealingPotion -= quantity;
+				for (int i{ 0 }; i < quantity; ++i)
+					uwu += Random::get(1, 2 * m_player->getLvl());
+				printMessage("You drink a small healing potion");
+				m_player->heal(uwu);
+				return true;
+			}
+		}
+		else
+		{
+			printInsufficientItems();
+			return false;
+		}
 		break;
-
-	case ObjectUid::bigHealingPotion:
-
-		m_items.bigHealingPotion = value;
-
+	case Items::ItemName::mediumHealingPotion:
+		if (isTheQuantityOk(&m_items.mediumHealingPotion, quantity))
+		{
+			if (m_player)
+			{
+				double uwu{ 0 };
+				m_items.mediumHealingPotion -= quantity;
+				for (int i{ 0 }; i < quantity; ++i)
+					uwu += Random::get(1, 4 * m_player->getLvl());
+				printMessage("You drink a medium healing potion");
+				m_player->heal(uwu);
+				return true;
+			}
+		}
+		else
+		{
+			printInsufficientItems();
+			return false;
+		}
 		break;
-
-	case ObjectUid::molotov:
-
-		m_items.molotov = value;
-
+	case Items::ItemName::bigHealingPotion:
+		if (isTheQuantityOk(&m_items.bigHealingPotion, quantity))
+		{
+			if (m_player)
+			{
+				double uwu{ 0 };
+				m_items.bigHealingPotion -= quantity;
+				for (int i{ 0 }; i < quantity; ++i)
+					uwu += Random::get(1, 6 * m_player->getLvl());
+				printMessage("You drink a big healing potion");
+				m_player->heal(uwu);
+				return true;
+			}
+		}
+		else
+		{
+			printInsufficientItems();
+			return false;
+		}
 		break;
-
-	case ObjectUid::nuke:
-
-		m_items.nuke = value;
-
+	case Items::ItemName::molotov:
+		if (isTheQuantityOk(&m_items.molotov, quantity))
+		{
+			if (m_player && m_encounter)
+			{
+				m_items.molotov -= quantity;
+				printMessage("You throw a molotov at your enemy");
+				m_encounter->takeDamage(4 * m_player->getLvl() * quantity);
+				return true;
+			}
+		}
+		else
+		{
+			printInsufficientItems();
+			return false;
+		}
 		break;
-
-	case ObjectUid::herbs:
-
-		m_items.herbs = value;
-
+	case Items::ItemName::nuke:
+		if (isTheQuantityOk(&m_items.nuke, quantity))
+		{
+			if (m_player && m_encounter)
+			{
+				m_items.nuke -= quantity;
+				for (int i{ 0 }; i < quantity; ++i)
+				{
+					printMessage("Radio message: \"Tactical nuke: incoming!\"");
+					m_encounter->takeDamage(m_encounter->getHealth() * quantity);
+					m_player->takeDamage(m_player->getHealth() * quantity * 0.6f);
+					return true;
+				}
+			}
+		}
+		else
+		{
+			printInsufficientItems();
+			return false;
+		}
 		break;
-
-	case ObjectUid::wood:
-
-		m_items.wood = value;
-
+	case Items::ItemName::herbs:
+		if (isTheQuantityOk(&m_items.herbs, quantity))
+		{
+			if (m_player)
+			{
+				double uwu{ 0 };
+				m_items.herbs -= quantity;
+				for (int i{ 0 }; i < quantity; ++i)
+					uwu += Random::get(10, 30 * m_player->getLvl()) / 10.0f;
+				m_player->heal(uwu);
+				return true;
+			}
+		}
+		else
+		{
+			printInsufficientItems();
+			return false;
+		}
 		break;
-
-	case ObjectUid::arrow:
-
-		m_items.arrow = value;
-
+	case Items::ItemName::wood:
+		if (isTheQuantityOk(&m_items.wood, quantity))
+		{
+			if (m_encounter && m_player)
+			{
+				m_items.wood -= quantity;
+				m_encounter->takeDamage(2 * m_player->getLvl() * quantity);
+				return true;
+			}
+		}
+		else
+		{
+			printInsufficientItems();
+			return false;
+		}
 		break;
-
-	case ObjectUid::leather:
-
-		m_items.leather = value;
-
+	case Items::ItemName::arrow:
+		if (isTheQuantityOk(&m_items.arrow, quantity))
+		{
+			if (m_encounter && m_player)
+			{
+				m_items.arrow -= quantity;
+				m_encounter->takeDamage(4 * m_player->getLvl() * quantity);
+				return true;
+			}
+		}
+		else
+		{
+			printInsufficientItems();
+			return false;
+		}
 		break;
-
-	case ObjectUid::stone:
-
-		m_items.stone = value;
-
+	case Items::ItemName::leather:
+		if (isTheQuantityOk(&m_items.leather, quantity))
+		{
+			if (m_player)
+			{
+				m_items.leather -= quantity;
+				printMessage("Nothing happens. UwU");
+				return true;
+			}
+		}
+		else
+		{
+			printInsufficientItems();
+			return false;
+		}
 		break;
-
-	case ObjectUid::bone:
-
-		m_items.bone = value;
-
+	case Items::ItemName::stone:
+		if (isTheQuantityOk(&m_items.stone, quantity))
+		{
+			if (m_encounter && m_player)
+			{
+				m_items.stone -= quantity;
+				m_encounter->takeDamage(0.1 * m_player->getLvl() * quantity);
+				return true;
+			}
+		}
+		else
+		{
+			printInsufficientItems();
+			return false;
+		}
 		break;
-
-	case ObjectUid::paper:
-
-		m_items.paper = value;
-
+	case Items::ItemName::bone:
+		if (isTheQuantityOk(&m_items.bone, quantity))
+		{
+			if (m_player)
+			{
+				m_items.bone -= quantity;
+				for (int i{ 0 }; i < quantity; ++i)
+					m_encounter->takeDamage(3 * m_player->getLvl());
+				return true;
+			}
+		}
+		else
+		{
+			printInsufficientItems();
+			return false;
+		}
 		break;
-
-	case ObjectUid::meat:
-
-		m_items.meat = value;
-
+	case Items::ItemName::paper:
+		if (isTheQuantityOk(&m_items.paper, quantity))
+		{
+			if (m_player)
+			{
+				m_items.paper -= quantity;
+				m_player->takeDamage(0.1 * quantity);
+				return true;
+			}
+		}
+		else
+		{
+			printInsufficientItems();
+			return false;
+		}
 		break;
-
-	case ObjectUid::fish:
-
-		m_items.fish = value;
-
+	case Items::ItemName::meat:
+		if (isTheQuantityOk(&m_items.meat, quantity))
+		{
+			if (m_player)
+			{
+				double uwu{ 0 };
+				m_items.meat -= quantity;
+				for (int i{ 0 }; i < quantity; ++i)
+					uwu += Random::get(0, 1 * m_player->getLvl());
+				m_player->heal(uwu);
+				return true;
+			}
+		}
+		else
+		{
+			printInsufficientItems();
+			return false;
+		}
 		break;
-
-	case ObjectUid::mushroom:
-
-		m_items.mushroom = value;
-
+	case Items::ItemName::fish:
+		if (isTheQuantityOk(&m_items.fish, quantity))
+		{
+			if (m_player)
+			{
+				m_items.fish -= quantity;
+				m_player->heal(1 * quantity);
+				return true;
+			}
+		}
+		else
+		{
+			printInsufficientItems();
+			return false;
+		}
 		break;
-
-	case ObjectUid::magicScroll:
-
-		m_items.magicScroll = value;
-
+	case Items::ItemName::mushroom:
+		if (isTheQuantityOk(&m_items.mushroom, quantity))
+		{
+			if (m_player)
+			{
+				m_items.mushroom -= quantity;
+				m_player->takeDamage(1 * m_player->getLvl() * quantity);
+				return true;
+			}
+		}
+		else
+		{
+			printInsufficientItems();
+			return false;
+		}
 		break;
-
+	case Items::ItemName::magicScroll:
+		if (isTheQuantityOk(&m_items.magicScroll, quantity))
+		{
+			if (m_encounter && m_player)
+			{
+				double uwu{ 0 };
+				m_items.magicScroll -= quantity;
+				for (int i{ 0 }; i < quantity; ++i)
+					uwu += Random::get(1, 6 * m_player->getLvl());
+				m_encounter->takeDamage(uwu);
+				return true;
+			}
+		}
+		else
+		{
+			printInsufficientItems();
+			return false;
+		}
+		break;
 	default:
-
-		PrintError::notFound();
-
+		Print::Errors::generalError();
+		printMessage("Tell Nanre he should delete himself from the game");
+		return false;
 		break;
 	}
-
-
+	return false;
 }
 
-
-
-void Inventory::addItem(ObjectUid item, int value)
+void Creatures::Player::Inventory::addItem(Items::ItemName item, int quantity)
 {
-
-	if (value < 0)
-	{
-		value = 0;
-	}
-	else
-	{
-
-	}
-
-
 	switch (item)
 	{
-	case ObjectUid::smallHealingPotion:
-
-		m_items.smallHealingPotion += value;
-
+	case Items::ItemName::cota:
+		m_items.cota += quantity;
 		break;
-
-	case ObjectUid::mediumHealingPotion:
-
-		m_items.mediumHealingPotion += value;
-
+	case Items::ItemName::smallHealingPotion:
+		m_items.smallHealingPotion += quantity;
 		break;
-
-	case ObjectUid::bigHealingPotion:
-
-		m_items.bigHealingPotion += value;
-
+	case Items::ItemName::mediumHealingPotion:
+		m_items.mediumHealingPotion += quantity;
 		break;
-
-	case ObjectUid::molotov:
-
-		m_items.molotov += value;
-
+	case Items::ItemName::bigHealingPotion:
+		m_items.bigHealingPotion += quantity;
 		break;
-
-	case ObjectUid::nuke:
-
-		m_items.nuke += value;
-
+	case Items::ItemName::molotov:
+		m_items.molotov += quantity;
 		break;
-
-	case ObjectUid::herbs:
-
-		m_items.herbs += value;
-
+	case Items::ItemName::nuke:
+		m_items.nuke += quantity;
 		break;
-
-	case ObjectUid::wood:
-
-		m_items.wood += value;
-
+	case Items::ItemName::herbs:
+		m_items.herbs += quantity;
 		break;
-
-	case ObjectUid::arrow:
-
-		m_items.arrow += value;
-
+	case Items::ItemName::wood:
+		m_items.wood += quantity;
 		break;
-
-	case ObjectUid::leather:
-
-		m_items.leather += value;
-
+	case Items::ItemName::arrow:
+		m_items.arrow += quantity;
 		break;
-
-	case ObjectUid::stone:
-
-		m_items.stone += value;
-
+	case Items::ItemName::leather:
+		m_items.leather += quantity;
 		break;
-
-	case ObjectUid::bone:
-
-		m_items.bone += value;
-
+	case Items::ItemName::stone:
+		m_items.stone += quantity;
 		break;
-
-	case ObjectUid::paper:
-
-		m_items.paper += value;
-
+	case Items::ItemName::bone:
+		m_items.bone += quantity;
 		break;
-
-	case ObjectUid::meat:
-
-		m_items.meat += value;
-
+	case Items::ItemName::paper:
+		m_items.paper += quantity;
 		break;
-
-	case ObjectUid::fish:
-
-		m_items.fish += value;
-
+	case Items::ItemName::meat:
+		m_items.meat += quantity;
 		break;
-
-	case ObjectUid::mushroom:
-
-		m_items.mushroom += value;
-
+	case Items::ItemName::fish:
+		m_items.fish += quantity;
 		break;
-
-	case ObjectUid::magicScroll:
-
-		m_items.magicScroll += value;
-
+	case Items::ItemName::mushroom:
+		m_items.mushroom += quantity;
 		break;
-
+	case Items::ItemName::magicScroll:
+		m_items.magicScroll += quantity;
+		break;
 	default:
-
-		PrintError::notFound();
-
+		Print::Errors::generalError();
 		break;
 	}
-
-
 }
 
-
-
-void Inventory::reset()
+void Creatures::Player::Inventory::printAndAdd(Items::ItemName item, int quantity)
 {
+	switch (item)
+	{
+	case Items::ItemName::cota:
+		std::cout << "(You got " << quantity << " cota)";
+		break;
+	case Items::ItemName::smallHealingPotion:
+		std::cout << "(You got " << quantity << " small healing potions)";
+		break;
+	case Items::ItemName::mediumHealingPotion:
+		std::cout << "(You got " << quantity << " medium healing potions)";
+		break;
+	case Items::ItemName::bigHealingPotion:
+		std::cout << "(You got " << quantity << " big healing potions)";
+		break;
+	case Items::ItemName::molotov:
+		std::cout << "(You got " << quantity << " molotov)";
+		break;
+	case Items::ItemName::nuke:
+		std::cout << "(You got " << quantity << " nuke)";
+		break;
+	case Items::ItemName::herbs:
+		std::cout << "(You got " << quantity << " herbs)";
+		break;
+	case Items::ItemName::wood:
+		std::cout << "(You got " << quantity << " wood)";
+		break;
+	case Items::ItemName::arrow:
+		std::cout << "(You got " << quantity << " arrow)";
+		break;
+	case Items::ItemName::leather:
+		std::cout << "(You got " << quantity << " leather)";
+		break;
+	case Items::ItemName::stone:
+		std::cout << "(You got " << quantity << " stones)";
+		break;
+	case Items::ItemName::bone:
+		std::cout << "(You got " << quantity << " bones)";
+		break;
+	case Items::ItemName::paper:
+		std::cout << "(You got " << quantity << " paper)";
+		break;
+	case Items::ItemName::meat:
+		std::cout << "(You got " << quantity << " meat)";
+		break;
+	case Items::ItemName::fish:
+		std::cout << "(You got " << quantity << " fish)";
+		break;
+	case Items::ItemName::mushroom:
+		std::cout << "(You got " << quantity << " mushroom)";
+		break;
+	case Items::ItemName::magicScroll:
+		std::cout << "(You got " << quantity << " magic scrolls)";
+		break;
+	default:
+		break;
+	}
+}
 
+void Creatures::Player::Inventory::reset()
+{
+	m_items.cota = 0;
 	m_items.smallHealingPotion = 0;
 	m_items.mediumHealingPotion = 0;
 	m_items.bigHealingPotion = 0;
 	m_items.molotov = 0;
 	m_items.nuke = 0;
 	m_items.herbs = 0;
+	m_items.wood = 0;
+	m_items.arrow = 0;
 	m_items.leather = 0;
 	m_items.stone = 0;
 	m_items.bone = 0;
@@ -270,317 +461,34 @@ void Inventory::reset()
 	m_items.fish = 0;
 	m_items.mushroom = 0;
 	m_items.magicScroll = 0;
-	m_items.cota = 0;
 
+	m_player = nullptr;
+	m_encounter = nullptr;
 }
 
-
-
-bool Inventory::useItem(ObjectUid item, int quantity)
+void Creatures::Player::Inventory::setTarget(Playerz* player)
 {
-
-	bool failedToUse{ false };
-	
-
-	if (quantity < 0)
-	{
-		quantity = 0;
-		failedToUse = true;
-	}
-	else
-	{
-
-	}
-
-	switch (item)
-	{
-	case ObjectUid::smallHealingPotion: 
-
-		if (m_items.smallHealingPotion < quantity)
-		{
-			failedToUse = true;
-		}
-		else
-		{
-			std::cout << "(You drink the potion)\n";
-			m_items.smallHealingPotion -= quantity;
-			player().heal(2 * player().getLvl() * quantity);
-		}
-
-		break;
-
-	case ObjectUid::mediumHealingPotion:
-
-		if (m_items.mediumHealingPotion < quantity)
-		{
-			failedToUse = true;
-		}
-		else
-		{
-			std::cout << "(You drink the potion)\n";
-			m_items.mediumHealingPotion -= quantity;
-			player().heal(4 * player().getLvl() * quantity);
-		}
-
-		break;
-
-	case ObjectUid::bigHealingPotion:
-
-		if (m_items.bigHealingPotion < quantity)
-		{
-			failedToUse = true;
-		}
-		else
-		{
-			std::cout << "(You drink the potion)\n";
-			m_items.bigHealingPotion -= quantity;
-			player().heal(6 * player().getLvl() * quantity);
-		}
-
-		break;
-
-	case ObjectUid::molotov:
-
-		if (m_items.molotov < quantity)
-		{
-			failedToUse = true;
-		}
-		else
-		{
-			std::cout << "Blyatman: \"Molotov incoming!\"\n";
-			m_items.molotov -= quantity;
-			encounter().takeDamage(player().getAttack() * quantity);
-		}
-
-		break;
-
-	case ObjectUid::nuke:
-
-		if (m_items.nuke < quantity)
-		{
-			failedToUse = true;
-		}
-		else
-		{
-			std::cout << "Radio: \"Tactical nuke, incoming!\"\n";
-			m_items.nuke -= quantity;
-			encounter().takeDamage(encounter().getHealth() * quantity);
-			player().takeDamage(player().getHealth() / (quantity * 0.6));
-		}
-
-		break;
-
-	case ObjectUid::herbs:
-
-		if (m_items.herbs < quantity)
-		{
-			failedToUse = true;
-		}
-		else
-		{
-			std::cout << "(You eat some grass)\n";
-			m_items.herbs -= quantity;
-			player().heal(0.2 * quantity);
-		}
-
-		break;
-
-	case ObjectUid::wood:
-
-		if (m_items.wood < quantity)
-		{
-			failedToUse = true;
-		}
-		else
-		{
-			std::cout << "(Nothing happens)\n";
-			m_items.wood -= quantity;
-		}
-
-		break;
-
-	case ObjectUid::arrow:
-
-		if (m_items.arrow < quantity)
-		{
-			failedToUse = true;
-		}
-		else
-		{
-			std::cout << "You attack the encounter with an arrow an a bow.\n";
-			m_items.arrow -= quantity;
-			encounter().takeDamage(player().getAttack() * quantity);
-		}
-
-		break;
-
-	case ObjectUid::leather:
-
-		if (m_items.leather < quantity)
-		{
-			failedToUse = true;
-		}
-		else
-		{
-			std::cout << "(Nothing happens but at least you're warmer than before)\n";
-			m_items.leather -= quantity;
-		}
-
-		break;
-
-	case ObjectUid::stone:
-
-		if (m_items.stone < quantity)
-		{
-			failedToUse = true;
-		}
-		else
-		{
-			std::cout << "You throw rocks at the encounter.\n";
-			m_items.stone -= quantity;
-			encounter().takeDamage(2 * player().getLvl() * quantity);
-		}
-
-		break;
-
-	case ObjectUid::bone:
-
-		if (m_items.bone < quantity)
-		{
-			failedToUse = true;
-		}
-		else
-		{
-			std::cout << "You attack the encounter with a bone doing almost nothing.\n";
-			m_items.bone -= quantity;
-			encounter().takeDamage(0.5 * player().getLvl() * quantity);
-		}
-
-		break;
-
-	case ObjectUid::paper:
-
-		if (m_items.paper < quantity)
-		{
-			failedToUse = true;
-		}
-		else
-		{
-			std::cout << "Ouch! you have cut yourself with paper. Be careful next time!\n";
-			m_items.paper -= quantity;
-			player().takeDamage(0.1 * quantity);
-		}
-
-		break;
-
-	case ObjectUid::meat:
-
-		if (m_items.meat < quantity)
-		{
-			failedToUse = true;
-		}
-		else
-		{
-			std::cout << "It was really time for a good ol' hot meat.\n";
-			m_items.meat -= quantity;
-			player().heal(1 * player().getLvl() * quantity);
-		}
-
-		break;
-
-	case ObjectUid::fish:
-
-		if (m_items.fish < quantity)
-		{
-			failedToUse = true;
-		}
-		else
-		{
-			std::cout << "When was the last time you had such a good meal?\n";
-			m_items.fish -= quantity;
-			player().heal(1 * player().getLvl() * quantity);
-		}
-
-		break;
-
-	case ObjectUid::mushroom:
-
-		if (m_items.mushroom < quantity)
-		{
-			failedToUse = true;
-		}
-		else
-		{
-			std::cout << "Oh no! The mushroom was poisonous!\n";
-			m_items.mushroom -= quantity;
-			player().takeDamage(1 * player().getLvl() * quantity);
-		}
-
-		break;
-
-	case ObjectUid::magicScroll:
-
-		if (m_items.magicScroll < quantity)
-		{
-			failedToUse = true;
-		}
-		else
-		{
-			std::cout << "Bakuretus Bakuretsu la la la~\n";
-			m_items.magicScroll -= quantity;
-			encounter().takeDamage(5 * player().getLvl() * quantity);
-		}
-
-		break;
-
-	case ObjectUid::cota:
-
-		if (m_items.cota < quantity)
-		{
-			failedToUse = true;
-		}
-		else
-		{
-			m_items.cota -= quantity;
-		}
-
-		break;
-
-	default:
-
-		PrintError::notFound();
-		failedToUse = true;
-
-		break;
-	}
-
-
-    return failedToUse;
-
+	m_player = player;
 }
 
-
-
-void Inventory::print() const
+void Creatures::Player::Inventory::setTarget(Encounter::Encounterz* encounter)
 {
+	m_encounter = encounter;
+}
 
-	std::cout << "Your inventory:\n"
-		<< "\n1 --> Small healing potion: " << m_items.smallHealingPotion
-		<< "\n2 --> Medium healing potion: " << m_items.mediumHealingPotion
-		<< "\n3 --> Big healing potion: " << m_items.bigHealingPotion
-		<< "\n4 --> Molotov: " << m_items.molotov
-		<< "\n5 --> Nuke: " << m_items.nuke
-		<< "\n6 --> Herbs: " << m_items.herbs
-		<< "\n7 --> Wood: " << m_items.wood
-		<< "\n8 --> Arrow: " << m_items.arrow
-		<< "\n9 --> Leather: " << m_items.leather
-		<< "\n10 -> Stone: " << m_items.stone
-		<< "\n11 -> Bone: " << m_items.bone
-		<< "\n12 -> Paper: " << m_items.paper
-		<< "\n13 -> Meat: " << m_items.meat
-		<< "\n14 -> Fish: " << m_items.fish
-		<< "\n15 -> Mushroom: " << m_items.mushroom
-		<< "\n16 -> Magic Scoll: " << m_items.magicScroll
-		<< "\n";
+bool Creatures::Player::Inventory::isTheQuantityOk(int* item, int quantity) const
+{
+	return (quantity <= *item);
+}
 
+void Creatures::Player::Inventory::printInsufficientItems() const
+{
+	std::cout << "Quantity too high!";
+}
+
+void Creatures::Player::Inventory::printMessage(std::string_view message) const
+{
+	std::cout << "\n("
+		<< message
+		<< ")\n";
 }

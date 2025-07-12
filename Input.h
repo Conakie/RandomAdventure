@@ -3,7 +3,7 @@
 #define KIIYUO_INPUT_H
 
 #include <string_view>
-#include "PlayerActions.h"
+#include <string>
 
 namespace Input
 {
@@ -20,7 +20,7 @@ namespace Input
     std::string string();
 
     // return the action of the player
-    PlayerActions playerAction();
+    //PlayerActions playerAction();
 }
 
 #endif // !KIIYUO_INPUT_H

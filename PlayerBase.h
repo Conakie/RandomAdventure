@@ -1,29 +1,25 @@
 
-#ifndef KIIYUO_RATABS_PLAYERBASE_CLASS_H
-#define KIIYUO_RATABS_PLAYERBASE_CLASS_H
+#ifndef KIIYUO_RATABS_CREATURES_PLAYER_PLAYERBASE_KLASSE_H
+#define KIIYUO_RATABS_CREATURES_PLAYER_PLAYERBASE_KLASSE_H
 
 #include "CreatureBase.h"
 #include "PlayerRole.h"
 #include "AbilityScores.h"
 #include "Inventory.h"
 
-
 namespace Creatures
 {
     namespace Player
     {
-        class PlayerBase : public Creatures::CreatureBase
+        class PlayerBase : public CreatureBase
         {
         public:
-            int stamina         { 0 };
-            int weight          { 0 };
-            PlayerRole role     { PlayerRole::none };
-            AbilityScores stats { };
-            Inventory inventory { };
-        private:
-
+        protected:
+            PlayerRole m_role{ PlayerRole::none };
+            AbilityScores m_abilityScores{ };
+            Inventory m_inventory{ };
         };
     }
 }
 
-#endif // !KIIYUO_RATABS_PLAYERBASE_CLASS_H
+#endif // !KIIYUO_RATABS_CREATURES_PLAYER_PLAYERBASE_KLASSE_H
