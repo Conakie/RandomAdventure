@@ -313,8 +313,7 @@ bool Creatures::Player::Inventory::useItem(Items::ItemName item, int quantity)
 		}
 		break;
 	default:
-		Print::Errors::generalError();
-		printMessage("Tell Nanre he should delete himself from the game");
+		Print::Errors::genericError("Tell Nanre he should delete himself from the game");
 		return false;
 		break;
 	}
@@ -377,7 +376,7 @@ void Creatures::Player::Inventory::addItem(Items::ItemName item, int quantity)
 		m_items.magicScroll += quantity;
 		break;
 	default:
-		Print::Errors::generalError();
+		Print::Errors::genericError("Item is not a real item.");
 		break;
 	}
 }
@@ -440,6 +439,28 @@ void Creatures::Player::Inventory::printAndAdd(Items::ItemName item, int quantit
 	default:
 		break;
 	}
+}
+
+void Creatures::Player::Inventory::printInventory() const
+{
+	std::cout << "Your inventory:\n"
+		<< "Cota: "						<< m_items.cota					<< '\n'
+		<< "Small Healing Potions: "	<< m_items.smallHealingPotion	<< '\n'
+		<< "Medium Healing Potions: "	<< m_items.mediumHealingPotion	<< '\n'
+		<< "Big Healing Potions: "		<< m_items.bigHealingPotion		<< '\n'
+		<< "Molotovs: "					<< m_items.molotov				<< '\n'
+		<< "Nukes: "					<< m_items.nuke					<< '\n'
+		<< "Herbs: "					<< m_items.herbs				<< '\n'
+		<< "Wood: "						<< m_items.wood					<< '\n'
+		<< "Arrows: "					<< m_items.arrow				<< '\n'
+		<< "Leather: "					<< m_items.leather				<< '\n'
+		<< "Stones: "					<< m_items.stone				<< '\n'
+		<< "Bones: "					<< m_items.bone					<< '\n'
+		<< "Paper: "					<< m_items.paper				<< '\n'
+		<< "Meat: "						<< m_items.meat					<< '\n'
+		<< "Fish: "						<< m_items.fish					<< '\n'
+		<< "Mushrooms: "				<< m_items.mushroom				<< '\n'
+        << "Magic Scrolls: "			<< m_items.magicScroll			<< '\n';
 }
 
 void Creatures::Player::Inventory::reset()

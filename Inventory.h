@@ -21,6 +21,7 @@ namespace Creatures
             bool useItem(Items::ItemName item, int quantity = 1);
             void addItem(Items::ItemName item, int quantity = 1);
             void printAndAdd(Items::ItemName item, int quantity = 1);
+            void printInventory() const;
             void reset();
 
             void setTarget(Playerz* player);

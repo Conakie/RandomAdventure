@@ -11,7 +11,7 @@
 
 void Creatures::Player::Playerz::attack(Encounter::Encounterz& encounter)
 {
-    std::cout << "You attack " << encounter.getName();
+    std::cout << "You attack " << encounter.getName() << ".\n";
     // if it's a crit hit, multiply the atk with critDmg
     // otherwise do normal damaga
     if (Random::get(0, 99) < m_critRate)
@@ -71,13 +71,72 @@ void Creatures::Player::Playerz::resetPlayer()
     m_xp = 0;
     m_xpForLvlUp = 22;
     m_lvl = 1;
-    m_role = PlayerRole::narrator;
+    m_role = PlayerRole::none;
     m_abilityScores.reset();
     m_inventory.reset();
     m_inventory.setTarget(this);
 }
 
+void Creatures::Player::Playerz::printPlayerStats() const
+{
+    std::cout << "Name: " << m_name << "\n"
+        << "Level: " << m_lvl << "\n"
+        << "Health: " << m_hp << "/" << m_maxHp << "\n"
+        << "Attack: " << m_atk << "/" << m_maxAtk << "\n"
+        << "Crit Rate: " << m_critRate << "%\n"
+        << "Crit Damage: " << m_critDmg << "\n"
+        << "Defense: " << m_def << "/" << m_maxDef << "\n"
+        << "Xp: " << m_xp << "/" << m_xpForLvlUp << "\n"
+        << "Ability Scores:\n";
+    m_abilityScores.printStats();
+}
+
 void Creatures::Player::Playerz::setRole(PlayerRole role)
 {
     m_role = role;
+}
+
+void Creatures::Player::Playerz::setAbilityScores()
+{
+    m_abilityScores.setStats();
+}
+
+void Creatures::Player::Playerz::setPlayer(PlayerRole role, std::string_view name)
+{
+    m_hp = 10;
+    m_maxHp = 10;
+    m_atk = 4;
+    m_maxAtk = 4;
+    m_critDmg = 2;
+    m_critRate = 10;
+    m_def = 10;
+    m_maxDef = 10;
+    m_xp = 0;
+    m_xpForLvlUp = 22;
+    m_lvl = 1;
+    m_role = role;
+    m_name = name;
+    m_abilityScores.silentSetStats();
+    m_inventory.reset();
+    m_inventory.setTarget(this);
+}
+
+void Creatures::Player::Playerz::silentSetPlayer(PlayerRole role, std::string_view name)
+{
+    m_hp = 10;
+    m_maxHp = 10;
+    m_atk = 4;
+    m_maxAtk = 4;
+    m_critDmg = 2;
+    m_critRate = 10;
+    m_def = 10;
+    m_maxDef = 10;
+    m_xp = 0;
+    m_xpForLvlUp = 22;
+    m_lvl = 1;
+    m_role = role;
+    m_name = name;
+    m_abilityScores.setStats();
+    m_inventory.reset();
+    m_inventory.setTarget(this);
 }

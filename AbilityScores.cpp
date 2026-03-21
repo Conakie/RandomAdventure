@@ -21,28 +21,54 @@ std::ostream& Creatures::Player::operator<<(const AbilityScores& stats, std::ost
 void Creatures::Player::AbilityScores::setStats()
 {
 	short statsArr[k_statsAmount];
-	bool repeat{ true };
+	bool repeata{ true };
+    bool answerAgain{ false };
 
 
 	// set all the stats to -1 for later usage in assignStats()
 	reset();
-
 	// roll the stats, ask the player if they like them and assign them to where they belong
 	// if the player does not like the stats, repeat from the start
 	// also applies the stat bonus/malus at the end
-	while (repeat)
+	while (repeata)
 	{
-		rollStats(statsArr);
+        rollStats(statsArr);
 		if (checkIfTempStatsAreOk(statsArr))
 		{
-			assignStats(statsArr);
-			repeat = false;
+			do
+			{
+				assignStats(statsArr);
+				std::cout << "kelmod: \"This is your situation with the stats.\"\n";
+				printStats();
+				answerAgain = isPlayerSure("Kelmod: \"Do you want to keep these?\" (y/n)");
+				putStatsBackInTheArray(statsArr, !answerAgain);
+			} while (!answerAgain);
+			repeata = false;
+			std::cout << "aaa";
 		}
+		else;
+		std::cout << repeata;
 	}
+}
+
+void Creatures::Player::AbilityScores::silentSetStats()
+{
+    m_strength = Random::get(1, 20);
+	m_dexterity = Random::get(1, 20);
+	m_constitution = Random::get(1, 20);
+	m_intelligence = Random::get(1, 20);
+	m_wisdom = Random::get(1, 20);
+	m_charisma = Random::get(1, 20);
 }
 
 void Creatures::Player::AbilityScores::reset()
 {
+	m_strength = -1;
+	m_dexterity = -1;
+	m_constitution = -1;
+	m_intelligence = -1;
+	m_wisdom = -1;
+    m_charisma = -1;
 }
 
 void Creatures::Player::AbilityScores::rollStats(short arr[k_statsAmount]) const
@@ -58,14 +84,14 @@ bool Creatures::Player::AbilityScores::checkIfTempStatsAreOk(short arr[k_statsAm
 	bool answerAgain{ false };
 	int amountOfLowValueStats{ 0 };
 
-	std::cout << "\nKelmod: \"Those are the stats for your character.\"\n";
+	std::cout << "\nKelmod: \"These are the stats for your character.\"\n";
 	for (int i = 0; i < (k_statsAmount - 1); ++i)
 		std::cout << arr[i] << ", ";
 	std::cout << arr[(k_statsAmount - 1)] << ".\n";
 	std::cout << "Kelmod: \"Do you want to keep 'em?\"\n"
 		<< "y: Yes, I like them.\n"
 		<< "n: Nope. Reroll them please.\n"
-		<< "s: Do what you want.\n";
+		<< "s: Do whatever you want.\n";
 	do
 	{
 
@@ -73,22 +99,19 @@ bool Creatures::Player::AbilityScores::checkIfTempStatsAreOk(short arr[k_statsAm
 		{
 		case 'y':// yes: Yes, I like them.
 
-			std::cout << "Kelmod: \"Time go to step three.\"\n";
+			std::cout << "Kelmod: \"Time go to step three then.\"\n";
 			return true;
-
-			break;
 
 		case 'n':// no: Nope. Reroll them please.
 
 			std::cout << "Kelmod: \"Seriously? Why would I...\"\n"
-				<< "Nanre: \"Rerolling.\"";
+				<< "Nanre: \"Rerolling. Understood Kelmod?\"\n"
+				<< "Kelmod: \"y-yes, I will reroll them...\"";
 			return false;
-
-			break;
 
 		case 's':// skip: Do what you want.
 
-			std::cout << "Kelmod: \"You said it. Lemme see the stats again...\"\n";
+			std::cout << "kelmod: \"You said it! Woohoo! Let me see...\"\n";
 			for (int i = 0; i < k_statsAmount; ++i)
 			{
 				if (arr[i] < 10)
@@ -98,23 +121,22 @@ bool Creatures::Player::AbilityScores::checkIfTempStatsAreOk(short arr[k_statsAm
 			}
 			if (amountOfLowValueStats >= 4)
 			{
-				std::cout << "Kelmod: \"I have decided what to do. I'm keeping 'em.\"\n";
+				std::cout << "Kelmod: \"I see... I'm keeping them. They are low enough.\n"
+					<< "wait! I meant they are perferìct for you. Totally perfect!\"\n";
 				return true;
 			}
 			else
 			{
-				std::cout << "Kelmod: \"Nah, I don't like these too much. I'm rerolling 'em.\"\n";
+				std::cout << "Kelmod: \"Let's see... Nah, they aren't good enough to me.\n"
+					<< "I think we should reroll them and see if the next ones are wo-"
+					<< "I mean, better.\"\n";
 				return false;
 			}
 			answerAgain = false;
-
 			break;
 
 		default:
-
-			//printNotPossible();
 			answerAgain = true;
-
 			break;
 		}
 
@@ -129,8 +151,7 @@ void Creatures::Player::AbilityScores::assignStats(short arr[k_statsAmount])
 	char lastInput{ '0' };
 	int j{ 0 };
 
-	std::cout << "Kelmod: \"Now you can assign the number to its stat.\"\n";
-
+	std::cout << "Kelmod: \"Ready or not, we are assigning the numbers.\"\n";
 	while (j < k_statsAmount)
 	{
 		std::cout << "Kelmod: \"These are the values you can use: ";
@@ -343,4 +364,27 @@ void Creatures::Player::AbilityScores::assignStats(short arr[k_statsAmount])
 			}
 		} while (answerAgain);
 	}
+}
+
+void Creatures::Player::AbilityScores::printStats() const
+{
+	std::cout << "Strength: " << m_strength << ";\n"
+		<< "Dexterity: " << m_dexterity << ";\n"
+		<< "Constitution: " << m_constitution << ";\n"
+		<< "Intelligence: " << m_intelligence << ";\n"
+		<< "Wisdom: " << m_wisdom << ";\n"
+		<< "Charisma: " << m_charisma << ";\n";
+}
+
+void Creatures::Player::AbilityScores::putStatsBackInTheArray(short arr[k_statsAmount], bool ignore)
+{
+	if (ignore)
+		return;
+	arr[0] = m_strength;
+    arr[1] = m_dexterity;
+	arr[2] = m_constitution;
+	arr[3] = m_intelligence;
+	arr[4] = m_wisdom;
+    arr[5] = m_charisma;
+	reset();
 }

@@ -23,4 +23,10 @@ namespace Input
     //PlayerActions playerAction();
 }
 
+// waits for the user to press any key
+void waitForKeypress();
+
+// asks the player a questions and returns true if the answer is yes
+bool isPlayerSure(std::string_view text = "Are you sure? (y/n)\n");
+
 #endif // !KIIYUO_INPUT_H

@@ -19,21 +19,6 @@
     <Filter Include="Source Files\Game">
       <UniqueIdentifier>{8ec84080-1cc1-4559-bed8-33ca8f96ac22}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Game\Game - English">
-      <UniqueIdentifier>{be30c79d-dcd3-4fed-b6ae-5d97a70bef7b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Ing">
-      <UniqueIdentifier>{780c2074-1c3e-4453-928a-778bd0c401b6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Ita">
-      <UniqueIdentifier>{2fcc6835-79ca-4579-a0e4-f6510b963d5f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Game\It-En Files">
-      <UniqueIdentifier>{a8e28ba8-732b-468b-b148-aac4fe887b57}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Other">
-      <UniqueIdentifier>{2b3da3c1-32bd-4957-9356-674596fc9897}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Game\Stats">
       <UniqueIdentifier>{a653b597-7b26-4e55-a746-82526d5f92d1}</UniqueIdentifier>
     </Filter>
@@ -42,12 +27,6 @@
     </Filter>
     <Filter Include="Header Files\Dialogues">
       <UniqueIdentifier>{cfef5a90-21eb-4446-ab31-69de41e5a333}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Game\Gioco - Italiano">
-      <UniqueIdentifier>{1c94f5b5-c8af-4b6a-ad8e-c350a70106e4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Items">
-      <UniqueIdentifier>{3225d01a-33d8-4a55-a9dd-7a5fe99d8f16}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Places">
       <UniqueIdentifier>{ebe20f64-6ca0-426c-86e6-9e195ae41bd4}</UniqueIdentifier>
@@ -123,6 +102,27 @@
     <ClCompile Include="GameSession.cpp">
       <Filter>Source Files\Tests</Filter>
     </ClCompile>
+    <ClCompile Include="ConsoleStyle.cpp">
+      <Filter>Source Files\Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="Places.cpp">
+      <Filter>Source Files\Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="Locale.cpp">
+      <Filter>Source Files\Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="Room.cpp">
+      <Filter>Source Files\Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="EncounterStatsSetter.cpp">
+      <Filter>Source Files\Game\Stats\Encounters</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerCreator.cpp">
+      <Filter>Source Files\Game\Stats\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Delays.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PlayerBase.h">
@@ -172,6 +172,42 @@
     </ClInclude>
     <ClInclude Include="Items.h">
       <Filter>Header Files\Stats\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="ConsoleStyle.h">
+      <Filter>Header Files\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="Locale.h">
+      <Filter>Header Files\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="Places.h">
+      <Filter>Header Files\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="PlacesID.h">
+      <Filter>Header Files\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="Room.h">
+      <Filter>Header Files\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="Pair.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Loot.h">
+      <Filter>Header Files\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="EncounterStatsSetter.h">
+      <Filter>Header Files\Stats\Encounter</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerCreator.h">
+      <Filter>Header Files\Stats\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerActions.h">
+      <Filter>Header Files\Stats\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Delays.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Header Files\Utilities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

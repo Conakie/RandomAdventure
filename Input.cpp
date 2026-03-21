@@ -1,9 +1,8 @@
-
-
 #include <iostream>
 #include <limits>
 #include <string>
 #include <string_view>
+#include <conio.h>
 #include "Input.h"
 
 
@@ -188,46 +187,17 @@ namespace Input
         }
 
     }
+}
 
-    //PlayerActions playerAction()
-    //{
-    //    PlayerActions input{ '0' };
+void waitForKeypress()
+{
+    std::cout << "\n(Press any key to continue)\n";
+    // cast to void to ignore the return value
+    (void)_getch();
+}
 
-    //    while (true)
-    //    {
-    //        std::cout << std::endl;
-
-    //        std::cin >> input;
-
-    //        if (!std::cin) // has a previous extraction failed or overflowed?
-    //        {
-    //            if (std::cin.eof()) // if the stream was closed
-    //            {
-    //                exit(0); // shut down the program
-    //            }
-    //            else // the stream is not closed so nothing happens here
-    //            {
-    //            }
-
-    //            std::cin.clear(); // put cin in 'normal' operation mode
-    //        }
-    //        else // the extraction didn't fail nor it overflowed
-    //        {
-    //        }
-
-    //        ignoreLine();
-
-    //        std::cout << std::endl;
-    //        if (input == PlayerActions::seeActions)
-    //        {
-    //            actionsList();
-    //        }
-    //        else
-    //        {
-    //            return input;
-    //        }
-
-    //    }
-
-    //}
+bool isPlayerSure(std::string_view text)
+{
+    std::cout << text;
+    return (Input::character() == 'y');
 }

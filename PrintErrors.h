@@ -9,7 +9,8 @@ namespace Print
     namespace Errors
     {
         void pleaseReport();
-        void generalError();
+        void genericError();
+        void genericError(std::string_view extraDetails);
         void notFound();
         void actionNotfound();
         void noMatchCase(auto num, std::string_view location);
@@ -17,6 +18,7 @@ namespace Print
         void wrongNum(int num);
         void noTargetSet();
         void cannotCreateObject();
+        void noEncounterPresent();
     }
 }
 

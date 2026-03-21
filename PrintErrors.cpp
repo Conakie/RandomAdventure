@@ -7,14 +7,21 @@
 
 void Print::Errors::pleaseReport()
 {
-    std::cout << "Please, report this to Nanre.\n"
-        << "If possible add a screenshot and error number and info.\n"
-        << "Thanks, this can make OUR game better.\n";
+    std::cout << "Nekoto: \"If you could report this to Nanre, you would do us a favour.\n"
+        << "And if you can add a sceenshot, even better!\n"
+        << "Thank you for any help and for playing.\"\n";
 }
 
-void Print::Errors::generalError()
+void Print::Errors::genericError()
 {
     std::cout << "\nError 000: An error occurred. Unknown reason.\n";
+    pleaseReport();
+}
+
+void Print::Errors::genericError(std::string_view extraDetails)
+{
+    std::cout << "\nError 000: An error occurred. Below are info about the error:\n"
+        << extraDetails << "\n";
     pleaseReport();
 }
 
@@ -58,5 +65,11 @@ void Print::Errors::noTargetSet()
 void Print::Errors::cannotCreateObject()
 {
     std::cout << "Erorr 007: The OS refused to give the program the ram for an object.\n";
+    pleaseReport();
+}
+
+void Print::Errors::noEncounterPresent()
+{
+    std::cout << "Error 008: No encounter present in the room when there should be one!\n";
     pleaseReport();
 }

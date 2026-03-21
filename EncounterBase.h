@@ -2,6 +2,7 @@
 #ifndef KIIYUO_RATABS_CREATURES_ENCOUNTER_ENCOUNTERBASE_CLASSE_H
 #define KIIYUO_RATABS_CREATURES_ENCOUNTER_ENCOUNTERBASE_CLASSE_H
 
+#include <string>
 #include "CreatureBase.h"
 #include "EncounterType.h"
 

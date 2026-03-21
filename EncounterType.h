@@ -47,6 +47,8 @@ namespace Creatures
             kockbold,
             cockblin,
             the104,
+            bugBox,
+            crackman,
             errorGuy,
             elesya,
             kelmod,

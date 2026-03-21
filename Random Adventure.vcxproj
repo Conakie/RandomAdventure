@@ -20,20 +20,30 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AbilityScores.cpp" />
+    <ClCompile Include="ConsoleStyle.cpp" />
+    <ClCompile Include="Delays.cpp" />
+    <ClCompile Include="EncounterStatsSetter.cpp" />
     <ClCompile Include="Encounterz.cpp" />
     <ClCompile Include="GameSession.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="KiiyuoMath.cpp" />
+    <ClCompile Include="Locale.cpp" />
+    <ClCompile Include="Places.cpp" />
+    <ClCompile Include="PlayerCreator.cpp" />
     <ClCompile Include="Playerz.cpp" />
     <ClCompile Include="PrintErrors.cpp" />
+    <ClCompile Include="Room.cpp" />
     <ClCompile Include="Start.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbilityScores.h" />
+    <ClInclude Include="ConsoleStyle.h" />
     <ClInclude Include="Costants.h" />
     <ClInclude Include="CreatureBase.h" />
+    <ClInclude Include="Delays.h" />
     <ClInclude Include="EncounterBase.h" />
+    <ClInclude Include="EncounterStatsSetter.h" />
     <ClInclude Include="EncounterType.h" />
     <ClInclude Include="Encounterz.h" />
     <ClInclude Include="GameSession.h" />
@@ -41,11 +51,20 @@
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Items.h" />
     <ClInclude Include="KiiyuoMath.h" />
+    <ClInclude Include="Locale.h" />
+    <ClInclude Include="Loot.h" />
+    <ClInclude Include="Pair.h" />
+    <ClInclude Include="Places.h" />
+    <ClInclude Include="PlacesID.h" />
+    <ClInclude Include="PlayerActions.h" />
     <ClInclude Include="PlayerBase.h" />
+    <ClInclude Include="PlayerCreator.h" />
     <ClInclude Include="PlayerRole.h" />
     <ClInclude Include="Playerz.h" />
     <ClInclude Include="PrintErrors.h" />
     <ClInclude Include="Random.h" />
+    <ClInclude Include="Room.h" />
+    <ClInclude Include="Timer.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -58,26 +77,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -133,7 +152,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpp23</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>

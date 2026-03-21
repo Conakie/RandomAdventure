@@ -238,6 +238,18 @@ void Creatures::Encounter::Encounterz::resetEncounter()
 	m_canTalk = true;
 }
 
+void Creatures::Encounter::Encounterz::printStats() const
+{
+	std::cout << m_name		<< "'s stats:\n"
+		<< "Level: "		<< m_lvl		<< ";\n"
+		<< "Health: "		<< m_hp			<< "/"	<< m_maxHp << ";\n"
+		<< "Attack: "		<< m_atk		<< "/" << m_maxAtk << ";\n"
+		<< "Defense: "		<< m_def		<< "/" << m_maxDef << ";\n"
+		<< "Crit Rate: "	<< m_critRate	<< "%;\n"
+		<< "Crit Damage: "	<< m_critDmg	<< "x;\n"
+        << "XP dropped: "	<< m_xp			<< ".\n";
+}
+
 void Creatures::Encounter::Encounterz::setEncounter()
 {
 	switch (m_type)
@@ -795,12 +807,13 @@ void Creatures::Encounter::Encounterz::setEncounter()
 		m_def = m_maxDef;
 		break;
 	case Creatures::Encounter::EncounterType::sila:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
+		setName("Sila The Shy");
+		m_maxHp = 10 + (5 * (m_lvl - 1));
+		m_maxAtk = 2 + (1 * m_lvl);
+		m_maxDef = 10;
 		m_critRate = 0;
 		m_critDmg = 0;
-		m_xp = 1;
+		m_xp = 2;
 
 		m_hp = m_maxHp;
 		m_atk = m_maxAtk;
@@ -906,6 +919,29 @@ void Creatures::Encounter::Encounterz::setLvl(int lvl)
 void Creatures::Encounter::Encounterz::setPlayer(Player::Playerz* player)
 {
 	m_player = player;
+}
+
+std::string_view Creatures::Encounter::Encounterz::getIntro() const
+{
+    return "Nanre: \"What do you want?\"\n";
+}
+
+void Creatures::Encounter::Encounterz::copyStats(EncounterStatsSetter& base)
+{
+	m_maxHp = base.getHpMax();
+	m_maxAtk = base.getAtkMax();
+	m_maxDef = base.getDefMax();
+	m_critRate = base.getCritRate();
+	m_critDmg = base.getCritDmg();
+	m_xp = base.getXp();
+    m_lvl = base.getLvl();
+	m_isGone = base.getIsGone();
+    m_isUnderAttack = base.getIsUnderAttack();
+    m_canTalk = base.getCanTalk();
+
+	m_hp = m_maxHp;
+	m_atk = m_maxAtk;
+	m_def = m_maxDef;
 }
 
 void Creatures::Encounter::Encounterz::dialogue()

@@ -13,8 +13,10 @@ namespace Creatures
         {
         public:
             void setStats();
+            void silentSetStats();
             void reset();
 
+            void printStats() const;
             friend std::ostream& operator<< (const AbilityScores& stats, std::ostream& out);
         protected:
         private:
@@ -28,6 +30,7 @@ namespace Creatures
             void rollStats(short arr[k_statsAmount]) const;
             bool checkIfTempStatsAreOk(short arr[k_statsAmount]);
             void assignStats(short arr[k_statsAmount]);
+            void putStatsBackInTheArray(short arr[k_statsAmount], bool ignore);
         };
     }
 }
