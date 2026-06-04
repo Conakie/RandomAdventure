@@ -1,7 +1,9 @@
 
 #include "EncounterStatsSetter.h"
+#include "Random.h"
 
-void EncounterStatsSetter::set(double hp1, double hp2, double atk1, double atk2, int def, int critRate, int critDmg, int xp, int lvl, bool isGone, bool isUnderAttack, bool canTalk)
+void EncounterStatsSetter::set(double hp1, double hp2, double atk1, double atk2, int def,
+    int critRate, double critDmg, int xp, int lvl, bool isGone, bool isUnderAttack, bool canTalk)
 {
     m_hp1 = hp1;
     m_hp2 = hp2;
@@ -11,7 +13,7 @@ void EncounterStatsSetter::set(double hp1, double hp2, double atk1, double atk2,
     m_critRate = critRate;
     m_critDmg = critDmg;
     m_xp = xp;
-    m_lvl = lvl;
+    m_lvl = lvl + Random::get(-1, 1);
     m_isGone = isGone;
     m_isUnderAttack = isUnderAttack;
     m_canTalk = canTalk;

@@ -6,8 +6,9 @@
 #include "EncounterType.h"
 #include "Loot.h"
 #include "PlacesID.h"
+#include "PrintErrors.h"
 
-void Locale::generateLocale()
+void Localez::generateLocale()
 {
     // randomly selects a locale type and variant
     m_localeType = static_cast<PlacesID>(Random::get(0, 4));
@@ -51,7 +52,7 @@ void Locale::generateLocale()
     generateTreasureRoom();
 }
 
-Creatures::Encounter::EncounterType Locale::generateEncounter()
+Creatures::Encounter::EncounterType Localez::generateEncounter()
 {
     if (Random::get(0, 99) < 15)
         return Creatures::Encounter::EncounterType::none;
@@ -75,7 +76,7 @@ Creatures::Encounter::EncounterType Locale::generateEncounter()
     }
 }
 
-void Locale::generateTreasureRoom()
+void Localez::generateTreasureRoom()
 {
     // sets the last room to be a treasure room. Always.
     size_t index = m_rooms.size() - 1;
@@ -86,7 +87,7 @@ void Locale::generateTreasureRoom()
     m_rooms[index].m_lightLevel = static_cast<LightAmount>(Random::get(1, 3));
 }
 
-Creatures::Encounter::EncounterType Locale::generateDungeonEncounter()
+Creatures::Encounter::EncounterType Localez::generateDungeonEncounter()
 {
     constexpr EncType encounterPool[27]{
             EncType::torturer, EncType::giant, EncType::elf, EncType::dwarf, EncType::prisoner,
@@ -100,7 +101,7 @@ Creatures::Encounter::EncounterType Locale::generateDungeonEncounter()
     return encounterPool[Random::get(0, 26)];
 }
 
-Creatures::Encounter::EncounterType Locale::generateVillageEncounter()
+Creatures::Encounter::EncounterType Localez::generateVillageEncounter()
 {
     constexpr EncType encounterPool[22]{
             EncType::guard, EncType::drunkGuy, EncType::soldier, EncType::torturer, EncType::giant,
@@ -112,7 +113,7 @@ Creatures::Encounter::EncounterType Locale::generateVillageEncounter()
     return encounterPool[Random::get(0, 21)];
 }
 
-Creatures::Encounter::EncounterType Locale::generateCaveEncounter()
+Creatures::Encounter::EncounterType Localez::generateCaveEncounter()
 {
     constexpr EncType encounterPool[28]{
             EncType::torturer, EncType::giant, EncType::elf, EncType::dwarf, EncType::prisoner,
@@ -126,7 +127,7 @@ Creatures::Encounter::EncounterType Locale::generateCaveEncounter()
     return encounterPool[Random::get(0, 27)];
 }
 
-Creatures::Encounter::EncounterType Locale::generateForestEncounter()
+Creatures::Encounter::EncounterType Localez::generateForestEncounter()
 {
     constexpr EncType encounterPool[31]{
             EncType::guard, EncType::drunkGuy, EncType::soldier, EncType::giant, EncType::priest,
@@ -140,7 +141,7 @@ Creatures::Encounter::EncounterType Locale::generateForestEncounter()
     return encounterPool[Random::get(0, 30)];
 }
 
-Creatures::Encounter::EncounterType Locale::generateStrongholdEncounter()
+Creatures::Encounter::EncounterType Localez::generateStrongholdEncounter()
 {
     constexpr EncType encounterPool[12]{
             EncType::guard, EncType::soldier, EncType::torturer, EncType::elf, EncType::dwarf,
@@ -150,29 +151,234 @@ Creatures::Encounter::EncounterType Locale::generateStrongholdEncounter()
     return encounterPool[Random::get(0, 11)];
 }
 
-Creatures::Encounter::EncounterType Locale::generateAnyEncounter()
+Creatures::Encounter::EncounterType Localez::generateAnyEncounter()
 {
     return static_cast<EncType>(Random::get(0, static_cast<int>(EncType::none)));
 }
 
-void Locale::reset()
+void Localez::printDungeonRoom() const
+{
+    if (m_rooms[m_currentRoom].m_hasBeenEntered)
+    {
+        switch (m_rooms[m_currentRoom].m_roomID)
+        {
+        default:
+            break;
+        }
+    }
+    else
+    {
+        switch (m_rooms[m_currentRoom].m_roomID)
+        {
+        case 0:
+            std::cout << "You move to a long rectangular room, with half columns following each side.\n";
+            break;
+        case 1:
+            std::cout << "After opening the door, you find yourself in a small room with a single\n"
+                << "torch on the wall.\nOn the ceiling there is a gigantic painting representing\n"
+                << "a man with a pike in his left hand and a crown on the right hand.\n";
+            break;
+        case 2:
+            std::cout << "The door broke down at your touch. The wood was rotten.\n"
+                << "On the left wall there is an altar with lit candles on it.\n";
+            break;
+        case 3:
+            std::cout << "The doors creaks as you open it. The room is a large circular room\n"
+                << "with a large chandelier hanging from the ceiling.\n"
+                << "There are paintings on the walls representing soldiers.\n";
+            break;
+        case 4:
+            std::cout << "A large stone table is in the center of this room.\n"
+                << "Chairs surround it. Everything is covered with dust and debris from the ceiling.\n"
+                << "A wall fell down, showing the rock from which the dungeon was carved.\n";
+            break;
+        case 5:
+            std::cout << "There is no door, just a long corridor badly lit by torches.\n"
+                << "The walls are made of stone and there is dust everywhere.\n";
+            break;
+        case 6:
+            std::cout << "As you enter, you find the room being fairly small and empty.\n"
+                << "There are no decorations, no furniture, nothing.\n"
+                << "It's just a room with four walls and a ceiling.\n";
+            break;
+        case 7:
+            std::cout << "You almost fell in a deep hole when entering, but you avoid it in time.\n"
+                << "The room is cold and the walls are falling apart like almost anything you can see.\n"
+                << "The floor is made of stone, but it is cracked and uneven.\n";
+            break;
+        case 8:
+            std::cout << "The door closes behind you, but when it closed it broke.\n"
+                << "The door is now on the ground broken in half.\n"
+                << "You hope nobody will mind as you continue to explore the room.\n";
+            break;
+        case 9:
+            std::cout << "This room is pretty humid, the walls have water dripping from holes.\n"
+                << "The floor is made of stone tiles, but they are covered in moss and water.\n";
+            break;
+        case 10:
+            std::cout << "As you enter, you see murals representing a certain deity.\n"
+                << "They are pretty old and faded, but you can still make out the details.\n"
+                << "Aside from those, there is nothing else of interest.\n";
+            break;
+        default:
+            std::cout << "You enter a room. There is no distinctive feature in this room.\n";
+            break;
+        }
+    }
+}
+
+void Localez::printVillageRoom() const
+{
+    if (m_rooms[m_currentRoom].m_hasBeenEntered)
+    {
+        switch (m_rooms[m_currentRoom].m_roomID)
+        {
+        default:
+            break;
+        }
+    }
+    else
+    {
+        switch (m_rooms[m_currentRoom].m_roomID)
+        {
+        default:
+            break;
+        }
+    }
+}
+
+void Localez::printCaveRoom() const
+{
+    if (m_rooms[m_currentRoom].m_hasBeenEntered)
+    {
+        switch (m_rooms[m_currentRoom].m_roomID)
+        {
+        default:
+            break;
+        }
+    }
+    else
+    {
+        switch (m_rooms[m_currentRoom].m_roomID)
+        {
+        default:
+            break;
+        }
+    }
+}
+
+void Localez::printForestRoom() const
+{
+    if (m_rooms[m_currentRoom].m_hasBeenEntered)
+    {
+        switch (m_rooms[m_currentRoom].m_roomID)
+        {
+        default:
+            break;
+        }
+    }
+    else
+    {
+        switch (m_rooms[m_currentRoom].m_roomID)
+        {
+        default:
+            break;
+        }
+    }
+}
+
+void Localez::printStrongholdRoom() const
+{
+    if (m_rooms[m_currentRoom].m_hasBeenEntered)
+    {
+        switch (m_rooms[m_currentRoom].m_roomID)
+        {
+        default:
+            break;
+        }
+    }
+    else
+    {
+        switch (m_rooms[m_currentRoom].m_roomID)
+        {
+        default:
+            break;
+        }
+    }
+}
+
+void Localez::reset()
 {
     
 }
 
-void Locale::goToNextRoom()
+bool Localez::goToNextRoom()
 {
     if ((m_rooms.size() - 1) > m_currentRoom)
+    {
         ++m_currentRoom;
+        m_rooms[m_currentRoom].m_hasBeenEntered = true;
+        printCurrentRoom();
+        return false;
+    }
+    return true;
 }
 
-void Locale::goToPreviousRoom()
+bool Localez::goToPreviousRoom()
 {
     if (m_currentRoom > 0)
+    {
         --m_currentRoom;
+        return false;
+    }
+    return true;
 }
 
-Creatures::Encounter::EncounterType Locale::getCurrentRoomEncounterType() const
+void Localez::printCurrentRoom() const
+{
+    switch (m_localeType)
+    {
+    case PlacesID::dungeon:
+        printDungeonRoom();
+        break;
+    case PlacesID::village:
+        printDungeonRoom();
+        break;
+    case PlacesID::cave:
+        printDungeonRoom();
+        break;
+    case PlacesID::forest:
+        printDungeonRoom();
+        break;
+    case PlacesID::stronghold:
+        printDungeonRoom();
+        break;
+    case PlacesID::unknown:
+        Print::Errors::somethingWentWrong("PlacesID::unknown", "Localez::PrintCurrentRoom()");
+        break;
+    default:
+        Print::Errors::somethingWentWrong("Default branch", "Localez::PrintCurrentRoom()");
+        break;
+    }
+}
+
+void Localez::removeCurrentRoomEncounter()
+{
+    m_rooms[m_currentRoom].m_encounterOfTheRoom = Creatures::Encounter::EncounterType::none;
+}
+
+Items::ItemName Localez::getLootFromCurrentRoom()
+{
+    return Items::ItemName::none;
+}
+
+void Localez::deleteLocale()
+{
+    m_rooms.clear();
+    m_currentRoom = 0;
+}
+
+Creatures::Encounter::EncounterType Localez::getCurrentRoomEncounterType() const
 {
     return m_rooms[m_currentRoom].m_encounterOfTheRoom;
 }

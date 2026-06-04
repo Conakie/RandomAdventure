@@ -8,19 +8,26 @@
 #include "PlacesID.h"
 #include "Loot.h"
 #include "EncounterType.h"
+#include "Items.h"
 
-class Locale
+class Localez
 {
 private:
     using EncType = Creatures::Encounter::EncounterType;
 public:
-    Locale() = default;
+    Localez() = default;
 
     void generateLocale();
     Creatures::Encounter::EncounterType generateEncounter();
     void reset();
-    void goToNextRoom();
-    void goToPreviousRoom();
+    bool goToNextRoom();
+    bool goToPreviousRoom();
+    void printCurrentRoom() const;
+    void removeCurrentRoomEncounter();
+    Items::ItemName getLootFromCurrentRoom();
+    void deleteLocale();
+
+    void setCurrentRoomIndex(int index) { m_currentRoom = index; }
 
     bool isEmpty() const { return m_rooms.empty(); }
     size_t size() const { return m_rooms.size(); }
@@ -35,6 +42,11 @@ private:
     EncType generateForestEncounter();
     EncType generateStrongholdEncounter();
     EncType generateAnyEncounter();
+    void printDungeonRoom() const;
+    void printVillageRoom() const;
+    void printCaveRoom() const;
+    void printForestRoom() const;
+    void printStrongholdRoom() const;
 
     int m_currentRoom{ 0 };
     int m_localeVariant{ 0 };

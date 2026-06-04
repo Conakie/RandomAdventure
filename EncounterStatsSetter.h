@@ -14,18 +14,18 @@ public:
         double atk1, double atk2,
         int def,
         int critRate,
-        int critDmg,
+        double critDmg,
         int xp,
-        int lvl,
+        int lvl = 1,
         bool isGone = false,
         bool isUnderAttack = false,
         bool canTalk = true
     );
-    double getHpMax() const { return m_hp1 + (m_hp2 * (m_lvl - 1)); }
-    double getAtkMax() const { return m_atk1 + (m_atk2 * (m_lvl - 1)); }
+    double getHpMax() const { return m_hp1 + (m_hp2 * m_lvl); }
+    double getAtkMax() const { return m_atk1 + (m_atk2 * m_lvl); }
     int getDefMax() const { return m_def; }
     int getCritRate() const { return m_critRate; }
-    int getCritDmg() const { return m_critDmg; }
+    double getCritDmg() const { return m_critDmg; }
     int getXp() const { return m_xp; }
     int getLvl() const { return m_lvl; }
     bool getIsGone() const { return m_isGone; }
@@ -39,7 +39,7 @@ private:
     double m_atk2{ 0 };
     int m_def{ 0 };
     int m_critRate{ 0 };
-    int m_critDmg{ 0 };
+    double m_critDmg{ 0 };
     int m_xp{ 0 };
     int m_lvl{ 1 };
     bool m_isGone{ false };

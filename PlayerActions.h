@@ -21,6 +21,8 @@ namespace Creatures::Player
         continues = ',',
         skip = '.',
         none = ' ',
+        goToNextRoom = '1',
+        goToPreviousRoom = '2',
     };
 };
 

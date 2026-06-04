@@ -8,7 +8,9 @@
 
 struct Room
 {
+private:
     using EncType = Creatures::Encounter::EncounterType;
+public:
     int m_roomID{ -1 };
     EncType m_encounterOfTheRoom{ EncType::none };
     bool m_hasBeenOpened{ false };

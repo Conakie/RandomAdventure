@@ -23,6 +23,7 @@ protected:
     int playerTurn();
     void encounterTurn();
     void updateGameState();
+    void setActiveEncounter();
 
     Player* m_player{ nullptr };
     Encounter* m_activeEncounter{ nullptr };
@@ -30,7 +31,8 @@ protected:
     int m_worldLvl{ 1 };
     int xp{ 0 };
     int xpToNextLvl{ 100 };
-    Locale m_locale{};
+    Localez m_locale{};
+    bool m_hasToRegenerateLocale{ true };
 };
 
 #endif KIIYUO_RATABS_GAMESESSION_CLASS_H

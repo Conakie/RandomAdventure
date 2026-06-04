@@ -1,5 +1,6 @@
 
 #ifndef KIIYUO_RATABS_ITEMS_CLASS_H
+#define KIIYUO_RATABS_ITEMS_CLASS_H
 
 namespace Items
 {

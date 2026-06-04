@@ -1,10 +1,14 @@
 
 #include <iostream>
+#include <print>
 #include "Encounterz.h"
 #include "Playerz.h"
 #include "Random.h"
 #include "PrintErrors.h"
 #include "KiiyuoMath.h"
+#include "EncounterStatsSetter.h"
+#include <string_view>
+#include "EncounterType.h"
 
 
 
@@ -250,670 +254,195 @@ void Creatures::Encounter::Encounterz::printStats() const
         << "XP dropped: "	<< m_xp			<< ".\n";
 }
 
-void Creatures::Encounter::Encounterz::setEncounter()
+void Creatures::Encounter::Encounterz::setEncounter(int lvl)
 {
+	EncounterStatsSetter stats{};
 	switch (m_type)
 	{
 	case Creatures::Encounter::EncounterType::guard:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(70, 20, 6, 6, 10, 5, 2, 1, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::drunkGuy:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(60, 15, 4, 2, -10, 0, 2, 1, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::soldier:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(120, 25, 5, 10, 15, 10, 1.5, 3, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::torturer:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(70, 20, 5, 5, 25, 10, 1.5, 2, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::giant:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(100, 30, 3, 4, 15, 0, 0, 2, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::priest:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(100, 30, 3, 3, 10, 100, 2, 1, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::elf:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(50, 20, 3, 3, 0, 15, 1.5, 1, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::dwarf:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(80, 20, 4, 6, 20, 5, 2.5, 1, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::prisoner:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(50, 10, 5, 5, 0, 33, 2.5, 1, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::theRock:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(10, 0, 10, 0, 10, 5, 2, 1, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::trader:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(100, 10, 0, 5, 10, 5, 2, 1, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::bartender:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(100, 10, 0, 5, 10, 5, 2, 1, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::bard:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(100, 10, 0, 5, 10, 5, 2, 1, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::loli:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(50, 10, 9, 6, 10, 5, 2, 2, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::shota:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(150, 50, 3.3, 3.6, 0, 5, 1.5, 2, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::zombie:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(90, 30, 3, 5, 0, 4, 2, 2, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::skeleton:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(75, 25, 5, 3, 20, 11, 2, 2, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::witch:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(40, 10, 6.5, 6.5, 10, 5, 2, 1, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::ghost:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(5, 35, 5.5, 5.5, 0, 0, 1, 1, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::theBeer:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(0, 1, 0.1, 0.1, -100, 50, 10, 1, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::yourself:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(0, 0, 0, 0, 10, 5, 2, 1, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::stoneGolem:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(111, 55, 2.5, 3.5, 15, 0, 1, 3, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::blurp:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(21, 21, 0, 6.3, 0, 5, 2.1, 1, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::smallRat:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(0, 2.5, 0, 1, 0, 1, 2, 1, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::rat:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(2.5, 5, 1, 1.5, 0, 2, 2, 1, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::giantRat:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(5, 5, 2, 2, 0, 3, 2, 1, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::enormousRat:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(15, 10, 3, 3, 0, 4, 2, 2, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::colossalRat:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(20, 15, 4, 4, 0, 5, 2, 3, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::colossalSpider:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(15, 20, 6, 6, 10, 5, 1.5, 3, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::ratman:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(70, 30, 5, 5, 10, 10, 1.5, 4, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::goblin:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
 		break;
 	case Creatures::Encounter::EncounterType::hobgoblin:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(50, 25, 3, 5, 10, 5, 2, 2, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::orc:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(60, 30, 5.5, 6.5, 15, 10, 1.5, 3, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::kobold:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(30, 25, 1.5, 3.5, 0, 10, 2, 1, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::kockbold:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(30, 25, 1.5, 3.5, 0, 10, 2, 1, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::cockblin:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(35, 25, 2, 4, 0, 5, 2, 1, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::the104:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		break;
+	case Creatures::Encounter::EncounterType::bugBox:
+		stats.set(10, 10, 1, 1, 11, 11, 1.1, 1, lvl);
+		break;
+	case Creatures::Encounter::EncounterType::crackman:
+		stats.set(60, 15, 4, 4, -20, 25, 2, 1, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::errorGuy:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(1, 1, 1, 0, 0, 0, 0, 1, 1);
 		break;
 	case Creatures::Encounter::EncounterType::elesya:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(95, 45, 5, 10, 25, 0, 1, 5, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::kelmod:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(75, 35, 6, 9, 15, 5, 1.5, 5, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::lenre:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(65, 25, 6, 6, 35, 10, 2, 5, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::necoto:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(100, 50, 4, 6, 0, 10, 2, 5, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::kyo:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
 		break;
 	case Creatures::Encounter::EncounterType::expN30A:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(74, 46, 4, 6, 0, 5, 2, 4, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::expN30B:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(85, 35, 5, 5, 10, 10, 2, 4, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::expN30C:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(96, 24, 6, 4, 20, 15, 2, 4, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::sila:
-		setName("Sila The Shy");
-		m_maxHp = 10 + (5 * (m_lvl - 1));
-		m_maxAtk = 2 + (1 * m_lvl);
-		m_maxDef = 10;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 2;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(60, 40, 6.5, 7.5, 0, 10, 1.5, 4, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::armNuc:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(45, 45, 7, 7, 25, 5, 2, 4, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::miiro:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(70, 50, 8, 7, 6, 10, 2, 4, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::chishao:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(65, 45, 7, 8, 9, 15, 1.5, 4, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::nanre:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(70, 20, 6, 6, 10, 5, 2, 1, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::conakie:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(70, 20, 6, 6, 10, 5, 2, 1, lvl);
+		break;
+	case Creatures::Encounter::EncounterType::yana:
+		stats.set(70, 20, 6, 6, 10, 5, 2, 1, lvl);
+		break;
+	case Creatures::Encounter::EncounterType::fefr:
+		stats.set(70, 20, 6, 6, 10, 5, 2, 1, lvl);
+		break;
+	case Creatures::Encounter::EncounterType::fiund:
+		stats.set(70, 20, 6, 6, 10, 5, 2, 1, lvl);
 		break;
 	case Creatures::Encounter::EncounterType::none:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(0, 0, 0, 0, 0, 0, 0, 0, 0, true, false, false);
+		Print::Errors::noMatchCase(static_cast<int>(m_type), "Encounterz::setEncounter()");
 		break;
 	default:
-		m_maxHp = 0 + (0 * (m_lvl - 1));
-		m_maxAtk = 0 + (0 * m_lvl);
-		m_maxDef = 0;
-		m_critRate = 0;
-		m_critDmg = 0;
-		m_xp = 1;
-
-		m_hp = m_maxHp;
-		m_atk = m_maxAtk;
-		m_def = m_maxDef;
+		stats.set(0, 0, 0, 0, 0, 0, 0, 0, 0, true, false, false);
+        Print::Errors::noMatchCase(static_cast<int>(m_type), "Encounterz::setEncounter()");
 		break;
 	}
+    copyStats(stats);
+	setNameFromType();
 }
 
 void Creatures::Encounter::Encounterz::setType(EncounterType type)
 {
 	m_type = type;
-}
-
-void Creatures::Encounter::Encounterz::setLvl(int lvl)
-{
-	m_lvl = lvl;
 }
 
 void Creatures::Encounter::Encounterz::setPlayer(Player::Playerz* player)
@@ -923,7 +452,134 @@ void Creatures::Encounter::Encounterz::setPlayer(Player::Playerz* player)
 
 std::string_view Creatures::Encounter::Encounterz::getIntro() const
 {
-    return "Nanre: \"What do you want?\"\n";
+    //return "Nanre: \"What do you want?\"\n";
+	switch (m_type)
+	{
+	case Creatures::Encounter::EncounterType::guard:
+		return "There is a guard standing in front of you.\n";
+	case Creatures::Encounter::EncounterType::drunkGuy:
+		return "A drunk guy is walking wobbly towards you.\n";
+	case Creatures::Encounter::EncounterType::soldier:
+		return "A soldier is standing and looking at the horizon.\n";
+	case Creatures::Encounter::EncounterType::torturer:
+		return "There is a guy who looks worried. He looks like a torturer.\n";
+	case Creatures::Encounter::EncounterType::giant:
+		return "This giant doesn't seem friendly.\n";
+	case Creatures::Encounter::EncounterType::priest:
+		return "A priest of Miiro is walking. Your gaze meets his.\n";
+	case Creatures::Encounter::EncounterType::elf:
+		return "The elf hears you and turns around to check who's coming.\n";
+	case Creatures::Encounter::EncounterType::dwarf:
+		return "This dwarf wants a beer and a companion to drink with.\n";
+	case Creatures::Encounter::EncounterType::prisoner:
+		return "A girl is walking with chains on her shoulder. She's definately a prisoner.\n";
+	case Creatures::Encounter::EncounterType::theRock:
+		return "It is a rock. What did you expect?\n";
+	case Creatures::Encounter::EncounterType::trader:
+		return "A merchant approaches you. He seems friendly.\n";
+	case Creatures::Encounter::EncounterType::bartender:
+		return "That's a bartender. Never met one? Well, too bad for you.\n";
+	case Creatures::Encounter::EncounterType::bard:
+		return "This bard singing's is so bad that evenr rocks want to make him shut up.\n";
+	case Creatures::Encounter::EncounterType::loli:
+		return "There is a little human girl staring at you. She looks cute.\n";
+	case Creatures::Encounter::EncounterType::shota:
+		return "There is a little human boy staring at you. He looks \n";
+	case Creatures::Encounter::EncounterType::zombie:
+		return "A zombie seems to be looking for a certain someone. Is that you?\n";
+	case Creatures::Encounter::EncounterType::skeleton:
+		return "A skeletron. Made of bones and metal.\n";
+	case Creatures::Encounter::EncounterType::witch:
+		return "Oh no, a witch! Burn her!\n";
+	case Creatures::Encounter::EncounterType::ghost:
+		return "A ghost. Boo!\n";
+	case Creatures::Encounter::EncounterType::theBeer:
+		return "A mug of beer is sitting on the floor waiting for you. Or not. Who knows?\n";
+	case Creatures::Encounter::EncounterType::yourself:
+		return "It's you. I told you that cloning potions weren't good, didn't I?\n";
+	case Creatures::Encounter::EncounterType::stoneGolem:
+		return "A stone golem started moving as soon as you got close.\n";
+	case Creatures::Encounter::EncounterType::blurp:
+		return "A slime that goes by the name of blurp is hopping around.\n";
+	case Creatures::Encounter::EncounterType::smallRat:
+		return "A small rat is squeaking. *Sqek sqek*\n";
+	case Creatures::Encounter::EncounterType::rat:
+		return "A rat is looking for food. Are you the food?\n";
+	case Creatures::Encounter::EncounterType::giantRat:
+		return "There is a fat rat. It's a giant rat.\n";
+	case Creatures::Encounter::EncounterType::enormousRat:
+		return "This rat is way too big! It's enormous!\n";
+	case Creatures::Encounter::EncounterType::colossalRat:
+		return "I hope you like huge rats, because this is a colossal one.\n";
+	case Creatures::Encounter::EncounterType::colossalSpider:
+		return "Are you scared of spiders? Because this is a colossal spider.\n";
+	case Creatures::Encounter::EncounterType::ratman:
+		return "You found the mighty Ratman!\n";
+	case Creatures::Encounter::EncounterType::goblin:
+		return "A goblin saw your face and they started laughing.\n";
+	case Creatures::Encounter::EncounterType::hobgoblin:
+		return "Imagine a hobgoblin. Good, because that's what you have now in front of you.\n";
+	case Creatures::Encounter::EncounterType::orc:
+		return "An orc... Good luck for real.\n";
+	case Creatures::Encounter::EncounterType::kobold:
+		return "Kobolds are kinda cute. Have one.\n";
+	case Creatures::Encounter::EncounterType::kockbold:
+		return "You might be gat, because you just found a kockbold.\n";
+	case Creatures::Encounter::EncounterType::cockblin:
+		return "You're definitely gay now. You have found a cockblin.\n";
+	case Creatures::Encounter::EncounterType::the104:
+		return "Why am I keeping this? (104)\n";
+	case Creatures::Encounter::EncounterType::bugBox:
+		return "You found a bug box.\n";
+	case Creatures::Encounter::EncounterType::crackman:
+		return "You found Ratman's arch nemesis: Crackman!\n";
+	case Creatures::Encounter::EncounterType::errorGuy:
+		return "Error guy! Nanre's best friend.\n";
+	case Creatures::Encounter::EncounterType::elesya:
+		return "Elesya, the destroyer or save files and slapper of Kelmods is here.\n";
+	case Creatures::Encounter::EncounterType::kelmod:
+		return "The most annoying employee: Kelmod is here!\n";
+	case Creatures::Encounter::EncounterType::lenre:
+		return "Who remembers him? Nobody, so meet Lenre!\n";
+	case Creatures::Encounter::EncounterType::necoto:
+		return "The one and only: Necoto!\n";
+	case Creatures::Encounter::EncounterType::kyo:
+		return "He exists for no reason: Kyo!\n";
+	case Creatures::Encounter::EncounterType::expN30A:
+		return "Experiment Number 30A is here~\n";
+	case Creatures::Encounter::EncounterType::expN30B:
+		return "Experiment Number 30B arrived.\n";
+	case Creatures::Encounter::EncounterType::expN30C:
+		return "Experiment Number 30C is sitting down.\n";
+	case Creatures::Encounter::EncounterType::sila:
+		return "Sila is walking around aimlessy.\n";
+	case Creatures::Encounter::EncounterType::armNuc:
+		return "Arm Nuc seems bored. Why don't you do something?\n";
+	case Creatures::Encounter::EncounterType::miiro:
+		return "Miiro the Ersilia is here. She looks tired.\n";
+	case Creatures::Encounter::EncounterType::chishao:
+		return "Chishao noticed you ages ago. She is unsure if running away or not.\n";
+	case Creatures::Encounter::EncounterType::nanre:
+		return "Nanre. You probably know him. I mean, he made the game.\n";
+	case Creatures::Encounter::EncounterType::conakie:
+		return "Conakie. You probably know Conakie for the drawings.\n";
+	case Creatures::Encounter::EncounterType::yana:
+		return "Yana's intro.\n";
+	case Creatures::Encounter::EncounterType::fefr:
+		return "Fefr's intro.\n";
+	case Creatures::Encounter::EncounterType::fiund:
+		return "Fiund's intro.\n";
+	case Creatures::Encounter::EncounterType::none:
+		return "How the hell did you get the \"none\" type of encounter? Report this.\n";
+	default:
+		return "This is impossible. I swear that if this appears I'm nuking myself.\n";
+		break;
+	}
+}
+
+std::string_view Creatures::Encounter::Encounterz::getOutro() const
+{
+	return "Play Random adventure: Godot edition.\n";
 }
 
 void Creatures::Encounter::Encounterz::copyStats(EncounterStatsSetter& base)
@@ -950,4 +606,189 @@ void Creatures::Encounter::Encounterz::dialogue()
 
 	m_canTalk = false;
 	m_isUnderAttack = true;
+}
+
+void Creatures::Encounter::Encounterz::setNameFromType()
+{
+	switch (m_type)
+	{
+	case Creatures::Encounter::EncounterType::guard:
+        m_name = "Guard";
+		break;
+	case Creatures::Encounter::EncounterType::drunkGuy:
+		m_name = "Drunk Guy";
+		break;
+	case Creatures::Encounter::EncounterType::soldier:
+		m_name = "Soldier";
+		break;
+	case Creatures::Encounter::EncounterType::torturer:
+		m_name = "Torturer";
+		break;
+	case Creatures::Encounter::EncounterType::giant:
+		m_name = "Giant";
+		break;
+	case Creatures::Encounter::EncounterType::priest:
+		m_name = "Priest";
+		break;
+	case Creatures::Encounter::EncounterType::elf:
+		m_name = "Elf";
+		break;
+	case Creatures::Encounter::EncounterType::dwarf:
+		m_name = "Dwarf";
+		break;
+	case Creatures::Encounter::EncounterType::prisoner:
+		m_name = "Prisoner";
+		break;
+	case Creatures::Encounter::EncounterType::theRock:
+		m_name = "The Rock";
+		break;
+	case Creatures::Encounter::EncounterType::trader:
+		m_name = "Trader";
+		break;
+	case Creatures::Encounter::EncounterType::bartender:
+		m_name = "Bartender";
+		break;
+	case Creatures::Encounter::EncounterType::bard:
+		m_name = "Bard";
+		break;
+	case Creatures::Encounter::EncounterType::loli:
+		m_name = "Loli";
+		break;
+	case Creatures::Encounter::EncounterType::shota:
+		m_name = "Shota";
+		break;
+	case Creatures::Encounter::EncounterType::zombie:
+		m_name = "Zombie";
+		break;
+	case Creatures::Encounter::EncounterType::skeleton:
+		m_name = "Skeleton";
+		break;
+	case Creatures::Encounter::EncounterType::witch:
+		m_name = "Witch";
+		break;
+	case Creatures::Encounter::EncounterType::ghost:
+		m_name = "Ghost";
+		break;
+	case Creatures::Encounter::EncounterType::theBeer:
+		m_name = "The Beer";
+		break;
+	case Creatures::Encounter::EncounterType::yourself:
+		m_name = "Yourself";
+		break;
+	case Creatures::Encounter::EncounterType::stoneGolem:
+		m_name = "Stone Golem";
+		break;
+	case Creatures::Encounter::EncounterType::blurp:
+		m_name = "Blurp";
+		break;
+	case Creatures::Encounter::EncounterType::smallRat:
+		m_name = "Small Rat";
+		break;
+	case Creatures::Encounter::EncounterType::rat:
+		m_name = "Rat";
+		break;
+	case Creatures::Encounter::EncounterType::giantRat:
+		m_name = "Giant Rat";
+		break;
+	case Creatures::Encounter::EncounterType::enormousRat:
+		m_name = "Enormous Rat";
+		break;
+	case Creatures::Encounter::EncounterType::colossalRat:
+		m_name = "Colossal Rat";
+		break;
+	case Creatures::Encounter::EncounterType::colossalSpider:
+		m_name = "Colossal Spider";
+		break;
+	case Creatures::Encounter::EncounterType::ratman:
+		m_name = "Ratman";
+		break;
+	case Creatures::Encounter::EncounterType::goblin:
+		m_name = "Goblin";
+		break;
+	case Creatures::Encounter::EncounterType::hobgoblin:
+		m_name = "Hobgoblin";
+		break;
+	case Creatures::Encounter::EncounterType::orc:
+		m_name = "Orc";
+		break;
+	case Creatures::Encounter::EncounterType::kobold:
+		m_name = "Kobold";
+		break;
+	case Creatures::Encounter::EncounterType::kockbold:
+		m_name = "Kockbold";
+		break;
+	case Creatures::Encounter::EncounterType::cockblin:
+		m_name = "Cockblin";
+		break;
+	case Creatures::Encounter::EncounterType::the104:
+		m_name = "The 104";
+		break;
+	case Creatures::Encounter::EncounterType::bugBox:
+		m_name = "Bug Box";
+		break;
+	case Creatures::Encounter::EncounterType::crackman:
+		m_name = "Crackman";
+		break;
+	case Creatures::Encounter::EncounterType::errorGuy:
+		m_name = "Error Guy";
+		break;
+	case Creatures::Encounter::EncounterType::elesya:
+		m_name = "Elesya";
+		break;
+	case Creatures::Encounter::EncounterType::kelmod:
+		m_name = "Kelmod";
+		break;
+	case Creatures::Encounter::EncounterType::lenre:
+		m_name = "Lenre";
+		break;
+	case Creatures::Encounter::EncounterType::necoto:
+		m_name = "Necoto";
+		break;
+	case Creatures::Encounter::EncounterType::kyo:
+		m_name = "Kyo";
+		break;
+	case Creatures::Encounter::EncounterType::expN30A:
+		m_name = "Experiment Number 30A";
+		break;
+	case Creatures::Encounter::EncounterType::expN30B:
+		m_name = "Experiment Number 30B";
+		break;
+	case Creatures::Encounter::EncounterType::expN30C:
+		m_name = "Experiment Number 30C";
+		break;
+	case Creatures::Encounter::EncounterType::sila:
+		m_name = "Sila";
+		break;
+	case Creatures::Encounter::EncounterType::armNuc:
+		m_name = "Arm Nuc";
+		break;
+	case Creatures::Encounter::EncounterType::miiro:
+		m_name = "Miiro";
+		break;
+	case Creatures::Encounter::EncounterType::chishao:
+		m_name = "Chishao";
+		break;
+	case Creatures::Encounter::EncounterType::nanre:
+		m_name = "Nanre";
+		break;
+	case Creatures::Encounter::EncounterType::conakie:
+		m_name = "Conakie";
+		break;
+	case Creatures::Encounter::EncounterType::yana:
+		m_name = "Yana";
+		break;
+	case Creatures::Encounter::EncounterType::fefr:
+		m_name = "Fefr";
+		break;
+	case Creatures::Encounter::EncounterType::fiund:
+		m_name = "Fiund";
+		break;
+	case Creatures::Encounter::EncounterType::none:
+		m_name = "None";
+		break;
+	default:
+        Print::Errors::noMatchCase(static_cast<int>(m_type), "Encounterz::setNameFromType()");
+		m_name = "Unknown";
+		break;
+	}
 }

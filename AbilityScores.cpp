@@ -44,10 +44,8 @@ void Creatures::Player::AbilityScores::setStats()
 				putStatsBackInTheArray(statsArr, !answerAgain);
 			} while (!answerAgain);
 			repeata = false;
-			std::cout << "aaa";
 		}
 		else;
-		std::cout << repeata;
 	}
 }
 

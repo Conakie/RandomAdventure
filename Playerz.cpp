@@ -116,7 +116,7 @@ void Creatures::Player::Playerz::setPlayer(PlayerRole role, std::string_view nam
     m_lvl = 1;
     m_role = role;
     m_name = name;
-    m_abilityScores.silentSetStats();
+    m_abilityScores.setStats();
     m_inventory.reset();
     m_inventory.setTarget(this);
 }
@@ -136,7 +136,7 @@ void Creatures::Player::Playerz::silentSetPlayer(PlayerRole role, std::string_vi
     m_lvl = 1;
     m_role = role;
     m_name = name;
-    m_abilityScores.setStats();
+    m_abilityScores.silentSetStats();
     m_inventory.reset();
     m_inventory.setTarget(this);
 }

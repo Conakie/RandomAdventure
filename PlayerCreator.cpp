@@ -5,6 +5,8 @@
 #include "PlayerCreator.h"
 #include "Input.h"
 #include "PrintErrors.h"
+#include "PlayerRole.h"
+#include "Playerz.h"
 
 Creatures::Player::Playerz* PlayerCreator::createPlayer()
 {
@@ -41,7 +43,7 @@ Creatures::Player::Playerz* PlayerCreator::silentCreatePlayer(std::string_view n
 
     if (m_player)
     {
-        m_player->setPlayer(Creatures::Player::PlayerRole::none, name);
+        m_player->silentSetPlayer(Creatures::Player::PlayerRole::none, name);
         return m_player;
     }
     return nullptr;

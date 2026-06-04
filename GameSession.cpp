@@ -1,5 +1,6 @@
 
 #include <iostream>
+#include <cmath>
 #include "GameSession.h"
 #include "PlayerCreator.h"
 #include "Input.h"
@@ -7,9 +8,11 @@
 #include "PlayerActions.h"
 #include "Delays.h"
 #include "Random.h"
-#include "Items.h"
 #include "EncounterType.h"
-#include <cmath>
+#include "Items.h"
+#include <print>
+
+
 
 void GameSession::prepareGameSession()
 {
@@ -33,7 +36,9 @@ void GameSession::playGame()
     {
         updateGameState();
         playerTurn();
+        waitForKeypress();
         encounterTurn();
+        waitForKeypress();
     }
 }
 
@@ -41,7 +46,7 @@ int GameSession::playerTurn()
 {
     bool answerAgain{ false };
 
-    std::cout << "Kelmod: \"It is your turn. Choose what to do.\"\n";
+    std::cout << "\nKelmod: \"It is your turn. Choose what to do.\"\n";
     do
     {
         std::cout << "a: Attack.\n"
@@ -53,7 +58,9 @@ int GameSession::playerTurn()
             << "r: See inventory.\n"
             << "q: See encounter stats.\n"
             << "f: Use item.\n"
-            << "/: Use command.\n";
+            << "/: Use command.\n"
+            << "1: Go to next room.\n"
+            << "2: go to previous room.\n";
 
         switch (Input::character())
         {
@@ -149,7 +156,7 @@ int GameSession::playerTurn()
                 << "14: fish.\n"
                 << "15: mushroom.\n"
                 << "16: magic scroll.\n"
-                << "17: Fridgenade.\n";
+                /* << "17: Fridgenade.\n"*/;
             itemToUse = static_cast<Items::ItemName>(Input::integer());
             std::cout << "Kelmod: \"Now choose the quantity to use:\n"
                 << "Also, do not dare to use negative numbers.\"\n";
@@ -193,13 +200,34 @@ int GameSession::playerTurn()
             std::cout << "Kelmod: \"I admire your ability in doing nothing.\"\n";
             return 2;
 
+        case Actionz::goToNextRoom:
+            if (m_activeEncounter)
+            {
+                if (m_activeEncounter->isAlive())
+                {
+                    std::print("Kelmod: \"You can't escape this way. Fight to the death!\"\n");
+                }
+                else
+                {
+                    std::print("(You continue your adventure forward.)\n");
+                    if (m_locale.goToNextRoom())
+                        m_hasToRegenerateLocale = true;
+                    setActiveEncounter();
+                    return 2;
+                }
+            }
+            break;
+            
+        case Actionz::goToPreviousRoom:
+            std::print("Empty for now");
+            m_hasToRegenerateLocale = true;
+            break;
+
         default:
             answerAgain = true;
             break;
         }
     } while (answerAgain);
-
-    waitForKeypress();
 
     return 0;
 }
@@ -222,26 +250,49 @@ void GameSession::encounterTurn()
 
 void GameSession::updateGameState()
 {
-    if (m_locale.isEmpty() || false)
+    if (m_hasToRegenerateLocale)
     {
+        m_hasToRegenerateLocale = false;
         m_locale.generateLocale();
-        for (size_t i = 0; i < m_encounterList.size(); i++)
-        {
-            delete m_encounterList[i];
-        }
-        m_encounterList.resize(m_locale.size());
-        for (size_t i = 0; i < m_encounterList.size(); i++)
+        m_encounterList.clear();
+        for (size_t index = 0; index < m_locale.size(); index++)
         {
             if (m_locale.getCurrentRoomEncounterType() != EncType::none)
             {
-                m_encounterList[i] = new Encounter;
-                //m_encounterList[i].silentSet();
+                Encounter* encounter = new Encounter{};
+                encounter->setPlayer(m_player);
+                encounter->setType(m_locale.getCurrentRoomEncounterType());
+                encounter->setEncounter(m_worldLvl);
+                m_encounterList.push_back(encounter);
+                //std::print("enemy at: {}/{}\n", index, (m_locale.size() - 1));
             }
             else
             {
-                m_encounterList[i] = nullptr;
+                m_encounterList.push_back(nullptr);
             }
         }
-        //m_locale.printIntro();
+        m_locale.printCurrentRoom();
+        m_locale.setCurrentRoomIndex(0);
+        setActiveEncounter();
     }
+    else
+    {
+        if (m_activeEncounter)
+        {
+            if (!m_activeEncounter->isAlive() || m_activeEncounter->isGone())
+            {
+                delete m_activeEncounter;
+                m_activeEncounter = nullptr;
+                m_locale.removeCurrentRoomEncounter();
+                m_locale.getLootFromCurrentRoom();
+            }
+        }
+    }
+}
+
+void GameSession::setActiveEncounter()
+{
+    m_activeEncounter = m_encounterList[m_locale.getCurrentRoomIndex()];
+    if (m_activeEncounter)
+        std::print("{}", m_activeEncounter->getIntro());
 }

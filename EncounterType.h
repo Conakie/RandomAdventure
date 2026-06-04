@@ -64,6 +64,9 @@ namespace Creatures
             chishao,
             nanre,
             conakie,
+            yana,
+            fefr,
+            fiund,
             none,
         };
     }

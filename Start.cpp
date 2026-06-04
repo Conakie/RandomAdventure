@@ -21,18 +21,9 @@ int main()
     
     GameSession gameSessions{};
     gameSessions.silentPrepareGameSession();
+    gameSessions.playGame();
     //gameSessions.prepareGameSession();
     //gameSessions.playGame();
-    Locale locale{};
-    Timer timer{};
-    double totalTime = 0.0;
-    for (int i = 0; i < 10000; i++)
-    {
-        locale.generateLocale();
-        totalTime += timer.elapsed();
-        timer.reset();
-    }
-    std::cout << std::fixed << std::setprecision(10) << totalTime/10000 << '\n';
     return 0;
     /*
     Kokomi (genshin)
