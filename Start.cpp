@@ -20,7 +20,7 @@ int main()
     ConsoleStyle::setColorPerPlace(PlacesID::village);
     
     GameSession gameSessions{};
-    gameSessions.silentPrepareGameSession();
+    gameSessions.prepareGameSession();
     gameSessions.playGame();
     //gameSessions.prepareGameSession();
     //gameSessions.playGame();

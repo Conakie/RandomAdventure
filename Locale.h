@@ -14,6 +14,7 @@ class Localez
 {
 private:
     using EncType = Creatures::Encounter::EncounterType;
+    using Item = Items::ItemName;
 public:
     Localez() = default;
 
@@ -24,7 +25,7 @@ public:
     bool goToPreviousRoom();
     void printCurrentRoom() const;
     void removeCurrentRoomEncounter();
-    Items::ItemName getLootFromCurrentRoom();
+    std::pair<Item, int> getLootFromCurrentRoom();
     void deleteLocale();
 
     void setCurrentRoomIndex(int index) { m_currentRoom = index; }
@@ -33,6 +34,7 @@ public:
     size_t size() const { return m_rooms.size(); }
     size_t getCurrentRoomIndex() const { return m_currentRoom; }
     EncType getCurrentRoomEncounterType() const;
+    PlacesID getPlaceID() const { return m_localeType; }
 private:
     //void generateRoom();
     void generateTreasureRoom();

@@ -86,20 +86,28 @@ void Creatures::Encounter::Encounterz::talk()
 void Creatures::Encounter::Encounterz::thinkAndAct()
 {
 	if (m_isGone)
-	{
-		std::cout << m_name << " is gone.\n";
-	}
+		std::print("{} left, you are alone now.", m_name);
 	else
 	{
-		if (m_player)
+		if (m_isUnderAttack)
 		{
-			if (m_isUnderAttack && isAlive())
+			if (m_hp < m_maxHp / 2)
 			{
-				attack(*m_player);
-			}
+                if (Random::get(0, 99) < 50)
+                {
+                    std::print("{} is trying to heal himself.\n", m_name);
+					heal(Random::get(1, static_cast<int>(m_maxHp / 10)));
+                }
+				else
+					attack(*m_player);
+            }
 			else
-				talk();
+				attack(*m_player);
 		}
+		else if (m_type == EncounterType::priest)
+				talk();
+		else
+            std::print("{} is looking at you, but doesn't do anything.\n", m_name);
 	}
 }
 

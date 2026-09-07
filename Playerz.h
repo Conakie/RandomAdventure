@@ -5,6 +5,7 @@
 #include <string_view>
 #include "CreatureBase.h"
 #include "PlayerBase.h"
+#include "Inventory.h"
 
 namespace Creatures
 {

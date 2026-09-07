@@ -1,18 +1,20 @@
 
-#include <array>
 #include <iostream>
+#include <utility>
 #include "Locale.h"
 #include "Random.h"
 #include "EncounterType.h"
 #include "Loot.h"
 #include "PlacesID.h"
 #include "PrintErrors.h"
+#include "Items.h"
+#include <print>
 
 void Localez::generateLocale()
 {
     // randomly selects a locale type and variant
     m_localeType = static_cast<PlacesID>(Random::get(0, 4));
-    m_localeType = PlacesID::dungeon;
+    //m_localeType = PlacesID::dungeon;
 
     switch (m_localeType)
     {
@@ -160,11 +162,7 @@ void Localez::printDungeonRoom() const
 {
     if (m_rooms[m_currentRoom].m_hasBeenEntered)
     {
-        switch (m_rooms[m_currentRoom].m_roomID)
-        {
-        default:
-            break;
-        }
+        std::print("You go back to a room you have already entered before.\n");
     }
     else
     {
@@ -231,17 +229,43 @@ void Localez::printVillageRoom() const
 {
     if (m_rooms[m_currentRoom].m_hasBeenEntered)
     {
-        switch (m_rooms[m_currentRoom].m_roomID)
-        {
-        default:
-            break;
-        }
+        std::print("You go back to a street you have already visited.\n");
     }
     else
     {
         switch (m_rooms[m_currentRoom].m_roomID)
         {
+        case 0:
+            std::cout << "You are walking on a main road with cobbled stones.\n"
+                << "Tall houses surround you, stores of all kinds on the ground floors.\n"
+                << "Many people are walking around, some cats mixed with the crowd.\n";
+            break;
+        case 1:
+            std::cout << "This street is a calm one. Not many people are here.\n"
+                << "There isn't anything interesting of note, but it is a calm and nice place.\n"
+                << "Living here wouldn't be so bad if you weren't wandering around the world.\n";
+            break;
+        case 2:
+            std::cout << "You enter a narrow street, but many use this to go around.\n"
+                << "All the houses are made of wood and stone, with no balconies.\n";
+            break;
+        case 3:
+            std::cout << "You reach a big square with a large fountain at the center.\n"
+                << "Many stalls can be found all around the square.\n"
+                << "The place is really crowded, but you can still walk around easily.\n";
+            break;
+        case 4:
+            std::cout << "You are now in an old square. It looks a little rundown.\n"
+                << "The houses here have less floors compared to other parts of the village.\n"
+                << "This place is also pretty much empty, there is almost nobody here.\n";
+            break;
+        case 5:
+            std::cout << "This place is full of restaurants and taverns as well as stores.\n"
+                << "The smell of food is everywhere. You would eat a human for how nice it is.\n"
+                << "But you won't because it is definitely not a good idea. For now.\n";
+            break;
         default:
+            std::cout << "You are walking on a random street. Nothing interesting about it.\n";
             break;
         }
     }
@@ -251,17 +275,27 @@ void Localez::printCaveRoom() const
 {
     if (m_rooms[m_currentRoom].m_hasBeenEntered)
     {
-        switch (m_rooms[m_currentRoom].m_roomID)
-        {
-        default:
-            break;
-        }
+        std::print("You go back to a cave tunnel you have been in earlier.\n");
     }
     else
     {
         switch (m_rooms[m_currentRoom].m_roomID)
         {
+        case 0:
+            std::cout << "";
+            break;
+        case 1:
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+        case 5:
+            break;
         default:
+            std::print("You enter a cave tunnel. Nothing interesting to see.\n");
             break;
         }
     }
@@ -271,17 +305,14 @@ void Localez::printForestRoom() const
 {
     if (m_rooms[m_currentRoom].m_hasBeenEntered)
     {
-        switch (m_rooms[m_currentRoom].m_roomID)
-        {
-        default:
-            break;
-        }
+        std::print("");
     }
     else
     {
         switch (m_rooms[m_currentRoom].m_roomID)
         {
         default:
+            std::print("");
             break;
         }
     }
@@ -291,17 +322,14 @@ void Localez::printStrongholdRoom() const
 {
     if (m_rooms[m_currentRoom].m_hasBeenEntered)
     {
-        switch (m_rooms[m_currentRoom].m_roomID)
-        {
-        default:
-            break;
-        }
+        std::print("");
     }
     else
     {
         switch (m_rooms[m_currentRoom].m_roomID)
         {
         default:
+            std::print("");
             break;
         }
     }
@@ -367,9 +395,37 @@ void Localez::removeCurrentRoomEncounter()
     m_rooms[m_currentRoom].m_encounterOfTheRoom = Creatures::Encounter::EncounterType::none;
 }
 
-Items::ItemName Localez::getLootFromCurrentRoom()
+std::pair<Items::ItemName, int> Localez::getLootFromCurrentRoom()
 {
-    return Items::ItemName::none;
+    std::pair<Item, int> loot{ Item::none, 0 };
+    
+    switch (m_rooms[m_currentRoom].m_lootAmount)
+    {
+    case LootAmount::none:
+        return loot;
+    case LootAmount::low:
+        loot.first = Item::smallHealingPotion;
+        loot.second = Random::get(1, 3);
+        return loot;
+    case LootAmount::medium:
+        loot.first = Item::mediumHealingPotion;
+        loot.second = Random::get(1, 3);
+        return loot;
+    case LootAmount::high:
+        loot.first = Item::molotov;
+        loot.second = Random::get(1, 3);
+        return loot;
+    case LootAmount::treasure:
+        loot.first = Item::magicScroll;
+        loot.second = Random::get(1, 3);
+        return loot;
+    case LootAmount::unknown:
+        loot.first = Item::herbs;
+        loot.second = Random::get(1, 3);
+        return loot;
+    default:
+        return loot;
+    }
 }
 
 void Localez::deleteLocale()

@@ -175,7 +175,7 @@ namespace Input
             }
             else // the extraction didn't fail nor it overflowed
             {
-            ignoreLine();
+            //ignoreLine();
             }
 
 

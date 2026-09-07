@@ -103,10 +103,10 @@ void Creatures::Player::Playerz::setAbilityScores()
 
 void Creatures::Player::Playerz::setPlayer(PlayerRole role, std::string_view name)
 {
-    m_hp = 10;
-    m_maxHp = 10;
-    m_atk = 4;
-    m_maxAtk = 4;
+    m_hp = 100;
+    m_maxHp = 100;
+    m_atk = 10;
+    m_maxAtk = 10;
     m_critDmg = 2;
     m_critRate = 10;
     m_def = 10;
@@ -123,10 +123,10 @@ void Creatures::Player::Playerz::setPlayer(PlayerRole role, std::string_view nam
 
 void Creatures::Player::Playerz::silentSetPlayer(PlayerRole role, std::string_view name)
 {
-    m_hp = 10;
-    m_maxHp = 10;
-    m_atk = 4;
-    m_maxAtk = 4;
+    m_hp = 100;
+    m_maxHp = 100;
+    m_atk = 10;
+    m_maxAtk = 10;
     m_critDmg = 2;
     m_critRate = 10;
     m_def = 10;

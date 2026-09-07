@@ -1,6 +1,8 @@
 
 #include <iostream>
 #include <cmath>
+#include <print>
+#include <utility>
 #include "GameSession.h"
 #include "PlayerCreator.h"
 #include "Input.h"
@@ -10,7 +12,7 @@
 #include "Random.h"
 #include "EncounterType.h"
 #include "Items.h"
-#include <print>
+#include "ConsoleStyle.h"
 
 
 
@@ -244,7 +246,7 @@ void GameSession::encounterTurn()
     }
     else
     {
-        std::cout << "The area around you is quiet. Maybe even too quiet for your taste.\n";
+        std::print("The area around you is quiet. Maybe even too quiet for your taste.\n");
     }
 }
 
@@ -254,6 +256,7 @@ void GameSession::updateGameState()
     {
         m_hasToRegenerateLocale = false;
         m_locale.generateLocale();
+        ConsoleStyle::setColorPerPlace(m_locale.getPlaceID());
         m_encounterList.clear();
         for (size_t index = 0; index < m_locale.size(); index++)
         {
@@ -281,10 +284,12 @@ void GameSession::updateGameState()
         {
             if (!m_activeEncounter->isAlive() || m_activeEncounter->isGone())
             {
+                std::pair<Items::ItemName, int> loot{ m_locale.getLootFromCurrentRoom() };
                 delete m_activeEncounter;
                 m_activeEncounter = nullptr;
+                m_encounterList[m_locale.getCurrentRoomIndex()] = nullptr;
                 m_locale.removeCurrentRoomEncounter();
-                m_locale.getLootFromCurrentRoom();
+                m_player->openInventory().addItem(loot.first, loot.second);
             }
         }
     }
